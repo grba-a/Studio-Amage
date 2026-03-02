@@ -36,7 +36,7 @@ img {
 }
 
 .container {
-  width: min(1100px, 92%);
+  width: min(1240px, 92%);
   margin: 0 auto;
 }
 
@@ -123,20 +123,21 @@ h2 {
 }
 
 .site-header {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 20;
-  backdrop-filter: blur(8px);
-  background: rgba(250, 247, 244, 0.82);
-  border-bottom: 1px solid rgba(228, 219, 212, 0.8);
+  background: transparent;
 }
 
 .nav-wrap {
   min-height: 70px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
+  position: relative;
 }
 
 .brand {
@@ -172,19 +173,21 @@ h2 {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid var(--line);
-  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: rgba(0, 0, 0, 0.15);
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
+  position: absolute;
+  right: 0;
 }
 
 .nav-toggle span {
   width: 18px;
   height: 2px;
-  background: var(--text);
+  background: #fff;
   transition: 180ms ease;
 }
 
@@ -193,8 +196,8 @@ h2 {
   top: 70px;
   left: 0;
   right: 0;
-  background: rgba(250, 247, 244, 0.98);
-  border-bottom: 1px solid var(--line);
+  background: rgba(22, 14, 10, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   display: none;
   flex-direction: column;
   padding: 0.8rem 4%;
@@ -203,14 +206,14 @@ h2 {
 
 .main-nav a {
   text-decoration: none;
-  color: var(--text);
+  color: #fff;
   font-weight: 600;
   padding: 0.65rem 0.2rem;
 }
 
 .main-nav a:hover,
 .main-nav a:focus-visible {
-  color: var(--brand-strong);
+  color: #f2ddcc;
 }
 
 .main-nav.open {
@@ -222,13 +225,17 @@ h2 {
 }
 
 .main-nav .btn-nav {
-  color: #fff;
+  background: #f1dcc8;
+  color: #5f3925;
+  border: 1px solid #f1dcc8;
   padding: 0.75rem 1.05rem;
+  box-shadow: 0 12px 30px rgba(37, 18, 10, 0.35);
 }
 
 .main-nav .btn-nav:hover,
 .main-nav .btn-nav:focus-visible {
-  color: #fff;
+  background: #f8e8d9;
+  color: #4f2f1f;
 }
 
 .hero-grid,
@@ -239,22 +246,108 @@ h2 {
 }
 
 .hero {
-  padding-top: 5.2rem;
+  padding-top: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/logo_amage.png") center / cover no-repeat;
+  filter: blur(3px);
+  transform: scale(1.04);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 8, 4, 0.18);
+}
+
+.hero .container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-actions {
   display: flex;
   gap: 0.7rem;
   flex-wrap: wrap;
-  margin-top: 1.3rem;
+  justify-content: center;
+  margin-top: 0;
 }
 
-.hero-badges {
-  margin: 1.35rem 0 0;
-  padding-left: 1.1rem;
-  color: var(--text-muted);
+.hero-actions .btn {
+  padding: 0.95rem 1.45rem;
+  font-size: 1.06rem;
+}
+
+.hero-actions .btn-primary {
+  background: #f1dcc8;
+  color: #5f3925;
+  border: 1px solid #f1dcc8;
+  box-shadow: 0 12px 30px rgba(37, 18, 10, 0.35);
+}
+
+.hero-actions .btn-primary:hover,
+.hero-actions .btn-primary:focus-visible {
+  background: #f8e8d9;
+  color: #4f2f1f;
+}
+
+.hero-content {
   display: grid;
-  gap: 0.25rem;
+  justify-items: center;
+  align-content: center;
+  gap: 1.2rem;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 4rem;
+}
+
+.hero-content .eyebrow,
+.hero-content h1 {
+  color: #fff;
+}
+
+.hero-content .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+.hero-content h1 {
+  margin-bottom: 0;
+}
+
+.hero-title {
+  color: #fff;
+  font-size: clamp(2rem, 5.2vw, 4rem);
+  line-height: 1.08;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.6),
+    0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+.btn-ghost-light {
+  border-color: rgba(255, 255, 255, 0.94);
+  color: #fff;
+  background: rgba(22, 12, 7, 0.34);
+}
+
+.btn-ghost-light:hover,
+.btn-ghost-light:focus-visible {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(22, 12, 7, 0.52);
 }
 
 .placeholder-card,
@@ -496,6 +589,10 @@ details p {
   .main-nav a {
     padding: 0.2rem;
     font-size: 0.95rem;
+  }
+
+  .main-nav a:not(.btn) {
+    color: #fff;
   }
 
   .btn-nav {
