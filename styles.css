@@ -397,14 +397,50 @@ details p {
 .footer-wrap {
   min-height: 70px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
+  justify-content: center;
+  gap: 0.35rem;
+  text-align: center;
 }
 
 .footer-wrap a {
   color: var(--text);
   font-weight: 700;
+}
+
+.to-top-btn {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 24px rgba(122, 69, 44, 0.35);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 200ms ease, transform 200ms ease, background-color 200ms ease;
+  z-index: 30;
+}
+
+.to-top-btn:hover,
+.to-top-btn:focus-visible {
+  background: var(--brand-strong);
+}
+
+.to-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .reveal {

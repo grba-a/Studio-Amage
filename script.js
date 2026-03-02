@@ -4,6 +4,7 @@ const navLinks = document.querySelectorAll('.main-nav a');
 const form = document.querySelector('.booking-form');
 const message = document.querySelector('.form-message');
 const yearEl = document.getElementById('year');
+const toTopBtn = document.querySelector('.to-top-btn');
 
 yearEl.textContent = new Date().getFullYear();
 
@@ -57,3 +58,17 @@ const observer = new IntersectionObserver(
 );
 
 revealItems.forEach((el) => observer.observe(el));
+
+if (toTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 260) {
+      toTopBtn.classList.add('is-visible');
+    } else {
+      toTopBtn.classList.remove('is-visible');
+    }
+  });
+
+  toTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
