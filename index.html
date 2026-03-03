@@ -63,13 +63,18 @@
 
     <main>
       <section class="hero section" id="hero">
-        <div class="container">
-          <div class="hero-content reveal">
-            <h1 class="hero-title">Frizura koja privlači poglede i daje rezultate</h1>
-            <div class="hero-actions">
-              <a href="#rezervacija" class="btn btn-primary">Rezerviraj termin</a>
-              <a href="#usluge" class="btn btn-ghost btn-ghost-light">Pogledaj usluge</a>
-            </div>
+        <div class="hero-carousel" data-interval="8000">
+          <article class="hero-slide is-active" style="background-image: url('assets/hero-slika1.jpg')">
+          </article>
+          <article class="hero-slide hero-slide-second" style="background-image: url('assets/hero-slika2.jpg')">
+          </article>
+          <article class="hero-slide hero-slide-third" style="background-image: url('assets/hero-slika3.jpg')">
+          </article>
+
+          <div class="hero-dots" aria-label="Odabir hero slajda">
+            <button class="hero-dot is-active" type="button" aria-label="Prvi slajd"></button>
+            <button class="hero-dot" type="button" aria-label="Drugi slajd"></button>
+            <button class="hero-dot" type="button" aria-label="Treći slajd"></button>
           </div>
         </div>
       </section>
@@ -92,10 +97,6 @@
             <article class="card reveal">
               <h3>Njega i tretmani</h3>
               <p>Dubinska njega za obnovu sjaja, mekoće i zdravog izgleda kose.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Svečane frizure</h3>
-              <p>Elegantne frizure za evente, proslave i posebne prilike.</p>
             </article>
           </div>
         </div>
@@ -120,6 +121,22 @@
               <h3>Rezultat koji traje</h3>
               <p>Frizura mora izgledati dobro i nakon izlaska iz salona, ne samo prvih sat vremena.</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section salon-preview">
+        <div class="container salon-preview-grid">
+          <div class="salon-preview-image reveal">
+            <img src="assets/salon.jpg" alt="Interijer Studio Amage salona" />
+          </div>
+          <div class="salon-preview-copy reveal">
+            <p class="eyebrow">Studio prostor</p>
+            <h2>Zavirite u ambijent Studio Amage</h2>
+            <p>
+              Udoban, čist i premium prostor osmišljen da svaki termin bude iskustvo opuštanja i transformacije.
+            </p>
+            <a href="pages/salon.html" class="btn btn-primary">Pogledaj salon</a>
           </div>
         </div>
       </section>
@@ -150,12 +167,13 @@
       <section class="section section-alt" id="tim">
         <div class="container">
           <div class="section-head reveal">
-            <p class="eyebrow">Tim</p>
-            <h2>Tko stoji iza svega?</h2>
+            <p class="eyebrow">Tko stoji iza svega?</p>
           </div>
-          <div class="cards-grid team-grid">
-            <article class="card reveal">
-              <div class="team-photo">Fotografija stilistice</div>
+          <div class="team-layout reveal">
+            <div class="team-portrait-wrap">
+              <img src="assets/marija.jpg" alt="Marija Jurčević" class="team-portrait" />
+            </div>
+            <div class="team-copy">
               <h3>Marija Jurčević</h3>
               <p>Specijalnost:</p>
               <ul class="team-list">
@@ -163,7 +181,7 @@
                 <li>Tretmani njege</li>
                 <li>Styling</li>
               </ul>
-            </article>
+            </div>
           </div>
         </div>
       </section>

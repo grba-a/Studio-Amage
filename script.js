@@ -72,3 +72,45 @@ if (toTopBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+const heroCarousel = document.querySelector('.hero-carousel');
+
+if (heroCarousel) {
+  const slides = Array.from(heroCarousel.querySelectorAll('.hero-slide'));
+  const dots = Array.from(heroCarousel.querySelectorAll('.hero-dot'));
+  const intervalMs = Number(heroCarousel.dataset.interval) || 5000;
+  let activeIndex = 0;
+  let timer = null;
+
+  const setActiveSlide = (index) => {
+    activeIndex = index;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+  };
+
+  const nextSlide = () => {
+    const nextIndex = (activeIndex + 1) % slides.length;
+    setActiveSlide(nextIndex);
+  };
+
+  const startAutoplay = () => {
+    timer = window.setInterval(nextSlide, intervalMs);
+  };
+
+  const resetAutoplay = () => {
+    if (timer) {
+      window.clearInterval(timer);
+    }
+    startAutoplay();
+  };
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      setActiveSlide(index);
+      resetAutoplay();
+    });
+  });
+
+  setActiveSlide(0);
+  startAutoplay();
+}
