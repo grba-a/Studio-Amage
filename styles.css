@@ -1,12 +1,12 @@
 :root {
   --bg: #f4ece4;
-  --surface: #fffaf6;
+  --surface: #ffffff;
   --surface-soft: #f2e7dd;
   --text: #2e1b13;
   --text-muted: #6b5548;
   --brand: #935638;
   --brand-strong: #7a452c;
-  --line: #decec1;
+  --line: #d8c8bb;
   --success: #25603f;
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -555,6 +555,7 @@ h3 {
   overflow: hidden;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
   color: inherit;
+  box-shadow: 0 8px 20px rgba(84, 50, 31, 0.06);
 }
 
 .blog-card:hover,
@@ -591,7 +592,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 1.1rem;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 24px rgba(84, 50, 31, 0.08);
 }
 
 .card h3 {
@@ -835,6 +836,7 @@ details p {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(84, 50, 31, 0.06);
 }
 
 .transform-photo {
