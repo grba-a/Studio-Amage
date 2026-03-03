@@ -532,6 +532,20 @@ h3 {
   font-weight: 600;
 }
 
+.team-list {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+}
+
+.team-list li {
+  margin-bottom: 0.2rem;
+}
+
+.reviews-widget {
+  width: 100%;
+}
+
 .blog-card {
   display: block;
   text-decoration: none;
