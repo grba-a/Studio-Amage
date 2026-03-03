@@ -114,3 +114,101 @@ if (heroCarousel) {
   setActiveSlide(0);
   startAutoplay();
 }
+
+const urgencyTimerEl = document.getElementById('urgency-timer');
+
+if (urgencyTimerEl) {
+  const cycleSeconds = 20 * 60;
+  let remainingSeconds = cycleSeconds - 1;
+
+  const renderUrgencyTime = (secondsLeft) => {
+    const mins = Math.floor(secondsLeft / 60);
+    const secs = secondsLeft % 60;
+    urgencyTimerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
+  renderUrgencyTime(remainingSeconds);
+
+  window.setInterval(() => {
+    remainingSeconds -= 1;
+
+    if (remainingSeconds < 0) {
+      remainingSeconds = cycleSeconds - 1;
+    }
+
+    renderUrgencyTime(remainingSeconds);
+  }, 1000);
+}
+
+const transformPlayers = document.querySelectorAll('.transform-video-player');
+
+if (transformPlayers.length) {
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  transformPlayers.forEach((player) => {
+    const video = player.querySelector('.transform-video');
+    const toggleBtn = player.querySelector('.transform-video-toggle');
+
+    if (!video || !toggleBtn) return;
+
+    video.muted = true;
+    video.controls = false;
+    video.playsInline = true;
+
+    const updateUi = () => {
+      const isPlaying = !video.paused && !video.ended;
+      player.classList.toggle('is-playing', isPlaying);
+      toggleBtn.setAttribute('aria-label', isPlaying ? 'Pauziraj video' : 'Pokreni video');
+    };
+
+    const playVideo = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+    };
+
+    video.addEventListener('loadeddata', () => {
+      if (video.readyState >= 2) {
+        video.currentTime = Math.min(0.08, Math.max(video.duration - 0.01, 0));
+      }
+    });
+
+    video.addEventListener('play', updateUi);
+    video.addEventListener('pause', updateUi);
+    video.addEventListener('ended', updateUi);
+
+    toggleBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (video.paused || video.ended) {
+        playVideo();
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused || video.ended) {
+        playVideo();
+      } else {
+        video.pause();
+      }
+    });
+
+    if (supportsHover) {
+      player.addEventListener('mouseenter', () => {
+        if (video.paused || video.ended) {
+          playVideo();
+        }
+      });
+
+      player.addEventListener('mouseleave', () => {
+        if (!video.paused) {
+          video.pause();
+        }
+      });
+    }
+
+    updateUi();
+  });
+}
