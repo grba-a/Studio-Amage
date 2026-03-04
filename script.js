@@ -12,6 +12,7 @@ if (navToggle && mainNav) {
   navToggle.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', String(isOpen));
+    document.body.classList.toggle('nav-open', isOpen && window.innerWidth < 980);
   });
 
   navLinks.forEach((link) => {
@@ -19,25 +20,92 @@ if (navToggle && mainNav) {
       if (window.innerWidth < 980) {
         mainNav.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
       }
     });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 980) {
+      document.body.classList.remove('nav-open');
+    }
   });
 }
 
 if (form && message) {
+  const formStartInput = form.querySelector('[data-form-start]');
+  const honeypotInput = form.querySelector('input[name="website"]');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  const setFormStartTimestamp = () => {
+    if (formStartInput) {
+      formStartInput.value = String(Date.now());
+    }
+  };
+
+  setFormStartTimestamp();
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     if (!form.checkValidity()) {
       message.textContent = 'Molimo popuni obavezna polja prije slanja.';
+      if (typeof form.reportValidity === 'function') {
+        form.reportValidity();
+      }
+      return;
+    }
+
+    if (honeypotInput && honeypotInput.value.trim() !== '') {
+      message.textContent = 'Došlo je do greške pri slanju. Pokušaj ponovno.';
+      return;
+    }
+
+    const startedAt = Number(formStartInput?.value || 0);
+    const elapsedMs = Date.now() - startedAt;
+    if (!Number.isFinite(elapsedMs) || elapsedMs < 3000) {
+      message.textContent = 'Molimo pričekaj par sekundi pa pokušaj ponovno.';
+      return;
+    }
+
+    const endpoint = form.getAttribute('action') || '';
+    if (!endpoint || endpoint.includes('REPLACE_ME')) {
+      message.textContent = 'Kontakt forma još nije spojena. Pošalji Formspree link.';
       return;
     }
 
     const formData = new FormData(form);
-    const name = formData.get('ime');
+    const name = String(formData.get('ime') || 'hvala');
 
-    message.textContent = `Hvala, ${name}. Tvoja rezervacija je zaprimljena (demo poruka).`;
-    form.reset();
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+    message.textContent = 'Šaljemo upit...';
+
+    fetch(endpoint, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Form submit failed with status ${response.status}`);
+        }
+
+        message.textContent = `Hvala, ${name}. Upit je uspješno poslan.`;
+        form.reset();
+        setFormStartTimestamp();
+      })
+      .catch(() => {
+        message.textContent = 'Došlo je do greške pri slanju. Pokušaj ponovno.';
+      })
+      .finally(() => {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      });
   });
 }
 
@@ -208,6 +276,57 @@ if (transformPlayers.length) {
         }
       });
     }
+
+    updateUi();
+  });
+}
+
+const promoPlayers = document.querySelectorAll('.promo-video-player');
+
+if (promoPlayers.length) {
+  promoPlayers.forEach((player) => {
+    const video = player.querySelector('.promo-video');
+    const toggleBtn = player.querySelector('.promo-video-toggle');
+
+    if (!video || !toggleBtn) return;
+
+    video.muted = false;
+    video.controls = false;
+    video.playsInline = true;
+
+    const updateUi = () => {
+      const isPlaying = !video.paused && !video.ended;
+      player.classList.toggle('is-playing', isPlaying);
+      toggleBtn.setAttribute('aria-label', isPlaying ? 'Pauziraj promo video' : 'Pokreni promo video');
+    };
+
+    const playVideo = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+    };
+
+    video.addEventListener('play', updateUi);
+    video.addEventListener('pause', updateUi);
+    video.addEventListener('ended', updateUi);
+
+    toggleBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (video.paused || video.ended) {
+        playVideo();
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused || video.ended) {
+        playVideo();
+      } else {
+        video.pause();
+      }
+    });
 
     updateUi();
   });
