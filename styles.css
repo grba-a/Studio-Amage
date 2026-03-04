@@ -1118,6 +1118,23 @@ h3 {
   margin-bottom: 0.8rem;
 }
 
+.card-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: #7b6151;
+  font-weight: 600;
+}
+
+.education-list {
+  margin: 0.25rem 0 0.8rem;
+  padding-left: 1.05rem;
+  color: var(--text-muted);
+}
+
+.education-list li {
+  margin-bottom: 0.22rem;
+}
+
 .service-cta {
   display: inline-flex;
   align-items: center;
@@ -1191,13 +1208,13 @@ h3 {
 
 .team-copy p {
   text-align: left;
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin-bottom: 0.45rem;
 }
 
 .team-list {
   margin: 0.35rem 0 0;
-  padding-left: 1.1rem;
+  padding-left: 3rem;
   color: var(--text-muted);
   width: auto;
   text-align: left;
@@ -1213,6 +1230,10 @@ h3 {
   gap: 2rem;
 }
 
+#vlasnik .section-head {
+  margin-bottom: 0.95rem;
+}
+
 #vlasnik .team-copy {
   align-self: center;
   max-width: 560px;
@@ -1224,13 +1245,14 @@ h3 {
 }
 
 #vlasnik .team-copy p {
-  font-size: clamp(1.18rem, 1.95vw, 1.45rem);
-  margin-bottom: 0.55rem;
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+  line-height: 1.55;
+  margin-bottom: 1rem;
 }
 
 #vlasnik .team-list {
-  font-size: clamp(1.15rem, 1.85vw, 1.4rem);
-  line-height: 1.45;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.5;
 }
 
 #vlasnik .team-list li {
@@ -2003,6 +2025,8 @@ details p {
 
   .cards-grid.before-after-grid,
   .cards-grid.why-grid,
+  .cards-grid.treatment-grid,
+  .cards-grid.education-grid,
   .cards-grid.blog-grid,
   .cards-grid.reviews-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2198,6 +2222,14 @@ details p {
 
   .cards-grid.why-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards-grid.treatment-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards-grid.education-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .cards-grid.blog-grid {
