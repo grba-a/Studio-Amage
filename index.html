@@ -17,7 +17,8 @@
     <header class="site-header" id="vrh">
       <div class="container nav-wrap">
         <a href="#vrh" class="brand brand-header" aria-label="Studio Amage početna">
-          <img src="assets/logo_amage.png" alt="Amage Hair Studio logo" class="brand-logo" />
+          <img src="assets/logo_amage.png" alt="Amage Hair Studio logo" class="brand-logo brand-logo-mobile" />
+          <img src="assets/logo_amage_desktop.png" alt="Amage Hair Studio logo desktop" class="brand-logo brand-logo-desktop" />
         </a>
 
         <div class="top-social" aria-label="Društvene mreže i kontakt">
@@ -56,14 +57,32 @@
               <a href="#o-nama">Ukratko o salonu</a>
               <a href="#zasto-amage">Zašto Amage?</a>
               <a href="#salon">Salon</a>
+            </div>            
+          </div>
+          <a href="#vlasnik">Vlasnik</a>
+          <div class="nav-group">
+            <a href="#usluge" class="nav-parent">Ponuda</a>
+            <div class="nav-submenu" aria-label="Podsekcije Ponuda">
+              <a href="#usluge">Usluge</a>
+              <span class="nav-submenu-item is-soon">
+                <span>Tretmani</span>
+                <span class="nav-soon-badge">u izradi</span>
+              </span>
+              <span class="nav-submenu-item is-soon">
+                <span>Edukacija</span>
+                <span class="nav-soon-badge">u izradi</span>
+              </span>
             </div>
           </div>
-          <a href="#usluge">Usluge</a>
-          <a href="#transformacije">Transformacije</a>
-          <a href="#recenzije">Recenzije</a>
-          <a href="#vlasnik">Vlasnik</a>
+          <div class="nav-group">
+            <a href="#transformacije" class="nav-parent">Rezultati</a>
+            <div class="nav-submenu" aria-label="Podsekcije Rezultati">
+              <a href="#transformacije">Transformacije</a>
+              <a href="#recenzije">Recenzije</a>
+              <a href="#galerija">Galerija</a>
+            </div>
+          </div>
           <a href="#blog">Blog</a>
-          <a href="#rezervacija" class="btn btn-primary btn-nav">Rezerviraj termin</a>
         </nav>
       </div>
     </header>
@@ -90,7 +109,7 @@
         <div class="container urgency-strip-wrap">
           <p class="urgency-copy">
             <strong>Termini se brzo popunjavaju</strong>
-            <span class="urgency-meta">Sljedeća slobodna mjesta ažuriraju se za <span id="urgency-timer">19:59</span></span>
+            <span class="urgency-meta">Sljedeća slobodna mjesta osvježavaju se za <span id="urgency-timer">19:59</span></span>
           </p>
           <a href="#rezervacija" class="btn btn-primary urgency-btn">Rezerviraj termin</a>
         </div>
@@ -140,7 +159,7 @@
       <section class="section salon-preview" id="salon">
         <div class="container salon-preview-grid">
           <div class="salon-preview-image reveal">
-            <img src="assets/salon.jpg" alt="Interijer Studio Amage salona" />
+            <img src="assets/salon.jpg" alt="Interijer Studio Amage salona" loading="lazy" decoding="async" />
           </div>
           <div class="salon-preview-copy reveal">
             <p class="eyebrow">Studio prostor</p>
@@ -149,6 +168,28 @@
               Udoban, čist i premium prostor osmišljen da svaki termin bude iskustvo opuštanja i transformacije.
             </p>
             <a href="pages/salon.html" class="btn btn-primary">Pogledaj salon</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="vlasnik">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Tko stoji iza svega?</p>
+          </div>
+          <div class="team-layout reveal">
+            <div class="team-portrait-wrap">
+              <img src="assets/marija.jpg" alt="Marija Jurčević" class="team-portrait" loading="lazy" decoding="async" />
+            </div>
+            <div class="team-copy">
+              <h3>Marija Jurčević</h3>
+              <p>Specijalnost:</p>
+              <ul class="team-list">
+                <li>Bojanje kose</li>
+                <li>Tretmani njege</li>
+                <li>Styling</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -181,12 +222,13 @@
 
       <section class="section signature" id="transformacije">
         <div class="container signature-wrap reveal">
-          <p class="eyebrow">Signature</p>
-          <h2>Amage Transformacije</h2>
-          <p>
-            Signature usluga za potpunu promjenu izgleda: dijagnostika, personaliziran plan, tretman njege i finalni styling.
-          </p>
-          <a href="pages/transformacije.html" class="btn btn-primary">Pogledaj sve transformacije</a>
+          <div class="signature-copy">
+            <h2>Amage Transformacije</h2>
+          </div>
+          <a href="pages/transformacije.html" class="signature-arrow-link">
+            <span class="signature-arrow-label">Pogledaj ih sve</span>
+            <span class="signature-arrow-icon" aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </section>
 
@@ -202,25 +244,16 @@
         </div>
       </section>
 
-      <section class="section section-alt" id="vlasnik">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Tko stoji iza svega?</p>
+      <section class="section gallery-teaser" id="galerija">
+        <div class="container gallery-teaser-wrap reveal">
+          <div class="gallery-teaser-copy">
+            <p class="eyebrow">Galerija</p>
+            <h2>Pogledaj stvarne rezultate i atmosferu salona</h2>
+            <p class="lead">
+              Premium pregled radova, detalja i transformacija koje najbolje prikazuju stil Studio Amage.
+            </p>
           </div>
-          <div class="team-layout reveal">
-            <div class="team-portrait-wrap">
-              <img src="assets/marija.jpg" alt="Marija Jurčević" class="team-portrait" />
-            </div>
-            <div class="team-copy">
-              <h3>Marija Jurčević</h3>
-              <p>Specijalnost:</p>
-              <ul class="team-list">
-                <li>Bojanje kose</li>
-                <li>Tretmani njege</li>
-                <li>Styling</li>
-              </ul>
-            </div>
-          </div>
+          <a href="pages/galerija.html" class="btn btn-primary">Otvori galeriju</a>
         </div>
       </section>
 
@@ -230,18 +263,11 @@
             <p class="eyebrow">Blog</p>
             <h2>Novosti, savjeti i trendovi za zdraviju kosu</h2>
           </div>
-          <div class="cards-grid blog-grid">
-            <a class="blog-card reveal" href="pages/blog.html">
-              <div class="blog-thumb">Blog slika 1</div>
-              <h3>Kako održavati boju kose između termina</h3>
-            </a>
-            <a class="blog-card reveal" href="pages/blog.html">
-              <div class="blog-thumb">Blog slika 2</div>
-              <h3>Top 5 tretmana za sjaj i obnovu suhe kose</h3>
-            </a>
-            <a class="blog-card reveal" href="pages/blog.html">
-              <div class="blog-thumb">Blog slika 3</div>
-              <h3>Trendovi frizura koje će dominirati ove sezone</h3>
+          <div class="reveal blog-cta-wrap">
+            <p class="lead">Otkrij korisne savjete, novosti i inspiraciju za zdravu, njegovanu i modernu kosu.</p>
+            <a class="btn btn-primary blog-cta-link" href="pages/blog.html">
+              <span>Otvori blog</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>

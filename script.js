@@ -212,3 +212,45 @@ if (transformPlayers.length) {
     updateUi();
   });
 }
+
+const galleryLightbox = document.getElementById('gallery-lightbox');
+const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
+const galleryLightboxClose = document.querySelector('.gallery-lightbox-close');
+const galleryThumbs = document.querySelectorAll('.gallery-lightbox-img');
+
+if (galleryLightbox && galleryLightboxImage && galleryThumbs.length) {
+  const openLightbox = (src, alt) => {
+    galleryLightboxImage.src = src;
+    galleryLightboxImage.alt = alt || '';
+    galleryLightbox.hidden = false;
+    document.body.classList.add('no-scroll');
+  };
+
+  const closeLightbox = () => {
+    galleryLightbox.hidden = true;
+    galleryLightboxImage.src = '';
+    document.body.classList.remove('no-scroll');
+  };
+
+  galleryThumbs.forEach((img) => {
+    img.addEventListener('click', () => {
+      openLightbox(img.currentSrc || img.src, img.alt);
+    });
+  });
+
+  if (galleryLightboxClose) {
+    galleryLightboxClose.addEventListener('click', closeLightbox);
+  }
+
+  galleryLightbox.addEventListener('click', (event) => {
+    if (event.target === galleryLightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !galleryLightbox.hidden) {
+      closeLightbox();
+    }
+  });
+}
