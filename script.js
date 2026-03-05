@@ -287,6 +287,7 @@ if (promoPlayers.length) {
   promoPlayers.forEach((player) => {
     const video = player.querySelector('.promo-video');
     const toggleBtn = player.querySelector('.promo-video-toggle');
+    let hasAutoPlayed = false;
 
     if (!video || !toggleBtn) return;
 
@@ -327,6 +328,28 @@ if (promoPlayers.length) {
         video.pause();
       }
     });
+
+    const promoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!hasAutoPlayed && entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+            hasAutoPlayed = true;
+            playVideo();
+          }
+
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.2) {
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      },
+      {
+        threshold: [0.2, 0.55],
+      }
+    );
+
+    promoObserver.observe(player);
 
     updateUi();
   });
