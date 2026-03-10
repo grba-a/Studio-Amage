@@ -147,8 +147,11 @@ if (heroCarousel) {
   const slides = Array.from(heroCarousel.querySelectorAll('.hero-slide'));
   const dots = Array.from(heroCarousel.querySelectorAll('.hero-dot'));
   const intervalMs = Number(heroCarousel.dataset.interval) || 5000;
+  const swipeThresholdPx = 46;
   let activeIndex = 0;
   let timer = null;
+  let touchStartX = 0;
+  let touchDeltaX = 0;
 
   const setActiveSlide = (index) => {
     activeIndex = index;
@@ -159,6 +162,11 @@ if (heroCarousel) {
   const nextSlide = () => {
     const nextIndex = (activeIndex + 1) % slides.length;
     setActiveSlide(nextIndex);
+  };
+
+  const prevSlide = () => {
+    const prevIndex = (activeIndex - 1 + slides.length) % slides.length;
+    setActiveSlide(prevIndex);
   };
 
   const startAutoplay = () => {
@@ -178,6 +186,47 @@ if (heroCarousel) {
       resetAutoplay();
     });
   });
+
+  heroCarousel.addEventListener(
+    'touchstart',
+    (event) => {
+      if (event.touches.length !== 1) return;
+      touchStartX = event.touches[0].clientX;
+      touchDeltaX = 0;
+    },
+    { passive: true }
+  );
+
+  heroCarousel.addEventListener(
+    'touchmove',
+    (event) => {
+      if (event.touches.length !== 1 || touchStartX === 0) return;
+      touchDeltaX = event.touches[0].clientX - touchStartX;
+    },
+    { passive: true }
+  );
+
+  heroCarousel.addEventListener(
+    'touchend',
+    () => {
+      if (Math.abs(touchDeltaX) < swipeThresholdPx) {
+        touchStartX = 0;
+        touchDeltaX = 0;
+        return;
+      }
+
+      if (touchDeltaX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+
+      resetAutoplay();
+      touchStartX = 0;
+      touchDeltaX = 0;
+    },
+    { passive: true }
+  );
 
   setActiveSlide(0);
   startAutoplay();

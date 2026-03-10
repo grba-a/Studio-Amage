@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header" id="vrh">
       <div class="container nav-wrap">
         <a href="#vrh" class="brand brand-header" aria-label="Studio Amage početna">
@@ -54,18 +54,16 @@
           <div class="nav-group">
             <a href="#o-nama" class="nav-parent">O NAMA</a>
             <div class="nav-submenu" aria-label="Podsekcije O nama">
-              <a href="#o-nama">UKRATKO O SALONU</a>
-              <a href="#zasto-amage">ZAŠTO AMAGE?</a>
               <a href="#salon">SALON</a>
+              <a href="#vlasnik">VLASNIK</a>
             </div>            
           </div>
-          <a href="#vlasnik">VLASNIK</a>
           <div class="nav-group">
-            <a href="#usluge" class="nav-parent">PONUDA</a>
+            <a href="#ponuda" class="nav-parent">PONUDA</a>
             <div class="nav-submenu" aria-label="Podsekcije Ponuda">
-              <a href="#usluge">USLUGE</a>
-              <a href="#tretmani">TRETMANI</a>
-              <a href="#edukacija">EDUKACIJA</a>
+              <a href="pages/tretmani-usluge.html#usluge">USLUGE</a>
+              <a href="pages/tretmani-usluge.html#tretmani">TRETMANI</a>
+              <a href="pages/edukacija.html#edukacija">EDUKACIJA</a>
             </div>
           </div>
           <div class="nav-group">
@@ -77,6 +75,7 @@
           </div>
           <a href="#galerija">GALERIJA</a>
           <a href="#blog">BLOG</a>
+          <a href="#rezervacija">KONTAKT</a>
         </nav>
       </div>
     </header>
@@ -97,15 +96,16 @@
             <button class="hero-dot" type="button" aria-label="Treći slajd"></button>
           </div>
         </div>
-      </section>
-
-      <section class="urgency-strip reveal" aria-label="Brza rezervacija termina">
-        <div class="container urgency-strip-wrap">
-          <p class="urgency-copy">
-            <strong>Termini se brzo popunjavaju</strong>
-            <span class="urgency-meta">Sljedeća slobodna mjesta osvježavaju se za <span id="urgency-timer">19:59</span></span>
-          </p>
-          <a href="#rezervacija" class="btn btn-primary urgency-btn">Rezerviraj termin</a>
+        <div class="urgency-strip reveal" aria-label="Brza rezervacija termina">
+          <div class="container urgency-strip-wrap">
+            <p class="urgency-copy">
+              <strong>TERMINI<br />SE BRZO<br />POPUNJAVAJU</strong>
+            </p>
+            <div class="urgency-timer-wrap" aria-live="polite">
+              <span id="urgency-timer">19:59</span>
+            </div>
+            <a href="#rezervacija" class="btn btn-primary urgency-btn">Rezerviraj termin</a>
+          </div>
         </div>
       </section>
 
@@ -139,29 +139,6 @@
                 <li> Luksuzan ambijent</li>
                 <li> Kava, voda ili čaša šampanjca uključeni</li>
               </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="zasto-amage">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Zašto Amage?</p>
-            <h2>Razlog zašto nam se klijenti vraćaju?</h2>
-          </div>
-          <div class="cards-grid why-grid">
-            <article class="card reveal">
-              <h3>Personaliziran 1 na 1 pristup</h3>
-              <p>Svaki termin je rezerviran samo za tebe <br>Konzultacije i puna pažnja bez gužve i čekanja</p>
-            </article>
-            <article class="card reveal">
-              <h3>Vrhunska usluga i rezultat koji traje</h3>
-              <p>Stručne tehnike i njega kose <br>Frizura izgleda odlično i dugo nakon izlaska iz salona</p>
-            </article>
-            <article class="card reveal">
-              <h3>Premium iskustvo u oazi mira</h3>
-              <p>Luksuzan ambijent i detalji koji čine razliku<br>Kava, voda i čaša šampanjca uključeni su u termin</p>
-            </article>
           </div>
         </div>
       </section>
@@ -208,94 +185,28 @@
         </div>
       </section>
 
-      <section class="section" id="usluge">
+      <section class="section" id="ponuda">
         <div class="container">
           <div class="section-head reveal">
-            <p class="eyebrow">Usluge</p>
-            <h2>Što možeš rezervirati?</h2>
+            <p class="eyebrow">Ponuda</p>
+            <h2>Odaberi što te zanima i otvori detalje</h2>
           </div>
-          <div class="cards-grid services-grid">
+          <div class="cards-grid offer-grid">
             <article class="card reveal">
               <h3>Šišanje i feniranje</h3>
-              <p>Profesionalno šišanje uz završni styling prilagođen tvom obliku lica i stilu</p>
-              <a href="#rezervacija" class="service-cta">Rezerviraj uslugu</a>
+              <p>Profesionalne usluge oblikovanja i bojanja</p>
+              <a href="pages/tretmani-usluge.html#usluge" class="service-cta">Otvori usluge</a>
             </article>
             <article class="card reveal">
-              <h3>Bojanje i pramenovi</h3>
-              <p>Od prirodnog osvježenja do punog color transform looka uz njegu kose</p>
-              <a href="#rezervacija" class="service-cta">Rezerviraj uslugu</a>
+              <h3>Tretmani</h3>
+              <p>Ciljani tretmani za obnovu, hidrataciju, sjaj i zdrav izgled kose</p>
+              <a href="pages/tretmani-usluge.html#tretmani" class="service-cta">Otvori tretmane</a>
             </article>
             <article class="card reveal">
-              <h3>Njega i tretmani</h3>
-              <p>Dubinska njega za obnovu sjaja, mekoće i zdravog izgleda kose</p>
-              <a href="#rezervacija" class="service-cta">Rezerviraj uslugu</a>
+              <h3>Edukacija</h3>
+              <p>Programi za početnike i frizere koji žele podići tehniku na viši nivo</p>
+              <a href="pages/edukacija.html#edukacija" class="service-cta">Otvori edukaciju</a>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="tretmani">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Tretmani</p>
-            <h2>Tretmani koji vraćaju sjaj i zdrav izgled kose</h2>
-            <p class="lead">Odaberi tretman prema stanju svoje kose i cilju koji želiš postići.</p>
-          </div>
-
-          <div class="cards-grid treatment-grid">
-            <article class="card reveal">
-              <h3>Hydra Repair</h3>
-              <p>Za suhu i oštećenu kosu kojoj treba dubinska hidratacija i elastičnost.</p>
-              <p class="card-meta">Trajanje: 45 min · Okvirna cijena: od 35 €</p>
-              <a href="#rezervacija" class="service-cta">Rezerviraj tretman</a>
-            </article>
-            <article class="card reveal">
-              <h3>Gloss & Shine</h3>
-              <p>Za kosu bez sjaja kojoj treba zaglađen izgled i svilenkasti završetak.</p>
-              <p class="card-meta">Trajanje: 40 min · Okvirna cijena: od 32 €</p>
-              <a href="#rezervacija" class="service-cta">Rezerviraj tretman</a>
-            </article>
-            <article class="card reveal">
-              <h3>Scalp Balance</h3>
-              <p>Za osjetljivo vlasište i korijen koji treba umiriti i osvježiti.</p>
-              <p class="card-meta">Trajanje: 35 min · Okvirna cijena: od 30 €</p>
-              <a href="#rezervacija" class="service-cta">Rezerviraj tretman</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="edukacija">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Edukacija</p>
-            <h2>Edukacija za početnike i frizere koji žele višu razinu</h2>
-            <p class="lead">Praktična edukacija s jasnim koracima, stvarnim modelima i primjenjivim znanjem.</p>
-          </div>
-
-          <div class="cards-grid education-grid">
-            <article class="card reveal">
-              <h3>1 na 1 edukacija</h3>
-              <p>Personalizirani program prema tvojoj razini i ciljevima.</p>
-              <ul class="education-list">
-                <li>Rad direktno s mentorom</li>
-                <li>Prilagođen plan tehnika</li>
-                <li>Materijali + mini skripta</li>
-              </ul>
-            </article>
-            <article class="card reveal">
-              <h3>Grupna edukacija</h3>
-              <p>Dinamičan format za timove i manje grupe frizera.</p>
-              <ul class="education-list">
-                <li>Demonstracija + praksa</li>
-                <li>Q&A i povratna informacija</li>
-                <li>Potvrda o sudjelovanju</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="transform-cta reveal">
-            <a href="#rezervacija" class="btn btn-primary">Pošalji upit za edukaciju</a>
           </div>
         </div>
       </section>
@@ -382,13 +293,13 @@
                   </a>
                 </li>
                 <li>
-                  <a class="booking-contact-link" href="mailto:info@studioamage.com">
+                  <a class="booking-contact-link" href="mailto:studio.amage@gmail.com">
                     <span class="booking-contact-icon" aria-hidden="true">
                       <svg viewBox="0 0 24 24">
                         <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.5l9 5.7 9-5.7V7H3Zm18 10V9.8l-8.5 5.4a1 1 0 0 1-1 0L3 9.8V17h18Z"/>
                       </svg>
                     </span>
-                    <span class="booking-contact-text">Mail: info@studioamage.com</span>
+                    <span class="booking-contact-text">Mail: studio.amage@gmail.com</span>
                   </a>
                 </li>
               </ul>
@@ -465,10 +376,11 @@
             <h3>Navigacija</h3>
             <nav class="footer-links" aria-label="Footer navigacija">
               <a href="#o-nama">O NAMA</a>
-              <a href="#usluge">PONUDA</a>
+              <a href="#ponuda">PONUDA</a>
               <a href="#transformacije">REZULTATI</a>
               <a href="#galerija">GALERIJA</a>
               <a href="pages/blog.html">BLOG</a>
+              <a href="#rezervacija">KONTAKT</a>
             </nav>
           </div>
 
