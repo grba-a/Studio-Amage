@@ -109,6 +109,9 @@ h3 {
 .btn-primary {
   background: var(--brand);
   color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
 }
 
 .btn-primary:hover,
@@ -265,8 +268,8 @@ summary{
   background: var(--brand);
   border: 1px solid var(--brand);
   color: #fff;
-  font-weight: 700;
-  letter-spacing: 0;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: none;
   box-shadow: 0 10px 22px rgba(55, 28, 16, 0.2);
 }
@@ -409,9 +412,9 @@ summary{
   border: 1px solid var(--brand);
   background: var(--brand);
   color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
 }
 
 .page-navbar .main-nav.page-main-nav a.nav-reserve-link::after {
@@ -555,6 +558,8 @@ summary{
     top: 70px;
     left: 0;
     right: 0;
+    flex-direction: column;
+    align-items: flex-start;
     max-height: calc(100dvh - 70px);
     overflow: hidden;
     padding: 0.55rem 4% 0.7rem;
@@ -562,6 +567,8 @@ summary{
   }
 
   .main-nav a {
+    display: block;
+    width: 100%;
     padding: 0.4rem 0.2rem;
     font-size: 0.94rem;
     line-height: 1.2;
@@ -572,7 +579,8 @@ summary{
   }
 
   .nav-submenu {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 0.12rem 0.45rem;
     padding-left: 0.55rem;
     margin-left: 0;
@@ -706,6 +714,9 @@ summary{
 .urgency-btn {
   padding: 0.82rem 1.35rem;
   font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
   white-space: nowrap;
   box-shadow: 0 14px 30px rgba(55, 28, 16, 0.23);
   animation: urgencyPulse 2.4s ease-in-out infinite;
@@ -730,6 +741,24 @@ summary{
 .promo-video-section {
   padding: 2.3rem 0 2rem;
   background: linear-gradient(180deg, #f6eee7 0%, #f5ede5 100%);
+}
+
+.mobile-cta-section {
+  display: none;
+  padding: 20px 0;
+  background: var(--bg);
+}
+
+.mobile-cta-btn {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  border-radius: 999px;
+  text-align: center;
+  justify-content: center;
 }
 
 .promo-video-wrap {
@@ -985,7 +1014,9 @@ summary{
   border-radius: 999px;
   padding: 0.48rem 0.9rem;
   font: inherit;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
   cursor: pointer;
   transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
 }
@@ -1613,7 +1644,7 @@ details p {
 .site-footer {
   border-top: 1px solid var(--line);
   background: linear-gradient(180deg, #f8f3ee 0%, #f3e8df 100%);
-  padding: 2rem 0 1rem;
+  padding: 1rem 0 0.5rem;
 }
 
 .footer-grid {
@@ -1889,7 +1920,9 @@ details p {
   padding: 0.38rem 0.84rem;
   font: inherit;
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
   cursor: pointer;
   transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
 }
@@ -2283,9 +2316,16 @@ details p {
 
 .salon-image {
   width: 100%;
-  min-height: 300px;
+  max-height: 420px;
   object-fit: cover;
+  object-position: center;
   display: block;
+}
+
+@media (max-width: 760px) {
+  .salon-image {
+    max-height: 280px;
+  }
 }
 
 .salon-copy h2 {
@@ -2648,6 +2688,9 @@ details p {
   background: var(--brand);
   color: #fff;
   font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
   line-height: 1;
   display: grid;
   place-items: center;
@@ -2683,7 +2726,9 @@ details p {
   max-width: calc(100vw - 40px);
   padding: 12px 22px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
   line-height: 1.25;
   border-radius: 24px;
   white-space: nowrap;
@@ -3176,15 +3221,15 @@ body.no-scroll {
   .home-page .brand-header {
     position: absolute;
     left: 0;
-    top: clamp(0.55rem, 1.5vw, 1.2rem);
-    transform: none;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 2;
     margin-left: 0;
   }
 
   .home-page .brand-logo-mobile {
     display: block;
-    width: clamp(170px, 13.3vw, 222px);
+    width: clamp(220px, 17vw, 290px);
     height: auto;
     max-height: none;
     border: 0;
@@ -3192,7 +3237,7 @@ body.no-scroll {
     object-fit: contain;
     object-position: left center;
     filter: none;
-    transform: translateY(-28%);
+    transform: none;
     transform-origin: top left;
   }
 
@@ -3410,20 +3455,20 @@ body.no-scroll {
   .home-page .brand-header {
     position: absolute;
     left: 0;
-    top: 0.7rem;
-    transform: none;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 3;
   }
 
   .home-page .brand-logo-mobile {
-    width: clamp(156px, 20vw, 196px);
+    width: clamp(200px, 24vw, 260px);
     max-height: none;
     border: 0;
     border-radius: 0;
     object-fit: contain;
     object-position: left center;
     filter: none;
-    transform: translateY(-28%);
+    transform: none;
     transform-origin: top left;
   }
 
@@ -3616,20 +3661,20 @@ body.no-scroll {
   .home-page .brand-header {
     position: absolute;
     left: 0;
-    top: 0.45rem;
-    transform: none;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 3;
   }
 
   .home-page .brand-logo-mobile {
-    width: clamp(132px, 42vw, 176px);
+    width: clamp(180px, 52vw, 240px);
     max-height: none;
     border: 0;
     border-radius: 0;
     object-fit: contain;
     object-position: left center;
     filter: none;
-    transform: translateY(-28%);
+    transform: none;
     transform-origin: top left;
   }
 
@@ -3720,9 +3765,9 @@ body.no-scroll {
     margin: 0;
     display: grid;
     grid-template-areas:
-      "copy copy"
-      "timer cta";
-    grid-template-columns: auto auto;
+      ". timer"
+      "copy copy";
+    grid-template-columns: 1fr auto;
     justify-content: end;
     align-items: center;
     gap: 0.35rem 0.5rem;
@@ -3750,6 +3795,7 @@ body.no-scroll {
   .home-page .urgency-timer-wrap {
     grid-area: timer;
     justify-self: end;
+    align-self: start;
   }
 
   .home-page #urgency-timer {
@@ -3788,6 +3834,14 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
+  .urgency-btn {
+    display: none;
+  }
+
+  .mobile-cta-section {
+    display: block;
+  }
+
   .nav-cta-mobile {
     display: inline-flex;
     align-items: center;
@@ -3800,7 +3854,9 @@ body.no-scroll {
     max-width: calc(100vw - 40px);
     padding: 12px 22px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: none;
     line-height: 1.25;
     border-radius: 24px;
     white-space: nowrap;
@@ -3810,6 +3866,11 @@ body.no-scroll {
     color: #fff;
     box-shadow: 0 10px 22px rgba(55, 28, 16, 0.2);
     z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease, background-color 180ms ease, border-color 180ms ease;
   }
 
   .nav-cta-mobile:hover,
@@ -3817,6 +3878,13 @@ body.no-scroll {
     background: var(--brand-strong);
     border-color: var(--brand-strong);
     color: #fff;
+  }
+
+  .nav-cta-mobile.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   body.nav-open .nav-cta-mobile {
@@ -3906,7 +3974,7 @@ body.no-scroll {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 88px;
+  gap: 64px;
   flex: 1 1 0;
   min-width: 0;
 }
@@ -3960,6 +4028,9 @@ body.no-scroll {
   border: 1px solid var(--brand);
   background: var(--brand);
   color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
 }
 
 .page-navbar .main-nav.page-main-nav a.nav-reserve-link:hover,
@@ -4018,7 +4089,7 @@ body.no-scroll {
     right: 0;
     display: none;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 0.75rem;
     padding: 0.9rem 1rem 1rem;
@@ -4031,6 +4102,19 @@ body.no-scroll {
 
   .page-navbar .main-nav.page-main-nav.open {
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 1rem;
+    border-top: 0;
+    background: rgba(22, 14, 10, 0.94);
+    z-index: 90;
   }
 
   .page-navbar .page-main-nav .page-nav-side {
@@ -4041,7 +4125,17 @@ body.no-scroll {
     padding: 0;
   }
 
+  .page-navbar .main-nav.page-main-nav.open .page-nav-side {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   .page-navbar .main-nav.page-main-nav a {
+    display: block;
+    width: 100%;
     font-size: 0.92rem;
     color: #fff;
     padding: 0.55rem 0.2rem;
@@ -4052,9 +4146,19 @@ body.no-scroll {
     color: #f2ddcc;
   }
 
+  .page-navbar .main-nav.page-main-nav.open a {
+    width: auto;
+    text-align: center;
+  }
+
   .page-navbar .main-nav.page-main-nav a.nav-reserve-link {
-    width: fit-content;
+    display: block;
+    width: 100%;
     margin-top: 0.15rem;
     padding: 0.6rem 0.95rem;
+  }
+
+  .page-navbar .main-nav.page-main-nav.open a.nav-reserve-link {
+    width: auto;
   }
 }

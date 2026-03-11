@@ -6,6 +6,8 @@ const message = document.querySelector('.form-message');
 const yearEl = document.getElementById('year');
 const toTopBtn = document.querySelector('.to-top-btn');
 const navCtaBtn = document.querySelector('.nav-cta-btn');
+const navCtaMobile = document.querySelector('.nav-cta-mobile');
+const mobileCtaSection = document.getElementById('mobile-cta');
 const floatingReserveCta = document.querySelector('.floating-reserve-cta');
 
 yearEl.textContent = new Date().getFullYear();
@@ -150,6 +152,59 @@ if (navCtaBtn) {
 
   window.addEventListener('scroll', toggleNavCtaFixed, { passive: true });
   toggleNavCtaFixed();
+}
+
+if (navCtaMobile) {
+  const mobileCtaBreakpoint = window.matchMedia('(max-width: 768px)');
+  let mobileCtaObserver = null;
+
+  const toggleNavCtaMobileFallback = () => {
+    navCtaMobile.classList.toggle('is-visible', window.scrollY > 100);
+  };
+
+  const disconnectMobileCtaObserver = () => {
+    if (mobileCtaObserver) {
+      mobileCtaObserver.disconnect();
+      mobileCtaObserver = null;
+    }
+  };
+
+  const setupNavCtaMobileVisibility = () => {
+    disconnectMobileCtaObserver();
+    window.removeEventListener('scroll', toggleNavCtaMobileFallback);
+
+    if (!mobileCtaBreakpoint.matches) {
+      navCtaMobile.classList.remove('is-visible');
+      return;
+    }
+
+    if (!mobileCtaSection || typeof IntersectionObserver === 'undefined') {
+      window.addEventListener('scroll', toggleNavCtaMobileFallback, { passive: true });
+      toggleNavCtaMobileFallback();
+      return;
+    }
+
+    mobileCtaObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          navCtaMobile.classList.toggle('is-visible', !entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0,
+      }
+    );
+
+    mobileCtaObserver.observe(mobileCtaSection);
+  };
+
+  if (typeof mobileCtaBreakpoint.addEventListener === 'function') {
+    mobileCtaBreakpoint.addEventListener('change', setupNavCtaMobileVisibility);
+  } else if (typeof mobileCtaBreakpoint.addListener === 'function') {
+    mobileCtaBreakpoint.addListener(setupNavCtaMobileVisibility);
+  }
+
+  setupNavCtaMobileVisibility();
 }
 
 if (floatingReserveCta) {
