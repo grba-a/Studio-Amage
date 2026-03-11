@@ -308,15 +308,24 @@ if (heroCarousel) {
 }
 
 const urgencyTimerEl = document.getElementById('urgency-timer');
+const mobileBottomTimerEl = document.getElementById('mobile-bottom-timer');
 
-if (urgencyTimerEl) {
+if (urgencyTimerEl || mobileBottomTimerEl) {
   const cycleSeconds = 20 * 60;
   let remainingSeconds = cycleSeconds - 1;
 
   const renderUrgencyTime = (secondsLeft) => {
     const mins = Math.floor(secondsLeft / 60);
     const secs = secondsLeft % 60;
-    urgencyTimerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    const formattedTime = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+    if (urgencyTimerEl) {
+      urgencyTimerEl.textContent = formattedTime;
+    }
+
+    if (mobileBottomTimerEl) {
+      mobileBottomTimerEl.textContent = formattedTime;
+    }
   };
 
   renderUrgencyTime(remainingSeconds);
