@@ -596,3 +596,27 @@ if (galleryFilterButtons.length && galleryMasonryItems.length) {
 
   applyGalleryFilter('all');
 }
+
+const vimeoIframe = document.getElementById('vimeo-promo');
+const vimeoToggle = document.getElementById('vimeo-toggle');
+
+if (vimeoIframe && vimeoToggle && typeof Vimeo !== 'undefined') {
+  const player = new Vimeo.Player(vimeoIframe);
+  let isPlaying = true;
+
+  vimeoToggle.classList.add('is-paused');
+
+  vimeoToggle.addEventListener('click', () => {
+    if (isPlaying) {
+      player.pause();
+      isPlaying = false;
+      vimeoToggle.classList.remove('is-paused');
+      vimeoToggle.setAttribute('aria-label', 'Pokreni video');
+    } else {
+      player.play();
+      isPlaying = true;
+      vimeoToggle.classList.add('is-paused');
+      vimeoToggle.setAttribute('aria-label', 'Pauziraj video');
+    }
+  });
+}
