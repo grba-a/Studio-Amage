@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio Amage</title>
-    <meta name="description" content="Frizerski salon u Splitu koji je specijaliziran za balayage i tretmane njege. Svaki termin je jedan na jedan iskustvo." />
+    <title>Studio Amage | Frizerski salon Split — Balayage i tretmani</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +14,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="description" content="Frizerski salon u Splitu specijaliziran za balayage i tretmane njege. Svaki termin je 1 na 1 iskustvo." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://studioamage.com/" />
+    <meta property="og:title" content="Studio Amage | Frizerski salon Split" />
+    <meta property="og:description" content="Frizerski salon u Splitu specijaliziran za balayage i tretmane njege. Svaki termin je 1 na 1 iskustvo." />
+    <meta property="og:url" content="https://studioamage.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://studioamage.com/assets/og-image.jpg" />
     
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -42,7 +50,7 @@
               <path d="M20.5 3.5A11 11 0 0 0 3.6 17.1L2 22l5-1.5A11 11 0 1 0 20.5 3.5ZM12 20a8.9 8.9 0 0 1-4.5-1.2l-.3-.2-3 .9.9-2.9-.2-.3A9 9 0 1 1 12 20Zm4.9-6.8c-.3-.2-1.8-.9-2-.9s-.5-.1-.7.2-.8.9-1 .9-.4 0-.8-.2a7.2 7.2 0 0 1-2.1-1.9c-.3-.4-.4-.7-.1-1 .2-.2.3-.4.5-.6.1-.2.2-.3.3-.5.1-.1 0-.3 0-.5s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.5 1.2 2.7c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.8 2.1-1.6.2-.8.2-1.4.1-1.6s-.3-.3-.6-.5Z"/>
             </svg>
           </a>
-          <a href="mailto:info@studioamage.hr" aria-label="Email">
+          <a href="mailto:studio.amage@gmail.com" aria-label="Email">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.5l9 5.7 9-5.7V7H3Zm18 10V9.8l-8.5 5.4a1 1 0 0 1-1 0L3 9.8V17h18Z"/>
             </svg>
@@ -86,6 +94,7 @@
     </header>
 
     <main>
+      <h1 class="visually-hidden">Studio Amage — Frizerski salon Split</h1>
       <section class="hero section" id="hero">
         <div class="hero-carousel" data-interval="8000">
           <article class="hero-slide is-active" style="background-image: url('assets/hero-slika1.jpg')">
@@ -141,7 +150,6 @@
                 </iframe>
                 <button class="vimeo-toggle" id="vimeo-toggle" aria-label="Pauziraj video"></button>
               </div>
-              <script src="https://player.vimeo.com/api/player.js"></script>
             </div>
           </div>
         </div>
@@ -159,7 +167,7 @@
               <div class="offer-card-media">
                 <img
                   src="assets/sisanje.jpg"
-                  alt="Placeholder fotografija za šišanje i feniranje"
+                  alt="Šišanje i feniranje u Studio Amage frizerskom salonu Split"
                   loading="lazy"
                   decoding="async"
                 />
@@ -173,7 +181,7 @@
               <div class="offer-card-media">
                 <img
                   src="assets/tretmani.jpg"
-                  alt="Placeholder fotografija za tretmane"
+                  alt="Tretmani njege kose u Studio Amage Split"
                   loading="lazy"
                   decoding="async"
                 />
@@ -187,7 +195,7 @@
               <div class="offer-card-media">
                 <img
                   src="assets/edukacija.jpg"
-                  alt="Placeholder fotografija za edukaciju"
+                  alt="Edukacija za frizere u Studio Amage Split"
                   loading="lazy"
                   decoding="async"
                 />
@@ -335,6 +343,7 @@
               <p>Najbrže putem WhatsAppa ili telefona. <br> Javite se, dogovorimo detalje i pronađemo termin koji vam odgovara. <br> Preferiramo osobni dogovor jer svaki termin prilagođavamo vama, a ne obrnuto.</p>
             </details>
           </div>
+      </section>
 
       <section class="section booking" id="rezervacija">
         <div class="container booking-grid">
@@ -507,6 +516,29 @@
     <a href="#rezervacija" class="nav-cta-btn nav-cta-mobile" aria-label="Rezerviraj termin">Rezerviraj</a>
 
     <script src="https://elfsightcdn.com/platform.js" async></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="script.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HairSalon",
+      "name": "Studio Amage",
+      "url": "https://studioamage.com",
+      "telephone": "+385958652144",
+      "email": "studio.amage@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Split",
+        "addressCountry": "HR"
+      },
+      "openingHours": "Mo-Sa",
+      "priceRange": "€€",
+      "sameAs": [
+        "https://www.instagram.com/studio.amage/",
+        "https://web.facebook.com/profile.php?id=61579663233614"
+      ]
+    }
+    </script>
   </body>
 </html>
