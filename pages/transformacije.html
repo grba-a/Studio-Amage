@@ -14,11 +14,31 @@
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body class="transform-page">
-    <header class="blog-topbar">
-      <div class="container blog-topbar-wrap">
-        <a href="../index.html" class="brand" aria-label="Povratak na početnu">
-          <img src="../assets/logo_amage.png" alt="Amage Hair Studio logo" class="brand-logo" />
+    <header class="site-header page-navbar" id="vrh">
+      <div class="container nav-wrap">
+        <a href="../index.html#vrh" class="brand brand-header" aria-label="Studio Amage početna">
+          <img src="../assets/logo_amage.png" alt="Amage Hair Studio logo" class="brand-logo brand-logo-mobile" />
+          <img src="../assets/logo_amage_desktop.png" alt="Amage Hair Studio logo desktop" class="brand-logo brand-logo-desktop" />
         </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="glavna-nav" aria-label="Otvori izbornik">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="glavna-nav" class="main-nav page-main-nav" aria-label="Glavna navigacija">
+          <div class="page-nav-side page-nav-side-left">
+            <a href="../index.html#ponuda">PONUDA</a>
+            <a href="../index.html#transformacije">REZULTATI</a>
+            <a href="../index.html#o-nama">O NAMA</a>
+          </div>
+          <div class="page-nav-side page-nav-side-right">
+            <a href="galerija.html">GALERIJA</a>
+            <a href="blog.html">BLOG</a>
+            <a href="../index.html#rezervacija" class="nav-reserve-link">REZERVIRAJ</a>
+          </div>
+        </nav>
       </div>
     </header>
 
@@ -195,6 +215,8 @@
         </div>
       </div>
     </footer>
+
+    <a href="https://studioamage.com/index.html#rezervacija" class="floating-reserve-cta">Rezerviraj svoju transformaciju</a>
 
     <script src="../script.js"></script>
   </body>

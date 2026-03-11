@@ -6,6 +6,7 @@ const message = document.querySelector('.form-message');
 const yearEl = document.getElementById('year');
 const toTopBtn = document.querySelector('.to-top-btn');
 const navCtaBtn = document.querySelector('.nav-cta-btn');
+const floatingReserveCta = document.querySelector('.floating-reserve-cta');
 
 yearEl.textContent = new Date().getFullYear();
 
@@ -149,6 +150,15 @@ if (navCtaBtn) {
 
   window.addEventListener('scroll', toggleNavCtaFixed, { passive: true });
   toggleNavCtaFixed();
+}
+
+if (floatingReserveCta) {
+  const toggleFloatingReserveCta = () => {
+    floatingReserveCta.classList.toggle('is-visible', window.scrollY > 100);
+  };
+
+  window.addEventListener('scroll', toggleFloatingReserveCta, { passive: true });
+  toggleFloatingReserveCta();
 }
 
 const heroCarousel = document.querySelector('.hero-carousel');
@@ -454,4 +464,71 @@ if (galleryLightbox && galleryLightboxImage && galleryThumbs.length) {
       closeLightbox();
     }
   });
+}
+
+const galleryFilterButtons = document.querySelectorAll('.gallery-filter-btn');
+const galleryMasonryItems = Array.from(document.querySelectorAll('.gallery-masonry-item'));
+
+if (galleryFilterButtons.length && galleryMasonryItems.length) {
+  const filterFadeMs = 300;
+
+  const normalizeFilterValue = (value) => String(value || '').trim().toLowerCase();
+
+  const setActiveFilterButton = (activeButton) => {
+    galleryFilterButtons.forEach((button) => {
+      const isActive = button === activeButton;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
+  const showMasonryItem = (item) => {
+    if (item.classList.contains('is-filter-hidden')) {
+      item.classList.remove('is-filter-hidden');
+      item.classList.add('is-filter-fading');
+      window.requestAnimationFrame(() => {
+        item.classList.remove('is-filter-fading');
+      });
+      return;
+    }
+
+    item.classList.remove('is-filter-fading');
+  };
+
+  const hideMasonryItem = (item) => {
+    if (item.classList.contains('is-filter-hidden')) return;
+
+    item.classList.add('is-filter-fading');
+    window.setTimeout(() => {
+      if (!item.classList.contains('is-filter-fading')) return;
+      item.classList.add('is-filter-hidden');
+      item.classList.remove('is-filter-fading');
+    }, filterFadeMs);
+  };
+
+  const applyGalleryFilter = (filterValue) => {
+    const normalizedFilter = normalizeFilterValue(filterValue);
+
+    galleryMasonryItems.forEach((item) => {
+      const image = item.querySelector('.gallery-lightbox-img');
+      const itemCategory = normalizeFilterValue(image?.dataset.category);
+      const isAllFilter = normalizedFilter === 'all';
+      const shouldShow = isAllFilter || (itemCategory !== '' && itemCategory === normalizedFilter);
+
+      if (shouldShow) {
+        showMasonryItem(item);
+      } else {
+        hideMasonryItem(item);
+      }
+    });
+  };
+
+  galleryFilterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      setActiveFilterButton(button);
+      applyGalleryFilter(button.dataset.filter || 'all');
+    });
+  });
+
+  applyGalleryFilter('all');
 }

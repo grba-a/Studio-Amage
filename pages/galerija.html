@@ -14,11 +14,31 @@
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body class="gallery-page">
-    <header class="blog-topbar">
-      <div class="container blog-topbar-wrap">
-        <a href="../index.html" class="brand" aria-label="Povratak na početnu">
-          <img src="../assets/logo_amage.png" alt="Amage Hair Studio logo" class="brand-logo" />
+    <header class="site-header page-navbar" id="vrh">
+      <div class="container nav-wrap">
+        <a href="../index.html#vrh" class="brand brand-header" aria-label="Studio Amage početna">
+          <img src="../assets/logo_amage.png" alt="Amage Hair Studio logo" class="brand-logo brand-logo-mobile" />
+          <img src="../assets/logo_amage_desktop.png" alt="Amage Hair Studio logo desktop" class="brand-logo brand-logo-desktop" />
         </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="glavna-nav" aria-label="Otvori izbornik">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="glavna-nav" class="main-nav page-main-nav" aria-label="Glavna navigacija">
+          <div class="page-nav-side page-nav-side-left">
+            <a href="../index.html#ponuda">PONUDA</a>
+            <a href="../index.html#transformacije">REZULTATI</a>
+            <a href="../index.html#o-nama">O NAMA</a>
+          </div>
+          <div class="page-nav-side page-nav-side-right">
+            <a href="galerija.html">GALERIJA</a>
+            <a href="blog.html">BLOG</a>
+            <a href="../index.html#rezervacija" class="nav-reserve-link">REZERVIRAJ</a>
+          </div>
+        </nav>
       </div>
     </header>
 
@@ -28,43 +48,83 @@
           <h1>Galerija</h1>
         </div>
 
-        <div class="gallery-blocks-grid">
-          <section class="gallery-block reveal" aria-label="Galerija layout 1">
-            <div class="gallery-layout gallery-layout-1">
-              <img src="../assets/layout1-1.jpg" alt="Studio Amage galerija 1-1" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout1-2.jpg" alt="Studio Amage galerija 1-2" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout1-3.jpg" alt="Studio Amage galerija 1-3" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-            </div>
-          </section>
+        <div class="gallery-filters reveal" aria-label="Filteri galerije">
+          <button type="button" class="gallery-filter-btn is-active" data-filter="all" aria-pressed="true">Sve</button>
+          <button type="button" class="gallery-filter-btn" data-filter="bojanje" aria-pressed="false">Bojanje</button>
+          <button type="button" class="gallery-filter-btn" data-filter="styling" aria-pressed="false">Styling</button>
+          <button type="button" class="gallery-filter-btn" data-filter="tretmani" aria-pressed="false">Tretmani</button>
+          <button type="button" class="gallery-filter-btn" data-filter="salon" aria-pressed="false">Salon</button>
+        </div>
 
-          <section class="gallery-block reveal" aria-label="Galerija layout 2">
-            <div class="gallery-layout gallery-layout-2">
-              <img src="../assets/layout2-1.jpg" alt="Studio Amage galerija 2-1" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout2-2.jpg" alt="Studio Amage galerija 2-2" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout2-3.jpg" alt="Studio Amage galerija 2-3" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout2-4.jpg" alt="Studio Amage galerija 2-4" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-            </div>
-          </section>
-
-          <section class="gallery-block reveal" aria-label="Galerija layout 3">
-            <div class="gallery-layout gallery-layout-3">
-              <img src="../assets/layout3-1.jpg" alt="Studio Amage galerija 3-1" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout3-2.jpg" alt="Studio Amage galerija 3-2" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout3-3.jpg" alt="Studio Amage galerija 3-3" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-            </div>
-          </section>
-
-          <section class="gallery-block reveal" aria-label="Galerija layout 4">
-            <div class="gallery-layout gallery-layout-4">
-              <img src="../assets/layout4-1.jpg" alt="Studio Amage galerija 4-1" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout4-2.jpg" alt="Studio Amage galerija 4-2" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout4-3.jpg" alt="Studio Amage galerija 4-3" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout4-4.jpg" alt="Studio Amage galerija 4-4" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout4-5.jpg" alt="Studio Amage galerija 4-5" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout4-6.jpg" alt="Studio Amage galerija 4-6" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-              <img src="../assets/layout4-7.jpg" alt="Studio Amage galerija 4-7" class="gallery-lightbox-img" loading="lazy" decoding="async" />
-            </div>
-          </section>
+        <div class="gallery-masonry reveal">
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout1-1.jpg" alt="Studio Amage galerija 1-1" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout1-2.jpg" alt="Studio Amage galerija 1-2" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout1-3.jpg" alt="Studio Amage galerija 1-3" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout2-1.jpg" alt="Studio Amage galerija 2-1" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout2-2.jpg" alt="Studio Amage galerija 2-2" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout2-3.jpg" alt="Studio Amage galerija 2-3" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout2-4.jpg" alt="Studio Amage galerija 2-4" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout3-1.jpg" alt="Studio Amage galerija 3-1" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout3-2.jpg" alt="Studio Amage galerija 3-2" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout3-3.jpg" alt="Studio Amage galerija 3-3" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-1.jpg" alt="Studio Amage galerija 4-1" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-2.jpg" alt="Studio Amage galerija 4-2" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-3.jpg" alt="Studio Amage galerija 4-3" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-4.jpg" alt="Studio Amage galerija 4-4" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-5.jpg" alt="Studio Amage galerija 4-5" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-6.jpg" alt="Studio Amage galerija 4-6" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
+          <div class="gallery-masonry-item">
+            <!-- // dodaj kategoriju za ovu sliku -->
+            <img src="../assets/layout4-7.jpg" alt="Studio Amage galerija 4-7" class="gallery-lightbox-img" data-category="" loading="lazy" decoding="async" />
+          </div>
         </div>
 
         <div class="transform-cta reveal">
@@ -142,6 +202,8 @@
         </div>
       </div>
     </footer>
+
+    <a href="https://studioamage.com/index.html#rezervacija" class="floating-reserve-cta">Sviđa ti se? Rezerviraj termin</a>
 
     <script src="../script.js"></script>
   </body>
