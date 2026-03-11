@@ -5,6 +5,7 @@ const form = document.querySelector('.booking-form');
 const message = document.querySelector('.form-message');
 const yearEl = document.getElementById('year');
 const toTopBtn = document.querySelector('.to-top-btn');
+const navCtaBtn = document.querySelector('.nav-cta-btn');
 
 yearEl.textContent = new Date().getFullYear();
 
@@ -139,6 +140,15 @@ if (toTopBtn) {
   toTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+if (navCtaBtn) {
+  const toggleNavCtaFixed = () => {
+    navCtaBtn.classList.toggle('is-fixed', window.scrollY > 100);
+  };
+
+  window.addEventListener('scroll', toggleNavCtaFixed, { passive: true });
+  toggleNavCtaFixed();
 }
 
 const heroCarousel = document.querySelector('.hero-carousel');

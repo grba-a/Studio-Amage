@@ -140,6 +140,10 @@ h3 {
   position: relative;
 }
 
+summary{
+  color: #6b5548;
+}
+
 .top-social {
   position: absolute;
   right: 0;
@@ -249,6 +253,44 @@ h3 {
   font-weight: 600;
   padding: 0.65rem 0.2rem;
   transition: color 180ms ease, transform 180ms ease;
+}
+
+.main-nav a.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 999px;
+  background: var(--brand);
+  border: 1px solid var(--brand);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: 0 10px 22px rgba(55, 28, 16, 0.2);
+}
+
+.main-nav a.nav-cta-btn::after {
+  display: none;
+}
+
+.main-nav a.nav-cta-btn:hover,
+.main-nav a.nav-cta-btn:focus-visible {
+  color: #fff;
+  background: var(--brand-strong);
+  border-color: var(--brand-strong);
+}
+
+.main-nav a.nav-cta-btn.is-fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.nav-cta-mobile {
+  display: none;
 }
 
 .nav-group {
@@ -1005,6 +1047,21 @@ h3 {
   margin-bottom: 0.8rem;
 }
 
+.offer-card-media {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 0.95rem;
+}
+
+.offer-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
 .card-meta {
   margin: 0 0 0.75rem;
   font-size: 0.9rem;
@@ -1046,6 +1103,87 @@ h3 {
 .offer-grid .card:focus-within .service-cta {
   color: #5f3522;
   transform: translateX(2px);
+}
+
+.offer-grid .card:hover .offer-card-media img,
+.offer-grid .card:focus-within .offer-card-media img {
+  transform: scale(1.05);
+}
+
+.offer-grid .card .service-cta {
+  margin-top: auto;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+#ponuda .cards-grid.offer-grid {
+  align-items: stretch;
+}
+
+#ponuda .offer-grid .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+#ponuda .offer-card-media {
+  position: relative;
+  overflow: hidden;
+}
+
+#ponuda .offer-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(44, 24, 12, 0) 0%, rgba(44, 24, 12, 0.45) 100%);
+  pointer-events: none;
+}
+
+#ponuda .offer-card-title {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  margin: 0;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  z-index: 1;
+}
+
+#ponuda .offer-grid .card:hover,
+#ponuda .offer-grid .card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+#ponuda .offer-grid .card:hover .offer-card-media img,
+#ponuda .offer-grid .card:focus-within .offer-card-media img {
+  transform: none;
+}
+
+#ponuda .offer-grid .card .service-cta {
+  margin-top: auto;
+  margin-left: auto;
+  text-decoration: none;
+  position: relative;
+}
+
+#ponuda .offer-grid .card .service-cta::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  border-bottom: 1px solid #7a452c;
+  transition: width 0.3s ease;
+}
+
+#ponuda .offer-grid .card:hover .service-cta::before,
+#ponuda .offer-grid .card:focus-within .service-cta::before,
+#ponuda .offer-grid .card .service-cta:hover::before,
+#ponuda .offer-grid .card .service-cta:focus-visible::before {
+  width: 100%;
 }
 
 .team-layout {
@@ -2915,4 +3053,68 @@ body.no-scroll {
   .home-page .hero-dots {
     display: none;
   }
+}
+
+@media (max-width: 768px) {
+  .nav-cta-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    width: auto;
+    min-height: 48px;
+    max-width: calc(100vw - 40px);
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    border-radius: 24px;
+    white-space: nowrap;
+    text-decoration: none;
+    background: var(--brand);
+    border: 1px solid var(--brand);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(55, 28, 16, 0.2);
+    z-index: 999;
+  }
+
+  .nav-cta-mobile:hover,
+  .nav-cta-mobile:focus-visible {
+    background: var(--brand-strong);
+    border-color: var(--brand-strong);
+    color: #fff;
+  }
+
+  body.nav-open .nav-cta-mobile {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .to-top-btn {
+    right: 20px;
+    bottom: 90px;
+  }
+
+  .home-page .site-footer {
+    padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+  }
+}
+
+.home-page .main-nav > a.nav-cta-btn,
+.home-page .main-nav a.nav-cta-btn {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  text-transform: none;
+}
+
+.home-page .main-nav > a.nav-cta-btn:hover,
+.home-page .main-nav > a.nav-cta-btn:focus-visible,
+.home-page .main-nav a.nav-cta-btn:hover,
+.home-page .main-nav a.nav-cta-btn:focus-visible {
+  background: var(--brand-strong);
+  border-color: var(--brand-strong);
+  color: #fff;
 }
