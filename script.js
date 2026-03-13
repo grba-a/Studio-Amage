@@ -146,65 +146,78 @@ if (toTopBtn) {
 }
 
 if (navCtaBtn) {
-  const toggleNavCtaFixed = () => {
-    navCtaBtn.classList.toggle('is-fixed', window.scrollY > 100);
+  const initNavCtaFixed = () => {
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      // ne primjenjuj sticky/floating logiku za Rezerviraj gumb
+      return;
+    }
+
+    const toggleNavCtaFixed = () => {
+      navCtaBtn.classList.toggle('is-fixed', window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', toggleNavCtaFixed, { passive: true });
+    toggleNavCtaFixed();
   };
 
-  window.addEventListener('scroll', toggleNavCtaFixed, { passive: true });
-  toggleNavCtaFixed();
+  initNavCtaFixed();
 }
 
 if (navCtaMobile) {
-  const mobileCtaBreakpoint = window.matchMedia('(max-width: 768px)');
-  let mobileCtaObserver = null;
+  if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+    navCtaMobile.classList.remove('is-visible');
+  } else {
+    const mobileCtaBreakpoint = window.matchMedia('(max-width: 768px)');
+    let mobileCtaObserver = null;
 
-  const toggleNavCtaMobileFallback = () => {
-    navCtaMobile.classList.toggle('is-visible', window.scrollY > 100);
-  };
+    const toggleNavCtaMobileFallback = () => {
+      navCtaMobile.classList.toggle('is-visible', window.scrollY > 100);
+    };
 
-  const disconnectMobileCtaObserver = () => {
-    if (mobileCtaObserver) {
-      mobileCtaObserver.disconnect();
-      mobileCtaObserver = null;
-    }
-  };
-
-  const setupNavCtaMobileVisibility = () => {
-    disconnectMobileCtaObserver();
-    window.removeEventListener('scroll', toggleNavCtaMobileFallback);
-
-    if (!mobileCtaBreakpoint.matches) {
-      navCtaMobile.classList.remove('is-visible');
-      return;
-    }
-
-    if (!mobileCtaSection || typeof IntersectionObserver === 'undefined') {
-      window.addEventListener('scroll', toggleNavCtaMobileFallback, { passive: true });
-      toggleNavCtaMobileFallback();
-      return;
-    }
-
-    mobileCtaObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          navCtaMobile.classList.toggle('is-visible', !entry.isIntersecting);
-        });
-      },
-      {
-        threshold: 0,
+    const disconnectMobileCtaObserver = () => {
+      if (mobileCtaObserver) {
+        mobileCtaObserver.disconnect();
+        mobileCtaObserver = null;
       }
-    );
+    };
 
-    mobileCtaObserver.observe(mobileCtaSection);
-  };
+    const setupNavCtaMobileVisibility = () => {
+      disconnectMobileCtaObserver();
+      window.removeEventListener('scroll', toggleNavCtaMobileFallback);
 
-  if (typeof mobileCtaBreakpoint.addEventListener === 'function') {
-    mobileCtaBreakpoint.addEventListener('change', setupNavCtaMobileVisibility);
-  } else if (typeof mobileCtaBreakpoint.addListener === 'function') {
-    mobileCtaBreakpoint.addListener(setupNavCtaMobileVisibility);
+      if (!mobileCtaBreakpoint.matches) {
+        navCtaMobile.classList.remove('is-visible');
+        return;
+      }
+
+      if (!mobileCtaSection || typeof IntersectionObserver === 'undefined') {
+        window.addEventListener('scroll', toggleNavCtaMobileFallback, { passive: true });
+        toggleNavCtaMobileFallback();
+        return;
+      }
+
+      mobileCtaObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            navCtaMobile.classList.toggle('is-visible', !entry.isIntersecting);
+          });
+        },
+        {
+          threshold: 0,
+        }
+      );
+
+      mobileCtaObserver.observe(mobileCtaSection);
+    };
+
+    if (typeof mobileCtaBreakpoint.addEventListener === 'function') {
+      mobileCtaBreakpoint.addEventListener('change', setupNavCtaMobileVisibility);
+    } else if (typeof mobileCtaBreakpoint.addListener === 'function') {
+      mobileCtaBreakpoint.addListener(setupNavCtaMobileVisibility);
+    }
+
+    setupNavCtaMobileVisibility();
   }
-
-  setupNavCtaMobileVisibility();
 }
 
 if (floatingReserveCta) {
@@ -619,4 +632,25 @@ if (vimeoIframe && vimeoToggle && typeof Vimeo !== 'undefined') {
       vimeoToggle.setAttribute('aria-label', 'Pauziraj video');
     }
   });
+}
+
+const floatingKontakt = document.getElementById('floatingKontakt');
+const heroSection = document.querySelector('.hero') || document.querySelector('#vrh') || document.querySelector('header');
+const rezervacijaSection = document.getElementById('rezervacija');
+
+if (floatingKontakt && rezervacijaSection) {
+  const toggleFloatingKontakt = () => {
+    const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 0;
+    const rezervacijaTop = rezervacijaSection.getBoundingClientRect().top;
+
+    if (heroBottom < 0 && rezervacijaTop > window.innerHeight) {
+      floatingKontakt.classList.remove('hidden');
+    } else {
+      floatingKontakt.classList.add('hidden');
+    }
+  };
+
+  floatingKontakt.classList.add('hidden');
+  window.addEventListener('scroll', toggleFloatingKontakt, { passive: true });
+  toggleFloatingKontakt();
 }
