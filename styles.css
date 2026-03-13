@@ -3845,13 +3845,13 @@ body.no-scroll {
   .home-page .brand-header {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 65%;
     transform: translateY(-50%);
     z-index: 3;
   }
 
   .home-page .brand-logo-mobile {
-    width: clamp(180px, 52vw, 240px);
+    width: clamp(140px, 38vw, 190px);
     max-height: none;
     border: 0;
     border-radius: 0;
