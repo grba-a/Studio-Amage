@@ -654,3 +654,58 @@ if (floatingKontakt && rezervacijaSection) {
   window.addEventListener('scroll', toggleFloatingKontakt, { passive: true });
   toggleFloatingKontakt();
 }
+
+// ─── COOKIE CONSENT ───────────────────────────────────────────
+function initCookieConsent() {
+  if (localStorage.getItem('amage_cookie_consent')) return;
+  document.getElementById('cookieBanner').classList.add('is-visible');
+}
+
+function acceptAllCookies() {
+  localStorage.setItem('amage_cookie_consent', 'all');
+  hideCookieBanner();
+  loadAnalytics();
+}
+
+function acceptNecessaryCookies() {
+  localStorage.setItem('amage_cookie_consent', 'necessary');
+  hideCookieBanner();
+}
+
+function hideCookieBanner() {
+  document.getElementById('cookieBanner').classList.remove('is-visible');
+}
+
+function loadAnalytics() {
+  const consent = localStorage.getItem('amage_cookie_consent');
+  if (consent !== 'all') return;
+
+  // Google Analytics — zamijeni GA_MEASUREMENT_ID s pravim ID-om
+  const gaScript = document.createElement('script');
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+  gaScript.async = true;
+  document.head.appendChild(gaScript);
+  gaScript.onload = function () {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  };
+
+  // Facebook Pixel — zamijeni FB_PIXEL_ID s pravim ID-om
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'FB_PIXEL_ID');
+  fbq('track', 'PageView');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  initCookieConsent();
+  loadAnalytics();
+});

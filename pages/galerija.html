@@ -22,6 +22,18 @@
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body class="gallery-page">
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie pristanak">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <p class="cookie-banner-title">Koristimo kolačiće</p>
+      <p>Koristimo kolačiće kako bismo poboljšali vaše iskustvo, analizirali promet i personalizirali sadržaj. Možete prihvatiti sve kolačiće ili samo nužne. <a href="/pages/cookie-policy.html" class="cookie-policy-link">Saznaj više</a></p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn cookie-btn-secondary" onclick="acceptNecessaryCookies()">Samo nužni</button>
+      <button class="cookie-btn cookie-btn-primary" onclick="acceptAllCookies()">Prihvati sve</button>
+    </div>
+  </div>
+</div>
     <header class="site-header page-navbar" id="vrh">
       <div class="container nav-wrap">
         <a href="../index.html#vrh" class="brand brand-header" aria-label="Studio Amage početna">
@@ -192,6 +204,10 @@
 
         <div class="footer-bottom">
           <p>&copy; <span id="year"></span> Studio Amage. Sva prava pridržana.</p>
+          <div class="footer-legal-links">
+            <a href="/pages/privacy-policy.html">Privatnost</a>
+            <a href="/pages/uvjeti-koristenja.html">Uvjeti</a>
+          </div>
         </div>
       </div>
     </footer>
