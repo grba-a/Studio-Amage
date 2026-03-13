@@ -1,0 +1,35 @@
+Options -Indexes
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# WWW → non-www
+RewriteCond %{HTTP_HOST} ^www\.studioamage\.com [NC]
+RewriteRule ^(.*)$ https://studioamage.com/$1 [R=301,L]
+
+# Redirect s .html na čisti URL
+RewriteCond %{THE_REQUEST} /pages/([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,R=301,L]
+
+# Podstranice
+RewriteRule ^tretmani-usluge/?$ /pages/tretmani-usluge.html [L]
+RewriteRule ^edukacija/?$ /pages/edukacija.html [L]
+RewriteRule ^transformacije/?$ /pages/transformacije.html [L]
+RewriteRule ^salon/?$ /pages/salon.html [L]
+RewriteRule ^galerija/?$ /pages/galerija.html [L]
+RewriteRule ^blog/?$ /pages/blog.html [L]
+
+# Blog članci
+RewriteRule ^blog/njega-boje/?$ /pages/blog-njega-boje.html [L]
+RewriteRule ^blog/novi-tretmani/?$ /pages/blog-novi-tretmani.html [L]
+RewriteRule ^blog/trendovi-sezone/?$ /pages/blog-trendovi-sezone.html [L]
+
+# Pravne stranice
+RewriteRule ^privacy/?$ /pages/privacy-policy.html [L]
+RewriteRule ^terms/?$ /pages/uvjeti-koristenja.html [L]
+RewriteRule ^cookies/?$ /pages/cookie-policy.html [L]
+
+# 404 fallback
+ErrorDocument 404 /index.html

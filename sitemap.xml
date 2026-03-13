@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://studioamage.com/</loc></url>
-  <url><loc>https://studioamage.com/pages/salon.html</loc></url>
-  <url><loc>https://studioamage.com/pages/galerija.html</loc></url>
-  <url><loc>https://studioamage.com/pages/blog.html</loc></url>
-  <url><loc>https://studioamage.com/pages/tretmani-usluge.html</loc></url>
-  <url><loc>https://studioamage.com/pages/transformacije.html</loc></url>
-  <url><loc>https://studioamage.com/pages/blog-njega-boje.html</loc></url>
-  <url><loc>https://studioamage.com/pages/blog-trendovi-sezone.html</loc></url>
-  <url><loc>https://studioamage.com/pages/blog-novi-tretmani.html</loc></url>
+  <url><loc>https://studioamage.com/salon</loc></url>
+  <url><loc>https://studioamage.com/galerija</loc></url>
+  <url><loc>https://studioamage.com/blog</loc></url>
+  <url><loc>https://studioamage.com/tretmani-usluge</loc></url>
+  <url><loc>https://studioamage.com/transformacije</loc></url>
+  <url><loc>https://studioamage.com/edukacija</loc></url>
+  <url><loc>https://studioamage.com/blog/njega-boje</loc></url>
+  <url><loc>https://studioamage.com/blog/trendovi-sezone</loc></url>
+  <url><loc>https://studioamage.com/blog/novi-tretmani</loc></url>
+  <url><loc>https://studioamage.com/privacy</loc></url>
+  <url><loc>https://studioamage.com/terms</loc></url>
 </urlset>
-```
-
-**robots.txt** — govori Googleu kako crawlati stranicu. Napravi `robots.txt` u root folderu:
-```
-User-agent: *
-Allow: /
-Sitemap: https://studioamage.com/sitemap.xml
