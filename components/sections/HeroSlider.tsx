@@ -72,12 +72,13 @@ export default function HeroSlider() {
       {/* ── Hero section ─────────────────────────────────────────────────── */}
       <section
         aria-label="Hero galerija"
-        className="hero-section"
         style={{
-          position:    'relative',
-          overflow:    'hidden',
-          clipPath:    'polygon(0 0, 100% 0, 100% 88%, 0 100%)',
-          marginBottom: '-10vh',  // pull CTA up into the diagonal whitespace
+          position:     'relative',
+          height:       '100vh',
+          width:        '100%',
+          overflow:     'hidden',
+          clipPath:     'polygon(0 0, 100% 0, 100% 88%, 0 100%)',
+          marginBottom: '-10vh',
         }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
@@ -89,14 +90,16 @@ export default function HeroSlider() {
           <div
             key={slide.id}
             aria-hidden={i !== current}
-            className="hero-slide"
             style={{
-              position:   'absolute',
-              inset:       0,
-              backgroundColor: slide.bg,
+              position:           'absolute',
+              top:                 0,
+              left:                0,
+              width:              '100%',
+              height:             '100%',
+              backgroundColor:     slide.bg,
               backgroundImage:    `url(${slide.src})`,
               backgroundSize:     'cover',
-              backgroundPosition: slide.pos,
+              backgroundPosition: 'center 20%',
               opacity:    i === current ? 1 : 0,
               transition: `opacity ${FADE_DURATION}ms ease`,
               willChange: 'opacity',
@@ -110,10 +113,13 @@ export default function HeroSlider() {
         <div
           aria-hidden="true"
           style={{
-            position: 'absolute',
-            inset:     0,
+            position:        'absolute',
+            top:              0,
+            left:             0,
+            width:           '100%',
+            height:          '100%',
             backgroundColor: 'rgba(0, 0, 0, 0.15)',
-            zIndex:    1,
+            zIndex:           1,
           }}
         />
 
@@ -121,7 +127,6 @@ export default function HeroSlider() {
         {/* Top-left */}
         <div
           aria-hidden="true"
-          className="hero-tri-tl"
           style={{
             position:    'absolute',
             top:          0,
@@ -130,14 +135,13 @@ export default function HeroSlider() {
             height:       0,
             zIndex:       2,
             borderStyle:  'solid',
-            borderWidth:  'clamp(140px, 18vw, 220px) clamp(120px, 15vw, 180px) 0 0',
+            borderWidth:  '220px 180px 0 0',
             borderColor:  '#f4ece4 transparent transparent transparent',
           }}
         />
         {/* Bottom-right */}
         <div
           aria-hidden="true"
-          className="hero-tri-br"
           style={{
             position:    'absolute',
             bottom:       0,
@@ -146,7 +150,7 @@ export default function HeroSlider() {
             height:       0,
             zIndex:       2,
             borderStyle:  'solid',
-            borderWidth:  '0 0 clamp(140px, 18vw, 220px) clamp(120px, 15vw, 180px)',
+            borderWidth:  '0 0 220px 180px',
             borderColor:  'transparent transparent #f4ece4 transparent',
           }}
         />
@@ -155,15 +159,14 @@ export default function HeroSlider() {
         <div
           role="tablist"
           aria-label="Odabir slajda"
-          className="hero-dots"
           style={{
-            position:  'absolute',
-            bottom:    '12%',
-            left:      '50%',
-            transform: 'translateX(-50%)',
-            zIndex:    2,
-            display:   'flex',
-            gap:       '10px',
+            position:   'absolute',
+            bottom:     '32px',
+            left:       '50%',
+            transform:  'translateX(-50%)',
+            zIndex:      3,
+            display:    'flex',
+            gap:        '10px',
             alignItems: 'center',
           }}
         >

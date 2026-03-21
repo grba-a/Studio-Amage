@@ -192,45 +192,11 @@
   text-decoration: underline;
 }
 
-/* ── Hero section height (svh for mobile browser toolbar) ── */
-.hero-section {
-  height: 100svh;
-  min-height: 560px;
-}
-@supports not (height: 100svh) {
-  .hero-section { height: 100vh; }
-}
-
-/* ── Mobile hero overrides ── */
+/* ── Mobile CTA ── */
 @media (max-width: 767px) {
-  .hero-slide {
-    background-position: center 15% !important;
-  }
-  .hero-tri-tl {
-    border-width: 120px 100px 0 0 !important;
-  }
-  .hero-tri-br {
-    border-width: 0 0 120px 100px !important;
-  }
-  .hero-dots {
-    bottom: 80px !important;
-  }
   .hero-cta {
     font-size: 13px !important;
     padding: 16px 32px !important;
     letter-spacing: 0.12em !important;
-  }
-}
-
-/* ── Mobile section improvements ── */
-@media (max-width: 768px) {
-  section h1,
-  section h2 {
-    text-align: left;
-    font-size: clamp(22px, 6vw, 32px);
-  }
-  section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
   }
 }
