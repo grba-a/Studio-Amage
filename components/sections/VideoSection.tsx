@@ -7,7 +7,6 @@ export default function VideoSection() {
         borderRadius: '20px',
         overflow:     'hidden',
         boxShadow:    '0 32px 80px rgba(147, 86, 56, 0.18), 0 8px 24px rgba(0,0,0,0.10)',
-        margin:       '0 24px',
       }}>
         <iframe
           src="https://player.vimeo.com/video/1172647016?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1"
