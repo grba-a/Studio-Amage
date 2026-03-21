@@ -228,7 +228,71 @@ export default function TransformacijePage() {
         </div>
       </section>
 
-      {/* ══ 4. BEFORE / AFTER ═════════════════════════════════════════════════ */}
+      {/* ══ 4. VIDEI U POKRETU ═══════════════════════════════════════════════ */}
+      <section style={{ backgroundColor: '#f4ece4', padding: '80px 0' }}>
+        <div className="mx-auto px-6" style={{ maxWidth: '1200px' }}>
+
+          <p
+            style={{
+              fontFamily:    'Poppins, sans-serif',
+              fontSize:      '11px',
+              fontWeight:     500,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color:         '#935638',
+              marginBottom:  '12px',
+            }}
+          >
+            TRANSFORMACIJE
+          </p>
+
+          <h2
+            style={{
+              fontFamily:   'Playfair Display, serif',
+              fontSize:     'clamp(28px, 4vw, 38px)',
+              fontWeight:    700,
+              color:        '#935638',
+              lineHeight:    1.2,
+              marginBottom: '48px',
+            }}
+          >
+            U pokretu
+          </h2>
+
+          <div
+            style={{
+              display:             'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap:                 '24px',
+            }}
+          >
+            {(['transformacije-1', 'transformacije-2', 'transformacije-3'] as const).map((vid, i) => (
+              <div
+                key={i}
+                style={{
+                  borderRadius:    '16px',
+                  overflow:        'hidden',
+                  backgroundColor: '#2c1810',
+                  aspectRatio:     '9 / 16',
+                  position:        'relative',
+                }}
+              >
+                <video
+                  src={`/images/transformacije/${vid}.mp4`}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══ 5. BEFORE / AFTER ═════════════════════════════════════════════════ */}
       <section
         aria-labelledby="before-after-heading"
         style={{ backgroundColor: 'var(--bg)', padding: '80px 0' }}
@@ -336,7 +400,7 @@ export default function TransformacijePage() {
         </div>
       </section>
 
-      {/* ══ 5. CTA SEKCIJA ════════════════════════════════════════════════════ */}
+      {/* ══ 6. CTA SEKCIJA ════════════════════════════════════════════════════ */}
       <section
         style={{
           backgroundColor: '#ede3db',
