@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 // ── SEO ────────────────────────────────────────────────────────────────────────
@@ -132,18 +133,22 @@ export default function SalonPage() {
 
             {/* Image */}
             <div
-              role="img"
-              aria-label="Interijer Studio Amage — Split"
               style={{
-                backgroundColor:    '#b8a090',
-                backgroundImage:    'url(/images/salon/salon-interior.jpg)',
-                backgroundSize:     'cover',
-                backgroundPosition: 'center',
-                aspectRatio:        '4 / 3',
-                borderRadius:       '16px',
-                boxShadow:          '0 16px 48px rgba(44, 24, 16, 0.12)',
+                position:     'relative',
+                aspectRatio:  '4 / 3',
+                borderRadius: '16px',
+                overflow:     'hidden',
+                boxShadow:    '0 16px 48px rgba(44, 24, 16, 0.12)',
               }}
-            />
+            >
+              <Image
+                src="/images/salon/salon-3.jpg"
+                alt="Interijer Studio Amage — Split"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 1024px) 100vw, 55vw"
+              />
+            </div>
 
             {/* Text */}
             <div>
@@ -240,18 +245,23 @@ export default function SalonPage() {
 
             {/* Portrait */}
             <div
-              role="img"
-              aria-label="Marija Jurčević — Studio Amage Split"
               style={{
-                backgroundColor:    '#a89080',
-                backgroundImage:    'url(/images/marija/marija-portret.jpg)',
-                backgroundSize:     'cover',
-                backgroundPosition: 'center top',
-                aspectRatio:        '3 / 4',
-                borderRadius:       '16px',
-                boxShadow:          '0 16px 48px rgba(44, 24, 16, 0.12)',
+                position:     'relative',
+                aspectRatio:  '3 / 4',
+                borderRadius: '16px',
+                overflow:     'hidden',
+                boxShadow:    '0 16px 48px rgba(44, 24, 16, 0.12)',
               }}
-            />
+            >
+              <Image
+                src="/images/marija/marija-portret.jpg"
+                alt="Marija Jurčević — Studio Amage Split"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
 
             {/* Text */}
             <div>

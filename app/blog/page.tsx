@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 // ── SEO ────────────────────────────────────────────────────────────────────────
@@ -106,15 +107,15 @@ export default function BlogPage() {
 
                 {/* Cover image */}
                 <Link href={`/blog/${slug}`} tabIndex={-1} aria-hidden="true">
-                  <div
-                    style={{
-                      backgroundColor:    bg,
-                      backgroundImage:    `url(/images/blog/${slug}.jpg)`,
-                      backgroundSize:     'cover',
-                      backgroundPosition: 'center',
-                      aspectRatio:        '16 / 9',
-                    }}
-                  />
+                  <div style={{ position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+                    <Image
+                      src={`/images/blog/blog-${slug}.jpg`}
+                      alt={title}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
                 </Link>
 
                 {/* Content */}

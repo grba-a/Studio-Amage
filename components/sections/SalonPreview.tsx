@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import FadeInOnScroll from '@/components/ui/FadeInOnScroll'
 export default function SalonPreview() {
@@ -18,18 +19,22 @@ export default function SalonPreview() {
           {/* ── Left column: salon image ── */}
           <FadeInOnScroll direction="left">
             <div
-              role="img"
-              aria-label="Studio Amage salon interijer Split"
               style={{
-                backgroundColor:    '#b8a090',
-                borderRadius:       '16px',
-                aspectRatio:        '3 / 4',
-                boxShadow:          '0 16px 48px rgba(44, 24, 16, 0.12)',
-                backgroundImage:    'url(/images/salon/salon-main.jpg)',
-                backgroundSize:     'cover',
-                backgroundPosition: 'center',
+                position:     'relative',
+                borderRadius: '16px',
+                overflow:     'hidden',
+                aspectRatio:  '3 / 4',
+                boxShadow:    '0 16px 48px rgba(44, 24, 16, 0.12)',
               }}
-            />
+            >
+              <Image
+                src="/images/salon/salon-2.jpg"
+                alt="Studio Amage salon interijer Split"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 1024px) 100vw, 55vw"
+              />
+            </div>
           </FadeInOnScroll>
 
           {/* ── Right column: text + CTA ── */}

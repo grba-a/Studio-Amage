@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import FadeInOnScroll from '@/components/ui/FadeInOnScroll'
 
 // Server component — no 'use client'
@@ -56,21 +57,25 @@ export default function AboutIntro() {
             </div>
           </FadeInOnScroll>
 
-          {/* ── Right column: image placeholder ── */}
+          {/* ── Right column: image ── */}
           <FadeInOnScroll direction="right" delay={150}>
             <div
-              role="img"
-              aria-label="Studio Amage interijer frizerski salon Split"
               style={{
-                backgroundColor:    '#c8b4a0',
-                borderRadius:       '12px',
-                aspectRatio:        '4 / 5',
-                boxShadow:          '0 12px 40px rgba(44, 24, 16, 0.12)',
-                backgroundImage:    'url(/images/salon/salon-interior.jpg)',
-                backgroundSize:     'cover',
-                backgroundPosition: 'center',
+                position:     'relative',
+                borderRadius: '12px',
+                overflow:     'hidden',
+                aspectRatio:  '4 / 5',
+                boxShadow:    '0 12px 40px rgba(44, 24, 16, 0.12)',
               }}
-            />
+            >
+              <Image
+                src="/images/salon/salon-1.jpg"
+                alt="Studio Amage interijer frizerski salon Split"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
           </FadeInOnScroll>
 
         </div>

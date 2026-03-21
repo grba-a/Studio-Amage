@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import FadeInOnScroll from '@/components/ui/FadeInOnScroll'
 
 // Server component — no 'use client'
@@ -65,18 +66,23 @@ export default function BioSection() {
           {/* ── Image (DOM second → mobile bottom, desktop left) ── */}
           <FadeInOnScroll direction="left" className="order-2 lg:order-1">
             <div
-              role="img"
-              aria-label="Marija Jurčević frizerka Studio Amage Split"
               style={{
-                backgroundColor:    '#a89080',
-                borderRadius:       '12px',
-                aspectRatio:        '3 / 4',
-                boxShadow:          '0 16px 48px rgba(44, 24, 16, 0.14)',
-                backgroundImage:    'url(/images/marija/marija-portret.jpg)',
-                backgroundSize:     'cover',
-                backgroundPosition: 'center top',
+                position:     'relative',
+                borderRadius: '12px',
+                overflow:     'hidden',
+                aspectRatio:  '3 / 4',
+                boxShadow:    '0 16px 48px rgba(44, 24, 16, 0.14)',
               }}
-            />
+            >
+              <Image
+                src="/images/marija/marija-portret.jpg"
+                alt="Marija Jurčević frizerka Studio Amage Split"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                priority
+              />
+            </div>
           </FadeInOnScroll>
 
         </div>

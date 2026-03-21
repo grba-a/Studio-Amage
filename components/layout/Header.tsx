@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -125,21 +126,15 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-6">
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 no-underline group">
-            <div className="leading-none select-none">
-              <div
-                className="font-serif font-bold leading-none transition-colors duration-200 group-hover:text-brand-dark"
-                style={{ fontSize: '28px', color: '#935638', letterSpacing: '0.08em' }}
-              >
-                AMAGE
-              </div>
-              <div
-                className="font-sans font-normal uppercase mt-[3px] transition-colors duration-200"
-                style={{ fontSize: '9px', color: 'rgba(147, 86, 56, 0.7)', letterSpacing: '0.2em' }}
-              >
-                HAIR STUDIO
-              </div>
-            </div>
+          <Link href="/" className="flex-shrink-0 no-underline">
+            <Image
+              src="/images/logo/logo_amage.png"
+              alt="Studio Amage logo"
+              width={120}
+              height={60}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
           </Link>
 
           {/* Desktop nav — hidden on mobile */}
@@ -224,16 +219,13 @@ export default function Header() {
         {/* Drawer header row */}
         <div className="flex items-center justify-between px-6 h-20 flex-shrink-0">
           <Link href="/" onClick={closeDrawer} className="no-underline">
-            <div className="leading-none select-none">
-              <div className="font-serif text-[1.75rem] font-bold text-brand
-                              tracking-[0.08em] leading-none">
-                AMAGE
-              </div>
-              <div className="font-sans text-[0.55rem] font-normal text-brand
-                              tracking-[0.35em] uppercase mt-[3px]">
-                HAIR STUDIO
-              </div>
-            </div>
+            <Image
+              src="/images/logo/logo_amage.png"
+              alt="Studio Amage logo"
+              width={120}
+              height={60}
+              style={{ objectFit: 'contain' }}
+            />
           </Link>
 
           {/* Close (×) button */}

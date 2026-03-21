@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 
 // ── Types & data ───────────────────────────────────────────────────────────────
 type Category = 'sve' | 'balayage' | 'bojanje' | 'šišanje' | 'transformacije'
@@ -13,28 +14,19 @@ const FILTER_LABELS: { key: Category; label: string }[] = [
   { key: 'transformacije', label: 'Transformacije' },
 ]
 
-const PALETTE = ['#8B6355', '#6B7B5A', '#7B6B8B', '#8B7855', '#5A6B7B', '#8B5A6B']
-
-type AspectKey = 'portrait' | 'semi' | 'square'
-const ASPECT_MAP: Record<AspectKey, string> = {
-  portrait: '3 / 4',
-  semi:     '4 / 5',
-  square:   '1 / 1',
-}
-
-const ITEMS: { id: number; category: Category; aspect: AspectKey; alt: string }[] = [
-  { id:  1, category: 'balayage',       aspect: 'portrait', alt: 'Balayage — Studio Amage' },
-  { id:  2, category: 'bojanje',        aspect: 'semi',     alt: 'Bojanje — Studio Amage' },
-  { id:  3, category: 'šišanje',        aspect: 'square',   alt: 'Šišanje — Studio Amage' },
-  { id:  4, category: 'transformacije', aspect: 'portrait', alt: 'Transformacija — Studio Amage' },
-  { id:  5, category: 'balayage',       aspect: 'semi',     alt: 'Balayage pramenovi — Studio Amage' },
-  { id:  6, category: 'bojanje',        aspect: 'square',   alt: 'Bojanje kose — Studio Amage' },
-  { id:  7, category: 'šišanje',        aspect: 'portrait', alt: 'Šišanje i feniranje — Studio Amage' },
-  { id:  8, category: 'transformacije', aspect: 'semi',     alt: 'Amage transformacija — Studio Amage' },
-  { id:  9, category: 'balayage',       aspect: 'square',   alt: 'Balayage tonovi — Studio Amage' },
-  { id: 10, category: 'bojanje',        aspect: 'portrait', alt: 'Pramenovi — Studio Amage' },
-  { id: 11, category: 'šišanje',        aspect: 'semi',     alt: 'Bob frizura — Studio Amage' },
-  { id: 12, category: 'transformacije', aspect: 'square',   alt: 'Kompletan styling — Studio Amage' },
+const ITEMS: { id: number; category: Category }[] = [
+  { id:  1, category: 'balayage' },
+  { id:  2, category: 'bojanje' },
+  { id:  3, category: 'šišanje' },
+  { id:  4, category: 'balayage' },
+  { id:  5, category: 'transformacije' },
+  { id:  6, category: 'bojanje' },
+  { id:  7, category: 'balayage' },
+  { id:  8, category: 'šišanje' },
+  { id:  9, category: 'bojanje' },
+  { id: 10, category: 'transformacije' },
+  { id: 11, category: 'balayage' },
+  { id: 12, category: 'bojanje' },
 ]
 
 // ── Page ───────────────────────────────────────────────────────────────────────
@@ -60,13 +52,11 @@ export default function GalerijaPage() {
     return () => { document.body.style.overflow = '' }
   }, [lightboxId])
 
-  const lightboxItem = ITEMS.find(i => i.id === lightboxId)
-
   return (
     <>
       <main>
 
-        {/* ══ 1. PAGE HERO ══════════════════════════════════════════════════════ */}
+        {/* ══ 1. PAGE HERO ════════════════════════════════════════════════════ */}
         <section
           style={{
             backgroundColor: '#2c1810',
@@ -119,7 +109,7 @@ export default function GalerijaPage() {
           </div>
         </section>
 
-        {/* ══ 2. FILTER GUMBI ════════════════════════════════════════════════════ */}
+        {/* ══ 2. FILTER GUMBI ═════════════════════════════════════════════════ */}
         <section
           aria-label="Filter galerije"
           style={{ backgroundColor: 'var(--bg)', paddingTop: '40px', paddingBottom: '20px' }}
@@ -162,59 +152,54 @@ export default function GalerijaPage() {
           </div>
         </section>
 
-        {/* ══ 3. MASONRY FOTO GRID ═══════════════════════════════════════════════ */}
+        {/* ══ 3. MASONRY FOTO GRID ════════════════════════════════════════════ */}
         <section
           aria-label="Galerija fotografija"
           style={{ paddingTop: '28px', paddingBottom: '64px' }}
         >
           <div className="mx-auto px-6" style={{ maxWidth: '1400px' }}>
-
-            {/* Responsive columns via style tag */}
             <style>{`
               .gallery-masonry {
                 columns: 3;
                 column-gap: 16px;
               }
-              @media (max-width: 1023px) {
-                .gallery-masonry { columns: 2; }
-              }
-              @media (max-width: 639px) {
-                .gallery-masonry { columns: 1; }
-              }
+              @media (max-width: 1023px) { .gallery-masonry { columns: 2; } }
+              @media (max-width: 639px)  { .gallery-masonry { columns: 1; } }
             `}</style>
 
             <div className="gallery-masonry">
               {filtered.map(item => {
-                const bg    = PALETTE[(item.id - 1) % PALETTE.length]
                 const isHov = hoveredId === item.id
                 return (
                   <div
                     key={item.id}
-                    data-category={item.category}
                     role="button"
                     tabIndex={0}
-                    aria-label={`Otvori fotografiju: ${item.alt}`}
-                    onClick={() => setLightboxId(item.id)}
+                    aria-label={`Otvori fotografiju ${item.id} — Studio Amage frizerski salon Split`}
+                    onClick={() => setLightboxId(item.id - 1)}
                     onKeyDown={e => {
-                      if (e.key === 'Enter' || e.key === ' ') setLightboxId(item.id)
+                      if (e.key === 'Enter' || e.key === ' ') setLightboxId(item.id - 1)
                     }}
                     onMouseEnter={() => setHoveredId(item.id)}
                     onMouseLeave={() => setHoveredId(null)}
                     style={{
-                      position:           'relative',
-                      display:            'block',
-                      breakInside:        'avoid',
-                      borderRadius:       '12px',
-                      overflow:           'hidden',
-                      marginBottom:       '16px',
-                      cursor:             'pointer',
-                      aspectRatio:        ASPECT_MAP[item.aspect],
-                      backgroundColor:    bg,
-                      backgroundImage:    `url(/images/gallery/gallery-${item.id}.jpg)`,
-                      backgroundSize:     'cover',
-                      backgroundPosition: 'center',
+                      position:     'relative',
+                      overflow:     'hidden',
+                      borderRadius: '12px',
+                      breakInside:  'avoid',
+                      marginBottom: '16px',
+                      cursor:       'pointer',
                     }}
                   >
+                    <Image
+                      src={`/images/galerija/galerija-${item.id}.jpg`}
+                      alt={`Studio Amage rad ${item.id} — frizerski salon Split`}
+                      width={800}
+                      height={1000}
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                      sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    />
+
                     {/* Hover overlay */}
                     <div
                       aria-hidden="true"
@@ -256,12 +241,12 @@ export default function GalerijaPage() {
 
       </main>
 
-      {/* ══ LIGHTBOX ═════════════════════════════════════════════════════════════ */}
-      {lightboxId !== null && lightboxItem && (
+      {/* ══ LIGHTBOX ════════════════════════════════════════════════════════════ */}
+      {lightboxId !== null && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={lightboxItem.alt}
+          aria-label={`Studio Amage rad ${lightboxId! + 1}`}
           onClick={closeLightbox}
           style={{
             position:        'fixed',
@@ -279,18 +264,17 @@ export default function GalerijaPage() {
             onClick={closeLightbox}
             aria-label="Zatvori lightbox"
             style={{
-              position:    'absolute',
-              top:         '20px',
-              right:       '24px',
-              background:  'none',
-              border:      'none',
-              color:       '#ffffff',
-              fontSize:    '32px',
-              lineHeight:   1,
-              cursor:      'pointer',
-              padding:     '8px',
-              opacity:      0.85,
-              transition:  'opacity 0.2s ease',
+              position:   'absolute',
+              top:        '20px',
+              right:      '24px',
+              background: 'none',
+              border:     'none',
+              color:      '#ffffff',
+              fontSize:   '32px',
+              lineHeight:  1,
+              cursor:     'pointer',
+              padding:    '8px',
+              opacity:     0.85,
             }}
           >
             ✕
@@ -299,21 +283,28 @@ export default function GalerijaPage() {
           {/* Image */}
           <div
             onClick={e => e.stopPropagation()}
-            role="img"
-            aria-label={lightboxItem.alt}
             style={{
-              maxWidth:           '90vw',
-              maxHeight:          '88vh',
-              width:              '600px',
-              aspectRatio:        ASPECT_MAP[lightboxItem.aspect],
-              backgroundColor:    PALETTE[(lightboxItem.id - 1) % PALETTE.length],
-              backgroundImage:    `url(/images/gallery/gallery-${lightboxItem.id}.jpg)`,
-              backgroundSize:     'cover',
-              backgroundPosition: 'center',
-              borderRadius:       '12px',
-              boxShadow:          '0 24px 80px rgba(0,0,0,0.5)',
+              position:  'relative',
+              maxWidth:  '90vw',
+              maxHeight: '88vh',
+              width:     '600px',
             }}
-          />
+          >
+            <Image
+              src={`/images/galerija/galerija-${lightboxId! + 1}.jpg`}
+              alt={`Studio Amage rad ${lightboxId! + 1} — frizerski salon Split`}
+              width={800}
+              height={1000}
+              style={{
+                width:        '100%',
+                height:       'auto',
+                maxHeight:    '88vh',
+                objectFit:    'contain',
+                borderRadius: '12px',
+                boxShadow:    '0 24px 80px rgba(0,0,0,0.5)',
+              }}
+            />
+          </div>
         </div>
       )}
     </>
