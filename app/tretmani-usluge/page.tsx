@@ -16,21 +16,21 @@ const SERVICES = [
     name:    'Bojanje i pramenovi',
     short:   'Bojanje koje izgleda skupo, čak i tjednima nakon termina',
     detail:  'Precizna tehnika nanošenja boje koja ostavlja prirodan prelaz i sjaj koji traje. Idealno za one koji žele promjenu bez drastičnog reza.',
-    imgBg:   '#8B6355',
-    imgAlt:  'Bojanje kose i pramenovi — Studio Amage Split',
+    imgSrc:  '/images/galerija/galerija-1.jpg',
+    imgAlt:  'Bojanje i pramenovi — Studio Amage Split',
   },
   {
     name:    'Šišanje i feniranje',
     short:   'Precizno šišanje i završni styling prilagođen obliku lica, teksturi i životnom stilu',
     detail:  'Svaki rez počinje detaljnom konzultacijom. Cilj je frizura koja izgleda dobro i kad ju sami stiliziraš kod kuće.',
-    imgBg:   '#6B8B7A',
+    imgSrc:  '/images/galerija/galerija-3.jpg',
     imgAlt:  'Šišanje i feniranje — Studio Amage Split',
   },
   {
     name:    'Balayage',
     short:   'Ručno oslikani pramenovi koji izgledaju prirodno i rastu lijepo — bez oštrih linija',
     detail:  'Tehnika bojanja rukom koja daje najprirodniji rezultat. Savršena za one koji žele low-maintenance kosu s WOW efektom.',
-    imgBg:   '#8B7B55',
+    imgSrc:  '/images/galerija/galerija-2.jpg',
     imgAlt:  'Balayage — Studio Amage Split',
   },
 ] as const
@@ -133,21 +133,13 @@ export default function TretmaniUslugePage() {
 
           {/* 3 cols desktop, 2 tablet, 1 mobile */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map(({ name, short, detail, imgBg, imgAlt }) => (
+            {SERVICES.map(({ name, short, detail, imgSrc, imgAlt }) => (
               <article key={name} className="service-card">
 
-                {/* Image placeholder */}
-                <div
-                  role="img"
-                  aria-label={imgAlt}
-                  style={{
-                    backgroundColor:    imgBg,
-                    aspectRatio:        '4 / 3',
-                    backgroundImage:    `url(/images/services/${name.toLowerCase().replace(/\s+/g, '-')}.jpg)`,
-                    backgroundSize:     'cover',
-                    backgroundPosition: 'center',
-                  }}
-                />
+                {/* Image */}
+                <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+                  <Image src={imgSrc} alt={imgAlt} fill style={{ objectFit: 'cover' }} />
+                </div>
 
                 {/* Content */}
                 <div style={{ padding: '24px' }}>

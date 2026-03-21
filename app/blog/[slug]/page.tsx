@@ -1,6 +1,96 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+
+// ── Shared style helpers ───────────────────────────────────────────────────────
+const h2Style: React.CSSProperties = {
+  fontFamily:   'Playfair Display, serif',
+  fontSize:     '28px',
+  fontWeight:    700,
+  color:        '#935638',
+  lineHeight:    1.3,
+  marginTop:    '40px',
+  marginBottom: '16px',
+}
+
+const pStyle: React.CSSProperties = {
+  fontFamily:  'Poppins, sans-serif',
+  fontSize:    '16px',
+  lineHeight:   1.9,
+  color:       '#4a3728',
+  marginBottom: '0',
+}
+
+// ── Post content per slug ──────────────────────────────────────────────────────
+function NjegaBoje() {
+  return (
+    <>
+      <h2 style={h2Style}>Zašto je njega boje važna?</h2>
+      <p style={pStyle}>Balayage je jedna od najtraženijih tehnika bojanja upravo zato što izgleda prirodno i raspoređeno — ali i zato što uz pravu njegu može izgledati sjajno tjednima, pa čak i mjesecima nakon termina.</p>
+
+      <h2 style={h2Style}>1. Šampon i regenerator za obojenu kosu</h2>
+      <p style={pStyle}>Koristite isključivo šampone i regeneratore formulirane za obojenu ili kemijski tretiranu kosu. Sulfati u klasičnim šamponima izvlače boju i ubrzavaju bljeđenje. Tražite proizvode s oznakom "color safe" ili "za obojenu kosu".</p>
+
+      <h2 style={h2Style}>2. Hladna ili mlaka voda za ispiranje</h2>
+      <p style={pStyle}>Vruća voda otvara kutikulu vlasi i potiče gubitak pigmenta. Ispirajte kosu hladnom ili mlakom vodom — razlika u trajnosti boje može biti dramatična.</p>
+
+      <h2 style={h2Style}>3. Maska jednom tjedno</h2>
+      <p style={pStyle}>Balayage uključuje osvijetljavanje, što može isušiti kosu. Jednom tjedno koristite dubinsku masku ili hair mask za dubinsku hidrataciju. To će kosi vratiti elastičnost i sjaj.</p>
+
+      <h2 style={h2Style}>4. Zaštita od sunca i topline</h2>
+      <p style={pStyle}>UV zrake i toplinski stilizatori (ravnalice, uvijači) mogu izbljedjeti boju i oštetiti strukturu vlasi. Koristite sprej za zaštitu od topline prije stiliziranja i sprej za zaštitu od UV-a ljeti.</p>
+
+      <h2 style={h2Style}>5. Intervali između termina</h2>
+      <p style={pStyle}>Jedna od prednosti balayagea je taj što nema oštrih korijenova — što znači da možete duže čekati između termina. Uz dobru njegu, termin za osvježavanje možete planirati svaka 3-4 mjeseca.</p>
+
+      <h2 style={h2Style}>Zaključak</h2>
+      <p style={pStyle}>Investicija u balayage ne završava u salonu. Pravi šampon, hladna voda i tjedna maska mogu produžiti vijek vaše boje za tjedne. Ako imate pitanja o njezi vaše specifične boje, slobodno nas kontaktirajte — tu smo za sve savjete.</p>
+    </>
+  )
+}
+
+function NoviTretmani() {
+  return (
+    <>
+      <h2 style={h2Style}>Studio Amage raste</h2>
+      <p style={pStyle}>Nakon što smo proveli nekoliko mjeseci edukacija i istraživanja, ponosni smo predstaviti proširenu ponudu tretmana njege kose koji su dostupni od 2025. godine.</p>
+
+      <h2 style={h2Style}>Rekonstrukcijski tretman Olaplex</h2>
+      <p style={pStyle}>Olaplex protokol koji popravlja unutarnje veze vlasi oštećene kemijskim procesima. Idealno za kosu koja je prošla kroz intenzivno bojanje ili posvijetljivanje. Rezultat: mekana, elastična i otpornija kosa već nakon jednog tretmana.</p>
+
+      <h2 style={h2Style}>Keratinski tretman</h2>
+      <p style={pStyle}>Profesionalni keratinski tretman koji disciplinira kovrče, eliminira krep-efekt i dodaje intenzivan sjaj. Rezultati traju 3-4 mjeseca uz pravilnu njegu.</p>
+
+      <h2 style={h2Style}>Tretman s hijaluronskom kiselinom</h2>
+      <p style={pStyle}>Novi hidratacijski tretman koji prodire duboko u strukturu vlasi i vraća vlazi isušenoj i tankoj kosi. Vidljiva razlika već nakon prvog tretmana — kosa izgleda punija i zdravije.</p>
+
+      <h2 style={h2Style}>Kako rezervirati?</h2>
+      <p style={pStyle}>Svi novi tretmani dostupni su uz prethodnu konzultaciju. Kontaktirajte nas putem obrasca, telefona ili Instagrama i zajedno ćemo odabrati pravi tretman za vaše potrebe.</p>
+    </>
+  )
+}
+
+function TrenDoviSezone() {
+  return (
+    <>
+      <h2 style={h2Style}>Prirodni tonovi dominiraju</h2>
+      <p style={pStyle}>Proljeće/ljeto 2025. donosi povratak prirodnim, toplim tonovima kose. Karamela, med i zlatno smeđa su boje sezone — nijanse koje izgledaju kao da su nastale od sunca, a ne iz boce.</p>
+
+      <h2 style={h2Style}>Lived-in boja</h2>
+      <p style={pStyle}>Trend "lived-in" boje — koja izgleda kao da je kosa prirodno posvjetljela — i dalje dominira. Ova tehnika zahtijeva manje odlazaka u salon jer rast korijenova nije uočljiv, što je praktično i ekonomično.</p>
+
+      <h2 style={h2Style}>Teksturirani valovi</h2>
+      <p style={pStyle}>Effortless, rahli valovi koji izgledaju kao da su nastali sami od sebe. Ključ je u rezanju — struktura reza koja podržava val bez previše stiliziranja. Perfekcija bez pretjeranog truda.</p>
+
+      <h2 style={h2Style}>Bob — svevremenski trend</h2>
+      <p style={pStyle}>Bob frizura u svim varijantama — od klasičnog do asimetričnog — ostaje jedan od najpopularnijih rezova. Prilagodljiv svim oblicima lica i stilovima, bob je uvijek dobar izbor.</p>
+
+      <h2 style={h2Style}>Zdrava kosa kao stilska izjava</h2>
+      <p style={pStyle}>Iznad svega, trend ove sezone je zdrava, sjajna kosa. Više nije dovoljno samo izgledati dobro odmah nakon salona — klijenti traže tretmane koji dugoročno poboljšavaju strukturu i sjaj kose. To je upravo ono što nudimo u Studio Amage.</p>
+    </>
+  )
+}
 
 // ── Static posts registry ──────────────────────────────────────────────────────
 const POSTS: Record<string, {
@@ -8,28 +98,28 @@ const POSTS: Record<string, {
   date:     string
   category: string
   excerpt:  string
-  bg:       string
+  Content:  () => React.JSX.Element
 }> = {
   'njega-boje': {
     title:    'Kako održavati balayage između salona',
     date:     '15. siječnja 2025.',
     category: 'NJEGA KOSE',
     excerpt:  'Balayage je investicija — evo kako ga zaštititi i produžiti sjaj između termina.',
-    bg:       '#8B6355',
+    Content:  NjegaBoje,
   },
   'novi-tretmani': {
     title:    'Novi tretmani u studiju — što je novo u 2025.',
     date:     '3. veljače 2025.',
     category: 'NOVOSTI',
     excerpt:  'Proširili smo ponudu tretmana njege kose. Pogledaj što je novo i zakaži konzultaciju.',
-    bg:       '#6B7B5A',
+    Content:  NoviTretmani,
   },
   'trendovi-sezone': {
     title:    'Frizurni trendovi proljeće/ljeto 2025.',
     date:     '20. veljače 2025.',
     category: 'TRENDOVI',
     excerpt:  'Prirodni tonovi, teksturirani valovi i lived-in boja — ovo su trendovi koji dominiraju sezoni.',
-    bg:       '#7B6B8B',
+    Content:  TrenDoviSezone,
   },
 }
 
@@ -60,7 +150,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
-  const { title, date, category, excerpt, bg } = post
+  const { title, date, category, excerpt, Content } = post
 
   return (
     <main>
@@ -68,13 +158,31 @@ export default async function BlogPostPage({ params }: Props) {
       {/* ══ ARTICLE HERO ════════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: '#2c1810',
-          paddingTop:      'calc(80px + 3.5rem)',
-          paddingBottom:   '3.5rem',
-          textAlign:       'center',
+          backgroundColor: 'var(--bg)',
+          paddingTop:      'calc(80px + 3rem)',
+          paddingBottom:   '2.5rem',
         }}
       >
-        <div className="mx-auto px-6" style={{ maxWidth: '800px' }}>
+        <div className="mx-auto px-6" style={{ maxWidth: '720px' }}>
+
+          {/* Back link */}
+          <Link
+            href="/blog"
+            style={{
+              fontFamily:     'Poppins, sans-serif',
+              fontSize:       '13px',
+              fontWeight:      500,
+              color:          '#935638',
+              textDecoration: 'none',
+              letterSpacing:  '0.04em',
+              display:        'inline-block',
+              marginBottom:   '2rem',
+            }}
+          >
+            ← Natrag na blog
+          </Link>
+
+          {/* Category + date */}
           <p
             style={{
               fontFamily:    'Poppins, sans-serif',
@@ -82,137 +190,60 @@ export default async function BlogPostPage({ params }: Props) {
               fontWeight:     500,
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color:         'rgba(255,255,255,0.55)',
-              marginBottom:  '1rem',
+              color:         '#935638',
+              marginBottom:  '0.75rem',
             }}
           >
-            {category}
+            {category} · {date}
           </p>
 
+          {/* H1 */}
           <h1
             style={{
               fontFamily:   'Playfair Display, serif',
-              fontSize:     'clamp(28px, 4vw, 48px)',
+              fontSize:     'clamp(32px, 5vw, 48px)',
               fontWeight:    700,
-              color:        '#ffffff',
+              color:        '#935638',
               lineHeight:    1.2,
-              marginBottom: '1.25rem',
+              marginBottom: '1.5rem',
             }}
           >
             {title}
           </h1>
 
+          {/* Excerpt / lead */}
           <p
             style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontSize:   '14px',
-              color:      'rgba(255,255,255,0.45)',
+              fontFamily: 'Playfair Display, serif',
+              fontSize:   '18px',
+              fontStyle:  'italic',
+              lineHeight:  1.75,
+              color:      '#6b4c3b',
             }}
           >
-            {date}
+            {excerpt}
           </p>
         </div>
       </section>
 
-      {/* ══ COVER IMAGE ═════════════════════════════════════════════════════ */}
-      <div style={{ backgroundColor: 'var(--bg)', padding: '48px 0 0' }}>
-        <div className="mx-auto px-6" style={{ maxWidth: '860px' }}>
-          <div
-            role="img"
-            aria-label={title}
-            style={{
-              backgroundColor:    bg,
-              backgroundImage:    `url(/images/blog/${slug}.jpg)`,
-              backgroundSize:     'cover',
-              backgroundPosition: 'center',
-              aspectRatio:        '16 / 7',
-              borderRadius:       '16px',
-              boxShadow:          '0 12px 40px rgba(44, 24, 16, 0.12)',
-            }}
-          />
-        </div>
+      {/* ══ THUMBNAIL IMAGE ═════════════════════════════════════════════════ */}
+      <div style={{ position: 'relative', width: '100%', maxHeight: '500px', overflow: 'hidden', aspectRatio: '16/9' }}>
+        <Image
+          src={`/images/blog/blog-${slug}.jpg`}
+          alt={title}
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
       </div>
 
       {/* ══ ARTICLE BODY ════════════════════════════════════════════════════ */}
       <section
         aria-label="Sadržaj članka"
-        style={{ backgroundColor: 'var(--bg)', padding: '56px 0 80px' }}
+        style={{ backgroundColor: 'var(--bg)', padding: '60px 24px 80px' }}
       >
-        <div className="mx-auto px-6" style={{ maxWidth: '720px' }}>
-
-          {/* Lead / excerpt */}
-          <p
-            style={{
-              fontFamily:   'Playfair Display, serif',
-              fontSize:     '20px',
-              fontStyle:    'italic',
-              lineHeight:    1.7,
-              color:        '#935638',
-              marginBottom: '2rem',
-              paddingBottom: '2rem',
-              borderBottom: '1px solid rgba(147, 86, 56, 0.2)',
-            }}
-          >
-            {excerpt}
-          </p>
-
-          {/* Coming soon placeholder */}
-          <div
-            style={{
-              backgroundColor: '#ede3db',
-              borderRadius:    '12px',
-              padding:         '48px 40px',
-              textAlign:       'center',
-            }}
-          >
-            <p
-              style={{
-                fontFamily:   'Playfair Display, serif',
-                fontSize:     '22px',
-                fontWeight:    700,
-                color:        '#935638',
-                marginBottom: '12px',
-              }}
-            >
-              Sadržaj članka dolazi uskoro
-            </p>
-            <p
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontSize:   '14px',
-                lineHeight:  1.7,
-                color:      '#6b4c3b',
-              }}
-            >
-              Ovaj članak je u pripremi. Pratite nas na Instagramu{' '}
-              <a
-                href="https://www.instagram.com/studio.amage"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: '#935638' }}
-              >
-                @studio.amage
-              </a>{' '}
-              za najnovije savjete i novosti.
-            </p>
-          </div>
-
-          {/* Back to blog */}
-          <div style={{ marginTop: '48px', textAlign: 'center' }}>
-            <Link
-              href="/blog"
-              style={{
-                fontFamily:     'Poppins, sans-serif',
-                fontSize:       '13px',
-                fontWeight:      500,
-                color:          '#935638',
-                textDecoration: 'none',
-                letterSpacing:  '0.06em',
-              }}
-            >
-              ← Natrag na Blog
-            </Link>
-          </div>
+        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+          <Content />
         </div>
       </section>
 
