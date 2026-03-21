@@ -2,102 +2,71 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import FadeInOnScroll from '@/components/ui/FadeInOnScroll'
+
 export default function SalonPreview() {
   return (
     <section
       aria-labelledby="salon-preview-heading"
       style={{ paddingTop: '6rem', paddingBottom: '6rem' }}
     >
-      <div
-        className="mx-auto px-6"
-        style={{ maxWidth: '1200px' }}
-      >
-        {/* Desktop: image left (55%) | text right (45%), gap 80px */}
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[55fr_45fr] lg:gap-20">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{
+          display:             'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap:                 '60px',
+          alignItems:          'center',
+        }}
+          className="salon-grid"
+        >
 
-          {/* ── Left column: salon image ── */}
-          <FadeInOnScroll direction="left">
-            <div
+          {/* ── Left: image ── */}
+          <div style={{ position: 'relative', aspectRatio: '4/3', borderRadius: '12px', overflow: 'hidden', width: '100%' }}>
+            <Image
+              src="/images/salon/salon-2.jpg"
+              alt="Studio Amage salon Split"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+
+          {/* ── Right: text ── */}
+          <div style={{ paddingLeft: '60px' }}>
+            <p
               style={{
-                position:     'relative',
-                borderRadius: '16px',
-                overflow:     'hidden',
-                aspectRatio:  '3 / 4',
-                boxShadow:    '0 16px 48px rgba(44, 24, 16, 0.12)',
+                fontFamily:    'Poppins, sans-serif',
+                fontSize:      '11px',
+                fontWeight:     500,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color:         '#935638',
+                marginBottom:  '1.25rem',
               }}
             >
-              <Image
-                src="/images/salon/salon-4.jpg"
-                alt="Studio Amage salon interijer Split"
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 1024px) 100vw, 55vw"
-              />
-            </div>
-          </FadeInOnScroll>
+              STUDIO PROSTOR
+            </p>
 
-          {/* ── Right column: text + CTA ── */}
-          <FadeInOnScroll direction="right" delay={150}>
-            <div>
-              <p
-                className="font-sans font-medium uppercase"
-                style={{
-                  fontSize:      '11px',
-                  letterSpacing: '0.2em',
-                  color:         '#935638',
-                  marginBottom:  '1.25rem',
-                }}
-              >
-                STUDIO PROSTOR
-              </p>
+            <h2
+              id="salon-preview-heading"
+              style={{
+                fontFamily:   'Playfair Display, serif',
+                fontSize:     'clamp(26px, 3.5vw, 38px)',
+                fontWeight:    700,
+                color:        '#935638',
+                lineHeight:    1.2,
+                marginBottom: '2rem',
+              }}
+            >
+              Zavirite u interijer našeg salona
+            </h2>
 
-              <h2
-                id="salon-preview-heading"
-                className="font-serif font-bold"
-                style={{
-                  fontSize:     'clamp(26px, 3.5vw, 38px)',
-                  color:        '#935638',
-                  lineHeight:   1.2,
-                  marginBottom: '2rem',
-                }}
-              >
-                Zavirite u interijer našeg salona
-              </h2>
-
-              <Link
-                href="/salon"
-                style={{
-                  display:         'inline-block',
-                  marginTop:       '32px',
-                  border:          '2px solid #935638',
-                  color:           '#935638',
-                  borderRadius:    '9999px',
-                  padding:         '14px 36px',
-                  fontFamily:      'Poppins, sans-serif',
-                  fontSize:        '12px',
-                  fontWeight:       500,
-                  letterSpacing:   '0.12em',
-                  textTransform:   'uppercase',
-                  textDecoration:  'none',
-                  backgroundColor: 'transparent',
-                  transition:      'all 0.3s ease',
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget as HTMLAnchorElement
-                  el.style.backgroundColor = '#935638'
-                  el.style.color = '#ffffff'
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget as HTMLAnchorElement
-                  el.style.backgroundColor = 'transparent'
-                  el.style.color = '#935638'
-                }}
-              >
-                Pogledaj salon
-              </Link>
-            </div>
-          </FadeInOnScroll>
+            <Link
+              href="/salon"
+              className="btn-outline-brand"
+            >
+              Pogledaj salon
+            </Link>
+          </div>
 
         </div>
       </div>

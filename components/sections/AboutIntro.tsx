@@ -59,21 +59,12 @@ export default function AboutIntro() {
 
           {/* ── Right column: logo ── */}
           <FadeInOnScroll direction="right" delay={150}>
-            <div
-              style={{
-                display:         'flex',
-                alignItems:      'center',
-                justifyContent:  'center',
-                aspectRatio:     '4 / 5',
-                backgroundColor: '#ede3db',
-                borderRadius:    '12px',
-              }}
-            >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '4/5' }}>
               <Image
                 src="/images/logo/logo_amage.png"
-                alt="Studio Amage logo"
-                width={280}
-                height={140}
+                alt="Studio Amage"
+                width={260}
+                height={130}
                 style={{ objectFit: 'contain' }}
               />
             </div>

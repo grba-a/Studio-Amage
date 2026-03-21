@@ -214,3 +214,28 @@
     letter-spacing: 0.12em !important;
   }
 }
+
+/* ── Bio grid ── */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ── Salon grid ── */
+@media (max-width: 768px) {
+  .salon-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .salon-grid > div:last-child {
+    padding-left: 0 !important;
+  }
+}
