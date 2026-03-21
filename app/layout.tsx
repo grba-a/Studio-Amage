@@ -1,0 +1,86 @@
+import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
+import './globals.css'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+import FloatingCTA from '@/components/layout/FloatingCTA'
+import CookieBanner from '@/components/layout/CookieBanner'
+
+const GA_ID = 'G-PXM6MZFMMJ'
+const BASE_URL = 'https://studioamage.com'
+
+export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+  title: {
+    template: '%s | Studio Amage',
+    default: 'Studio Amage | Frizerski salon Split',
+  },
+  description:
+    'Studio Amage — profesionalni frizerski salon u Splitu. Balayage, bojanje, šišanje i transformacije kose. Rezerviraj termin online.',
+  openGraph: {
+    siteName: 'Studio Amage',
+    locale: 'hr_HR',
+    type: 'website',
+    url: BASE_URL,
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const isProduction = process.env.NODE_ENV === 'production'
+
+  return (
+    <html lang="hr">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+        <FloatingCTA />
+        <CookieBanner />
+
+        {isProduction && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  anonymize_ip: true,
+                  cookie_flags: 'SameSite=None;Secure'
+                });
+              `}
+            </Script>
+          </>
+        )}
+      </body>
+    </html>
+  )
+}
