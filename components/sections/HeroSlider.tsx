@@ -72,10 +72,9 @@ export default function HeroSlider() {
       {/* ── Hero section ─────────────────────────────────────────────────── */}
       <section
         aria-label="Hero galerija"
+        className="hero-section"
         style={{
           position:    'relative',
-          height:      '100vh',
-          minHeight:   '560px',
           overflow:    'hidden',
           clipPath:    'polygon(0 0, 100% 0, 100% 88%, 0 100%)',
           marginBottom: '-10vh',  // pull CTA up into the diagonal whitespace
@@ -90,11 +89,11 @@ export default function HeroSlider() {
           <div
             key={slide.id}
             aria-hidden={i !== current}
+            className="hero-slide"
             style={{
               position:   'absolute',
               inset:       0,
               backgroundColor: slide.bg,
-              // When real images exist: backgroundImage, backgroundSize, backgroundPosition
               backgroundImage:    `url(${slide.src})`,
               backgroundSize:     'cover',
               backgroundPosition: slide.pos,
@@ -122,6 +121,7 @@ export default function HeroSlider() {
         {/* Top-left */}
         <div
           aria-hidden="true"
+          className="hero-tri-tl"
           style={{
             position:    'absolute',
             top:          0,
@@ -137,6 +137,7 @@ export default function HeroSlider() {
         {/* Bottom-right */}
         <div
           aria-hidden="true"
+          className="hero-tri-br"
           style={{
             position:    'absolute',
             bottom:       0,
@@ -154,6 +155,7 @@ export default function HeroSlider() {
         <div
           role="tablist"
           aria-label="Odabir slajda"
+          className="hero-dots"
           style={{
             position:  'absolute',
             bottom:    '12%',

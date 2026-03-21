@@ -28,7 +28,7 @@ export default function SalonPreview() {
               }}
             >
               <Image
-                src="/images/salon/salon-2.jpg"
+                src="/images/salon/salon-4.jpg"
                 alt="Studio Amage salon interijer Split"
                 fill
                 style={{ objectFit: 'cover' }}
