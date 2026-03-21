@@ -57,23 +57,24 @@ export default function AboutIntro() {
             </div>
           </FadeInOnScroll>
 
-          {/* ── Right column: image ── */}
+          {/* ── Right column: logo ── */}
           <FadeInOnScroll direction="right" delay={150}>
             <div
               style={{
-                position:     'relative',
-                borderRadius: '12px',
-                overflow:     'hidden',
-                aspectRatio:  '4 / 5',
-                boxShadow:    '0 12px 40px rgba(44, 24, 16, 0.12)',
+                display:         'flex',
+                alignItems:      'center',
+                justifyContent:  'center',
+                aspectRatio:     '4 / 5',
+                backgroundColor: '#ede3db',
+                borderRadius:    '12px',
               }}
             >
               <Image
-                src="/images/salon/salon-1.jpg"
-                alt="Studio Amage interijer frizerski salon Split"
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                src="/images/logo/logo_amage.png"
+                alt="Studio Amage logo"
+                width={280}
+                height={140}
+                style={{ objectFit: 'contain' }}
               />
             </div>
           </FadeInOnScroll>

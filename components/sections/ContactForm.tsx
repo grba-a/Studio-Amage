@@ -212,9 +212,9 @@ export default function ContactForm() {
                 {/* Ime i prezime */}
                 <label style={{
                   display: 'block', fontFamily: 'Poppins, sans-serif',
-                  fontSize: '13px', fontWeight: 500, color: '#2c1810', marginBottom: '6px',
+                  fontSize: '14px', fontWeight: 600, color: '#935638', marginBottom: '6px',
                 }}>
-                  Ime i prezime *
+                  Ime i prezime
                 </label>
                 <input
                   type="text"
@@ -229,9 +229,9 @@ export default function ContactForm() {
                 {/* Email */}
                 <label style={{
                   display: 'block', fontFamily: 'Poppins, sans-serif',
-                  fontSize: '13px', fontWeight: 500, color: '#2c1810', marginBottom: '6px',
+                  fontSize: '14px', fontWeight: 600, color: '#935638', marginBottom: '6px',
                 }}>
-                  Email adresa *
+                  Email adresa
                 </label>
                 <input
                   type="email"
@@ -246,7 +246,7 @@ export default function ContactForm() {
                 {/* Telefon */}
                 <label style={{
                   display: 'block', fontFamily: 'Poppins, sans-serif',
-                  fontSize: '13px', fontWeight: 500, color: '#2c1810', marginBottom: '6px',
+                  fontSize: '14px', fontWeight: 600, color: '#935638', marginBottom: '6px',
                 }}>
                   Broj telefona
                 </label>
@@ -262,7 +262,7 @@ export default function ContactForm() {
                 {/* Poruka */}
                 <label style={{
                   display: 'block', fontFamily: 'Poppins, sans-serif',
-                  fontSize: '13px', fontWeight: 500, color: '#2c1810', marginBottom: '6px',
+                  fontSize: '14px', fontWeight: 600, color: '#935638', marginBottom: '6px',
                 }}>
                   Što planirate?
                 </label>

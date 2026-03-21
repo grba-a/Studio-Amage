@@ -1,40 +1,43 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState } from 'react'
 
 // ── Review data ───────────────────────────────────────────────────────────────
 const REVIEWS = [
   {
-    name:    'Snježana Lončar',
-    initials:'SL',
-    when:    'Prije mjesec dana',
-    text:    'Danas sam prvi put bila kod ove divne frizerke i moram reći – oduševljena sam! Od samog dolaska osjetila sam toplinu, profesionalnost i onu rijetku kombinaciju sigurnosti i opuštenosti. Pažljivo me saslušala, savjetovala bez nametanja i odmah sam znala da sam u dobrim rukama. Iz salona sam izašla prezadovoljna, s osmijehom i osjećajem da sam pronašla svoju novu frizerku.',
+    name:     'Snježana Lončar',
+    initials: 'SL',
+    when:     'Prije mjesec dana',
+    text:     'Danas sam prvi put bila kod ove divne frizerke i moram reći – oduševljena sam! Od samog dolaska osjetila sam toplinu, profesionalnost i onu rijetku kombinaciju sigurnosti i opuštenosti. Pažljivo me saslušala, savjetovala bez nametanja i odmah sam znala da sam u dobrim rukama. Iz salona sam izašla prezadovoljna, s osmijehom i osjećajem da sam pronašla svoju novu frizerku.',
   },
   {
-    name:    'Ana Stipic',
-    initials:'AS',
-    when:    'Prije 3 mjeseca',
-    text:    'Prezadovoljna sam balayageom, sisanjem i feniranjem. Mariji sam samo ispričala što želim, a kad sam dobila točno to, ostala sam ugodno iznenađena koliko je razumjela moju viziju. Salon ugodan, lijep i čist. Marija profesionalna, smirena i vrijedna. Kosa mi je ostala zdrava i mekana nakon blajhana po cijeloj kosi.',
+    name:     'Ana Stipic',
+    initials: 'AS',
+    when:     'Prije 3 mjeseca',
+    text:     'Prezadovoljna sam balayageom, sisanjem i feniranjem. Mariji sam samo ispričala što želim, a kad sam dobila točno to, ostala sam ugodno iznenađena koliko je razumjela moju viziju. Salon ugodan, lijep i čist. Marija profesionalna, smirena i vrijedna. Kosa mi je ostala zdrava i mekana nakon blajhana po cijeloj kosi.',
   },
   {
-    name:    'Ivona Voloder Maras',
-    initials:'IV',
-    when:    'Prije 3 mjeseca',
-    text:    'Bila sam na šišanju, preljevu i pramenovima u frizerskom studiju AMAGE i izašla sam nikad zadovoljnija. Marija ima iznimno stručan pristup, puno znanja i nevjerojatno je susretljiva i draga. Napokon sam pronašla frizerku koja mi pruža kompletnu uslugu na jednom mjestu. Presretna sam što se ovaj studio otvorio u Splitu — sigurno ću se vraćati!',
+    name:     'Ivona Voloder Maras',
+    initials: 'IV',
+    when:     'Prije 3 mjeseca',
+    text:     'Bila sam na šišanju, preljevu i pramenovima u frizerskom studiju AMAGE i izašla sam nikad zadovoljnija. Marija ima iznimno stručan pristup, puno znanja i nevjerojatno je susretljiva i draga. Napokon sam pronašla frizerku koja mi pruža kompletnu uslugu na jednom mjestu. Presretna sam što se ovaj studio otvorio u Splitu — sigurno ću se vraćati!',
   },
   {
-    name:    'Petra Kovač',
-    initials:'PK',
-    when:    'Prije 2 mjeseca',
-    text:    'Fantastično iskustvo od početka do kraja. Marija je pravi profesionalac koji zna što radi. Balayage je ispao savršeno, prirodno i točno onako kako sam zamislila. Salon je predivan, mirisan i opušten. Preporučujem svima!',
+    name:     'Petra Kovač',
+    initials: 'PK',
+    when:     'Prije 2 mjeseca',
+    text:     'Fantastično iskustvo od početka do kraja. Marija je pravi profesionalac koji zna što radi. Balayage je ispao savršeno, prirodno i točno onako kako sam zamislila. Salon je predivan, mirisan i opušten. Preporučujem svima!',
   },
   {
-    name:    'Marina Bilić',
-    initials:'MB',
-    when:    'Prije 5 dana',
-    text:    'Konačno frizerka koja sluša! Došla sam s idejom, Marija ju je razumjela i nadogradila. Rezultat je bio još bolji nego što sam očekivala. Definitivno se vraćam!',
+    name:     'Marina Bilić',
+    initials: 'MB',
+    when:     'Prije 5 dana',
+    text:     'Konačno frizerka koja sluša! Došla sam s idejom, Marija ju je razumjela i nadogradila. Rezultat je bio još bolji nego što sam očekivala. Definitivno se vraćam!',
   },
 ] as const
+
+// Pages: 0 → reviews 0-2, 1 → reviews 3-4
+const PAGES = [REVIEWS.slice(0, 3), REVIEWS.slice(3)] as const
 
 // ── Google G icon ─────────────────────────────────────────────────────────────
 const IconGoogleG = () => (
@@ -46,58 +49,79 @@ const IconGoogleG = () => (
   </svg>
 )
 
-// ── Stars ─────────────────────────────────────────────────────────────────────
-const Stars = () => (
-  <div style={{ display: 'flex', gap: '2px', marginBottom: '12px' }} aria-label="5 zvjezdica">
-    {Array.from({ length: 5 }).map((_, i) => (
-      <span key={i} style={{ color: '#f59e0b', fontSize: '16px' }} aria-hidden="true">★</span>
-    ))}
-  </div>
-)
+// ── Card ──────────────────────────────────────────────────────────────────────
+function ReviewCard({ name, initials, when, text }: typeof REVIEWS[number]) {
+  return (
+    <div
+      style={{
+        backgroundColor: '#ffffff',
+        borderRadius:     '16px',
+        padding:          '28px',
+        boxShadow:        '0 2px 20px rgba(0, 0, 0, 0.06)',
+        display:          'flex',
+        flexDirection:    'column',
+      }}
+    >
+      {/* Top row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Avatar */}
+          <div
+            aria-hidden="true"
+            style={{
+              width:           '40px',
+              height:          '40px',
+              borderRadius:    '50%',
+              backgroundColor: '#935638',
+              color:           '#ffffff',
+              display:         'flex',
+              alignItems:      'center',
+              justifyContent:  'center',
+              fontFamily:      'Poppins, sans-serif',
+              fontSize:        '13px',
+              fontWeight:       600,
+              flexShrink:       0,
+            }}
+          >
+            {initials}
+          </div>
+          {/* Name + date */}
+          <div>
+            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 600, color: '#2c1810', lineHeight: 1.2 }}>
+              {name}
+            </div>
+            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', color: '#9b8b7e', marginTop: '2px' }}>
+              {when}
+            </div>
+          </div>
+        </div>
+        <IconGoogleG />
+      </div>
+
+      {/* Stars */}
+      <div style={{ display: 'flex', gap: '2px', marginBottom: '12px' }} aria-label="5 zvjezdica">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <span key={i} style={{ color: '#f59e0b', fontSize: '16px' }} aria-hidden="true">★</span>
+        ))}
+      </div>
+
+      {/* Text */}
+      <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', lineHeight: 1.7, color: '#6b4c3b', flex: 1, margin: 0 }}>
+        {text}
+      </p>
+    </div>
+  )
+}
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ReviewsSection() {
-  const [current,  setCurrent]  = useState(0)
-  const [isMobile, setIsMobile] = useState(true)   // default true for SSR
-  const [offset,   setOffset]   = useState(0)
-  const trackRef   = useRef<HTMLDivElement>(null)
-  const touchStartX = useRef(0)
+  const [page, setPage] = useState(0)
 
-  // Detect mobile
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  // Max index: desktop shows 3 cards, so last starting pos = REVIEWS.length - 3
-  const maxIndex = isMobile ? REVIEWS.length - 1 : REVIEWS.length - 3
-
-  // Keep current in bounds after resize
-  useEffect(() => {
-    setCurrent(p => Math.min(p, maxIndex))
-  }, [maxIndex])
-
-  // Compute translateX from the DOM card's offsetLeft
-  const updateOffset = useCallback(() => {
-    const card = trackRef.current?.children[current] as HTMLElement | undefined
-    if (card) setOffset(card.offsetLeft)
-  }, [current])
-
-  useEffect(() => {
-    updateOffset()
-    window.addEventListener('resize', updateOffset)
-    return () => window.removeEventListener('resize', updateOffset)
-  }, [updateOffset])
-
-  const prev = () => setCurrent(p => Math.max(0, p - 1))
-  const next = () => setCurrent(p => Math.min(maxIndex, p + 1))
-
-  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX }
+  const [touchStartX, setTouchStartX] = useState(0)
+  const onTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX)
   const onTouchEnd   = (e: React.TouchEvent) => {
-    const diff = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 50) diff > 0 ? next() : prev()
+    const diff = touchStartX - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) setPage(diff > 0 ? Math.min(1, page + 1) : Math.max(0, page - 1))
   }
 
   return (
@@ -107,115 +131,66 @@ export default function ReviewsSection() {
     >
       <div className="mx-auto px-6" style={{ maxWidth: '1200px' }}>
 
-        {/* ── Header ── */}
+        {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <p
-            className="font-sans font-medium uppercase"
-            style={{ fontSize: '11px', letterSpacing: '0.2em', color: '#935638', marginBottom: '1rem' }}
+            style={{
+              fontFamily:    'Poppins, sans-serif',
+              fontSize:      '11px',
+              fontWeight:     500,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color:         '#935638',
+              marginBottom:  '1rem',
+            }}
           >
             RECENZIJE
           </p>
           <h2
             id="reviews-heading"
-            className="font-serif font-bold"
-            style={{ fontSize: 'clamp(28px, 3.5vw, 38px)', color: '#935638', lineHeight: 1.2 }}
+            style={{
+              fontFamily: 'Playfair Display, serif',
+              fontSize:   'clamp(28px, 3.5vw, 38px)',
+              fontWeight:  700,
+              color:      '#935638',
+              lineHeight:  1.2,
+            }}
           >
             Što naši klijenti kažu?
           </h2>
         </div>
 
-        {/* ── Carousel ── */}
+        {/* Cards */}
         <div
-          style={{ overflow: 'hidden' }}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <div
-            ref={trackRef}
-            style={{
-              display:    'flex',
-              gap:        '24px',
-              transform:  `translateX(-${offset}px)`,
-              transition: 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-          >
-            {REVIEWS.map((review, i) => (
-              <div
-                key={i}
-                className="review-card"
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius:     '16px',
-                  padding:          '28px',
-                  boxShadow:        '0 4px 20px rgba(44, 24, 16, 0.07)',
-                  display:          'flex',
-                  flexDirection:    'column',
-                }}
-              >
-                {/* Top row: avatar + name + Google G */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    {/* Avatar */}
-                    <div
-                      aria-hidden="true"
-                      style={{
-                        width:           '42px',
-                        height:          '42px',
-                        borderRadius:    '50%',
-                        backgroundColor: '#935638',
-                        color:           '#ffffff',
-                        display:         'flex',
-                        alignItems:      'center',
-                        justifyContent:  'center',
-                        fontFamily:      'Poppins, sans-serif',
-                        fontSize:        '13px',
-                        fontWeight:       600,
-                        flexShrink:       0,
-                      }}
-                    >
-                      {review.initials}
-                    </div>
-                    {/* Name + when */}
-                    <div>
-                      <div
-                        className="font-sans font-semibold"
-                        style={{ fontSize: '14px', color: '#2c1810', lineHeight: 1.2 }}
-                      >
-                        {review.name}
-                      </div>
-                      <div
-                        className="font-sans"
-                        style={{ fontSize: '12px', color: '#9e7b6b', marginTop: '2px' }}
-                      >
-                        {review.when}
-                      </div>
-                    </div>
-                  </div>
-                  <IconGoogleG />
-                </div>
+          {/* Desktop: grid 3 cols. Mobile: single card carousel via overflow+translate */}
 
-                {/* Stars */}
-                <Stars />
-
-                {/* Review text */}
-                <p
-                  className="font-sans"
-                  style={{ fontSize: '14px', lineHeight: 1.7, color: '#6b4c3b', flex: 1 }}
-                >
-                  {review.text}
-                </p>
-              </div>
+          {/* Desktop grid — hidden on mobile */}
+          <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
+            {PAGES[page as 0 | 1].map((r, i) => (
+              <ReviewCard key={i} {...r} />
             ))}
+          </div>
+
+          {/* Mobile: single card */}
+          <div className="lg:hidden">
+            {(() => {
+              const allReviews = [...REVIEWS]
+              const mobileIndex = page === 0 ? 0 : 3
+              return <ReviewCard {...allReviews[mobileIndex]} />
+            })()}
           </div>
         </div>
 
-        {/* ── Navigation: arrows + dots ── */}
+        {/* Navigation */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '2.5rem' }}>
-          {/* Prev arrow */}
+          {/* Prev */}
           <button
-            onClick={prev}
-            disabled={current === 0}
-            aria-label="Prethodna recenzija"
+            onClick={() => setPage(p => Math.max(0, p - 1))}
+            disabled={page === 0}
+            aria-label="Prethodna stranica recenzija"
             style={{
               width:           '40px',
               height:          '40px',
@@ -223,8 +198,8 @@ export default function ReviewsSection() {
               border:          '1.5px solid rgba(147,86,56,0.35)',
               backgroundColor: 'transparent',
               color:           '#935638',
-              cursor:          current === 0 ? 'default' : 'pointer',
-              opacity:         current === 0 ? 0.35 : 1,
+              cursor:          page === 0 ? 'default' : 'pointer',
+              opacity:         page === 0 ? 0.35 : 1,
               display:         'flex',
               alignItems:      'center',
               justifyContent:  'center',
@@ -238,20 +213,20 @@ export default function ReviewsSection() {
             </svg>
           </button>
 
-          {/* Dots */}
+          {/* 2 dots */}
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            {[0, 1].map(i => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
-                aria-label={`Recenzija ${i + 1}`}
-                aria-current={i === current ? 'true' : undefined}
+                onClick={() => setPage(i)}
+                aria-label={`Stranica recenzija ${i + 1}`}
+                aria-current={i === page ? 'true' : undefined}
                 style={{
-                  width:           i === current ? '20px' : '8px',
+                  width:           i === page ? '20px' : '8px',
                   height:          '8px',
                   borderRadius:    '9999px',
                   border:          'none',
-                  backgroundColor: i === current ? '#935638' : 'rgba(147,86,56,0.3)',
+                  backgroundColor: i === page ? '#935638' : 'rgba(147,86,56,0.3)',
                   cursor:          'pointer',
                   padding:          0,
                   transition:      'all 0.3s ease',
@@ -260,11 +235,11 @@ export default function ReviewsSection() {
             ))}
           </div>
 
-          {/* Next arrow */}
+          {/* Next */}
           <button
-            onClick={next}
-            disabled={current === maxIndex}
-            aria-label="Sljedeća recenzija"
+            onClick={() => setPage(p => Math.min(1, p + 1))}
+            disabled={page === 1}
+            aria-label="Sljedeća stranica recenzija"
             style={{
               width:           '40px',
               height:          '40px',
@@ -272,8 +247,8 @@ export default function ReviewsSection() {
               border:          '1.5px solid rgba(147,86,56,0.35)',
               backgroundColor: 'transparent',
               color:           '#935638',
-              cursor:          current === maxIndex ? 'default' : 'pointer',
-              opacity:         current === maxIndex ? 0.35 : 1,
+              cursor:          page === 1 ? 'default' : 'pointer',
+              opacity:         page === 1 ? 0.35 : 1,
               display:         'flex',
               alignItems:      'center',
               justifyContent:  'center',
