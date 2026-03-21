@@ -130,9 +130,9 @@ export default function Header() {
             <Image
               src="/images/logo/logo_amage.png"
               alt="Studio Amage logo"
-              width={120}
-              height={60}
-              style={{ objectFit: 'contain' }}
+              width={160}
+              height={80}
+              style={{ objectFit: 'contain', objectPosition: 'left center' }}
               priority
             />
           </Link>
@@ -222,9 +222,9 @@ export default function Header() {
             <Image
               src="/images/logo/logo_amage.png"
               alt="Studio Amage logo"
-              width={120}
-              height={60}
-              style={{ objectFit: 'contain' }}
+              width={130}
+              height={65}
+              style={{ objectFit: 'contain', objectPosition: 'left center' }}
             />
           </Link>
 

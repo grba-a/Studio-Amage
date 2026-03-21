@@ -6,28 +6,32 @@ import Link from 'next/link'
 // ── Slide data ────────────────────────────────────────────────────────────────
 const SLIDES = [
   {
-    id: 0,
+    id:  0,
     src: '/images/hero/hero-1.jpg',
     alt: 'Balayage frizerski salon Split',
-    bg: '#1a0f0a',
+    bg:  '#1a0f0a',
+    pos: 'center 20%',
   },
   {
-    id: 1,
+    id:  1,
     src: '/images/hero/hero-2.jpg',
     alt: 'Bojanje kose Split Studio Amage',
-    bg: '#0f1a14',
+    bg:  '#0f1a14',
+    pos: 'center 20%',
   },
   {
-    id: 2,
+    id:  2,
     src: '/images/hero/hero-3.jpg',
     alt: 'Frizerski salon Studio Amage Split',
-    bg: '#0a0f1a',
+    bg:  '#0a0f1a',
+    pos: 'center center',
   },
   {
-    id: 3,
+    id:  3,
     src: '/images/hero/hero-4.jpg',
     alt: 'Marija Jurčević frizerka Split',
-    bg: '#1a1209',
+    bg:  '#1a1209',
+    pos: 'center center',
   },
 ] as const
 
@@ -93,7 +97,7 @@ export default function HeroSlider() {
               // When real images exist: backgroundImage, backgroundSize, backgroundPosition
               backgroundImage:    `url(${slide.src})`,
               backgroundSize:     'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: slide.pos,
               opacity:    i === current ? 1 : 0,
               transition: `opacity ${FADE_DURATION}ms ease`,
               willChange: 'opacity',
@@ -111,6 +115,38 @@ export default function HeroSlider() {
             inset:     0,
             backgroundColor: 'rgba(0, 0, 0, 0.15)',
             zIndex:    1,
+          }}
+        />
+
+        {/* ── Corner triangles ─────────────────────────────────────────── */}
+        {/* Top-left */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:    'absolute',
+            top:          0,
+            left:         0,
+            width:        0,
+            height:       0,
+            zIndex:       2,
+            borderStyle:  'solid',
+            borderWidth:  'clamp(140px, 18vw, 220px) clamp(120px, 15vw, 180px) 0 0',
+            borderColor:  '#f4ece4 transparent transparent transparent',
+          }}
+        />
+        {/* Bottom-right */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:    'absolute',
+            bottom:       0,
+            right:        0,
+            width:        0,
+            height:       0,
+            zIndex:       2,
+            borderStyle:  'solid',
+            borderWidth:  '0 0 clamp(140px, 18vw, 220px) clamp(120px, 15vw, 180px)',
+            borderColor:  'transparent transparent #f4ece4 transparent',
           }}
         />
 
