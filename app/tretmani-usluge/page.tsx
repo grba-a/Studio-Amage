@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 // ── SEO ───────────────────────────────────────────────────────────────────────
@@ -32,27 +33,6 @@ const SERVICES = [
     imgBg:   '#8B7B55',
     imgAlt:  'Balayage — Studio Amage Split',
   },
-  {
-    name:    'Rekonstrukcijski tretman',
-    short:   'Tretman za obnavljanje kose koja je oštećena prilikom invazivnih kemijskih procesa',
-    detail:  'Dubinska obnova strukture vlasi. Kosa postaje mekana, sjajna i elastična već nakon prvog tretmana.',
-    imgBg:   '#7B6B8B',
-    imgAlt:  'Rekonstrukcija kose — Studio Amage Split',
-  },
-  {
-    name:    'Toniranje i gloss',
-    short:   'Osvježi boju i dodaj intenzivan sjaj bez oštećivanja vlasi',
-    detail:  'Idealno između bojanja ili kao standalone tretman za pojačavanje prirodne boje i neutralizaciju neželjenih tonova.',
-    imgBg:   '#8B5555',
-    imgAlt:  'Toniranje i gloss — Studio Amage Split',
-  },
-  {
-    name:    'Konzultacija',
-    short:   'Besplatna analiza kose i kreiranje plana tretmana prilagođenog tebi',
-    detail:  'Svaki put kod nas počinje razgovorom. Zajedno definiramo cilj i plan koji je dugoročno zdrav i lijep za tvoju kosu.',
-    imgBg:   '#558B6B',
-    imgAlt:  'Konzultacija za kosu — Studio Amage Split',
-  },
 ] as const
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -63,13 +43,30 @@ export default function TretmaniUslugePage() {
       {/* ══ 1. PAGE HERO ═══════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: '#2c1810',
-          paddingTop:      'calc(80px + 3.5rem)', // offset fixed header
-          paddingBottom:   '3.5rem',
-          textAlign:       'center',
+          background:   'linear-gradient(135deg, #ede3db 0%, #f4ece4 50%, #e8ddd5 100%)',
+          minHeight:    '320px',
+          display:      'flex',
+          alignItems:   'center',
+          justifyContent: 'center',
+          textAlign:    'center',
+          padding:      'calc(80px + 3.5rem) 24px 3.5rem',
+          position:     'relative',
+          overflow:     'hidden',
         }}
       >
-        <div className="mx-auto px-6" style={{ maxWidth: '800px' }}>
+        {/* Decorative corner triangle */}
+        <div aria-hidden="true" style={{
+          position:    'absolute',
+          top:          0,
+          right:        0,
+          width:        0,
+          height:       0,
+          borderStyle: 'solid',
+          borderWidth: '0 200px 200px 0',
+          borderColor: 'transparent rgba(147,86,56,0.08) transparent transparent',
+        }} />
+
+        <div style={{ maxWidth: '800px', position: 'relative' }}>
           <p
             style={{
               fontFamily:    'Poppins, sans-serif',
@@ -77,7 +74,7 @@ export default function TretmaniUslugePage() {
               fontWeight:     500,
               letterSpacing: '0.25em',
               textTransform: 'uppercase',
-              color:         'rgba(255,255,255,0.55)',
+              color:         '#935638',
               marginBottom:  '1rem',
             }}
           >
@@ -89,7 +86,7 @@ export default function TretmaniUslugePage() {
               fontFamily:   'Playfair Display, serif',
               fontSize:     'clamp(36px, 5vw, 56px)',
               fontWeight:    700,
-              color:        '#ffffff',
+              color:        '#935638',
               lineHeight:    1.15,
               marginBottom: '1.25rem',
             }}
@@ -102,7 +99,7 @@ export default function TretmaniUslugePage() {
               fontFamily:  'Poppins, sans-serif',
               fontSize:    'clamp(15px, 1.5vw, 17px)',
               lineHeight:   1.75,
-              color:       'rgba(255,255,255,0.7)',
+              color:       '#6b4c3b',
               maxWidth:    '620px',
               margin:      '0 auto',
             }}
@@ -258,20 +255,15 @@ export default function TretmaniUslugePage() {
               </Link>
             </div>
 
-            {/* Image placeholder */}
-            <div
-              role="img"
-              aria-label="Amage Transformacija — Studio Amage Split"
-              style={{
-                backgroundColor:    '#b8a090',
-                borderRadius:       '12px',
-                aspectRatio:        '3 / 4',
-                boxShadow:          '0 16px 48px rgba(44, 24, 16, 0.12)',
-                backgroundImage:    'url(/images/services/transformacija.jpg)',
-                backgroundSize:     'cover',
-                backgroundPosition: 'center',
-              }}
-            />
+            {/* Image */}
+            <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '3/4' }}>
+              <Image
+                src="/images/galerija/galerija-4.jpg"
+                alt="Amage Transformacija — frizerski salon Split"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
           </div>
         </div>
       </section>

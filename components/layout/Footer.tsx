@@ -3,7 +3,7 @@ import Link from 'next/link'
 // ── Navigation links ─────────────────────────────────────────────────────────
 const NAV_LINKS = [
   { label: 'PONUDA',    href: '/tretmani-usluge' },
-  { label: 'REZULTATI', href: '/transformacije' },
+  { label: 'TRANSFORMACIJE', href: '/transformacije' },
   { label: 'O NAMA',    href: '/salon' },
   { label: 'GALERIJA',  href: '/galerija' },
   { label: 'BLOG',      href: '/blog' },

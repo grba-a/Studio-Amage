@@ -312,7 +312,7 @@ export default function TransformacijePage() {
                 marginBottom:  '1rem',
               }}
             >
-              REZULTATI
+              TRANSFORMACIJE
             </p>
             <h2
               id="before-after-heading"

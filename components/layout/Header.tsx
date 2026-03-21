@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 // ── Navigation links ────────────────────────────────────────────────────────
 const NAV_LINKS = [
   { label: 'PONUDA',     href: '/tretmani-usluge' },
-  { label: 'REZULTATI',  href: '/transformacije' },
+  { label: 'TRANSFORMACIJE',  href: '/transformacije' },
   { label: 'O NAMA',     href: '/salon' },
   { label: 'GALERIJA',   href: '/galerija' },
   { label: 'BLOG',       href: '/blog' },
@@ -207,8 +207,10 @@ export default function Header() {
 
       {/* Drawer panel */}
       <div
-        className="fixed inset-0 z-[100] flex flex-col bg-bg md:hidden"
+        className="fixed inset-0 z-[100] flex flex-col md:hidden"
         style={{
+          background:     'rgba(244, 236, 228, 0.85)',
+          backdropFilter: 'blur(20px)',
           transform:  drawerOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
@@ -245,7 +247,7 @@ export default function Header() {
 
         {/* Nav links — vertically centered */}
         <nav
-          className="flex-1 flex flex-col items-center justify-center gap-8"
+          className="flex-1 flex flex-col items-center justify-center gap-6"
           aria-label="Mobilna navigacija"
         >
           {NAV_LINKS.map(({ label, href }) => (
@@ -253,13 +255,16 @@ export default function Header() {
               key={href}
               href={href}
               onClick={closeDrawer}
-              className={[
-                'font-serif text-3xl tracking-[0.12em]',
-                'transition-colors duration-200',
-                isActive(href)
-                  ? 'text-brand'
-                  : 'text-text-primary hover:text-brand',
-              ].join(' ')}
+              style={{
+                fontFamily:    'Poppins, sans-serif',
+                fontSize:      '32px',
+                fontWeight:     600,
+                letterSpacing: '0.05em',
+                color:         '#935638',
+                textDecoration: 'none',
+                opacity: isActive(href) ? 1 : 0.85,
+                transition: 'opacity 0.2s ease',
+              }}
             >
               {label}
             </Link>
