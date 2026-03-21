@@ -120,7 +120,7 @@ export default function Header() {
           backgroundColor: scrolled ? 'rgba(244, 236, 228, 0.95)' : 'transparent',
           backdropFilter:  scrolled ? 'blur(8px)' : 'none',
           boxShadow:       scrolled ? '0 1px 20px rgba(0,0,0,0.06)' : 'none',
-          transition:      'all 0.3s ease',
+          transition:      'background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease',
         }}
       >
         <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-6">
@@ -146,7 +146,7 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className={`nav-pill${isActive(href) ? ' active' : ''}`}
+                className={`nav-pill${isActive(href) ? ' active' : ''}${!scrolled ? ' nav-pill-hero' : ''}`}
               >
                 {label}
               </Link>

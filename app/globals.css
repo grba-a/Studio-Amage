@@ -59,6 +59,20 @@
   border-color: #935638;
 }
 
+/* Hero (transparent header) state */
+.nav-pill-hero {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(8px) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+.nav-pill-hero:hover,
+.nav-pill-hero.active {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #ffffff !important;
+}
+
 .nav-cta {
   background-color: #935638;
   color: #ffffff;
