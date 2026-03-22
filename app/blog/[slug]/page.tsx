@@ -26,26 +26,24 @@ const pStyle: React.CSSProperties = {
 function NjegaBoje() {
   return (
     <>
-      <h2 style={h2Style}>Zašto je njega boje važna?</h2>
-      <p style={pStyle}>Balayage je jedna od najtraženijih tehnika bojanja upravo zato što izgleda prirodno i raspoređeno — ali i zato što uz pravu njegu može izgledati sjajno tjednima, pa čak i mjesecima nakon termina.</p>
+      <h2 style={h2Style}>Pranje kose — manje je više</h2>
+      <p style={pStyle}>Svako pranje ispire pigment. Ako pereš kosu svaki dan, boja će izblijediti dvostruko brže nego kod žena koje peru svaka dva do tri dana. Suhi šampon između pranja nije kompromis, to je navika koju koriste žene s najljepšom bojom.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Uvijek perite hladnijom vodom. Topla voda otvara kutikulu i pušta pigment da izlazi. Hladna voda zatvara kutikulu, zaključava boju i daje prirodni sjaj.</p>
 
-      <h2 style={h2Style}>1. Šampon i regenerator za obojenu kosu</h2>
-      <p style={pStyle}>Koristite isključivo šampone i regeneratore formulirane za obojenu ili kemijski tretiranu kosu. Sulfati u klasičnim šamponima izvlače boju i ubrzavaju bljeđenje. Tražite proizvode s oznakom "color safe" ili "za obojenu kosu".</p>
+      <h2 style={h2Style}>Šampon i regenerator za obojenu kosu</h2>
+      <p style={pStyle}>Ovo nije marketinška priča, šamponi za obojenu kosu imaju niži pH koji čuva strukturu kose i pigment. Ako koristiš isti šampon kao prije bojanja, bacaš novac od termina u vodu.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Jednom tjedno, umjesto regeneratora stavi masku. Pet minuta razlike, a kosa ostaje mekša i boja življa tjednima dulje.</p>
 
-      <h2 style={h2Style}>2. Hladna ili mlaka voda za ispiranje</h2>
-      <p style={pStyle}>Vruća voda otvara kutikulu vlasi i potiče gubitak pigmenta. Ispirajte kosu hladnom ili mlakom vodom — razlika u trajnosti boje može biti dramatična.</p>
+      <h2 style={h2Style}>Toplina je neprijatelj broj jedan</h2>
+      <p style={pStyle}>Ravnalo i uvijači na 230 stupnjeva svaki dan direktno oštećuju obojenu kosu. Ako ne možeš bez toplinskih alata, termoprotektivni sprej nije opcija, to je obaveza. Nanosi ga na svaki dio kose koji ćeš zagrijati, ne samo na vrhove.</p>
 
-      <h2 style={h2Style}>3. Maska jednom tjedno</h2>
-      <p style={pStyle}>Balayage uključuje osvijetljavanje, što može isušiti kosu. Jednom tjedno koristite dubinsku masku ili hair mask za dubinsku hidrataciju. To će kosi vratiti elastičnost i sjaj.</p>
-
-      <h2 style={h2Style}>4. Zaštita od sunca i topline</h2>
-      <p style={pStyle}>UV zrake i toplinski stilizatori (ravnalice, uvijači) mogu izbljedjeti boju i oštetiti strukturu vlasi. Koristite sprej za zaštitu od topline prije stiliziranja i sprej za zaštitu od UV-a ljeti.</p>
-
-      <h2 style={h2Style}>5. Intervali između termina</h2>
-      <p style={pStyle}>Jedna od prednosti balayagea je taj što nema oštrih korijenova — što znači da možete duže čekati između termina. Uz dobru njegu, termin za osvježavanje možete planirati svaka 3-4 mjeseca.</p>
-
-      <h2 style={h2Style}>Zaključak</h2>
-      <p style={pStyle}>Investicija u balayage ne završava u salonu. Pravi šampon, hladna voda i tjedna maska mogu produžiti vijek vaše boje za tjedne. Ako imate pitanja o njezi vaše specifične boje, slobodno nas kontaktirajte — tu smo za sve savjete.</p>
+      <h2 style={h2Style}>Kada je pravo vrijeme za osvježenje boje?</h2>
+      <ul style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px', lineHeight: 1.9, color: '#4a3728', paddingLeft: '24px', marginBottom: '16px' }}>
+        <li>Kod balayagea — svakih 10 do 14 tjedana</li>
+        <li>Kod punog bojanja — svakih 6 do 8 tjedana</li>
+      </ul>
+      <p style={pStyle}>Ako primijetiš da boja postaje ravna i bez dubine, to je signal da je vrijeme za termin, a ne za novi šampon.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Ako nisi sigurna što tvoja kosa treba, najlakše je da se javiš i zajedno ćemo procijeniti stanje i preporučiti pravi tretman.</p>
     </>
   )
 }
@@ -53,20 +51,21 @@ function NjegaBoje() {
 function NoviTretmani() {
   return (
     <>
-      <h2 style={h2Style}>Studio Amage raste</h2>
-      <p style={pStyle}>Nakon što smo proveli nekoliko mjeseci edukacija i istraživanja, ponosni smo predstaviti proširenu ponudu tretmana njege kose koji su dostupni od 2025. godine.</p>
+      <h2 style={h2Style}>Hydra Repair — za suhu i oštećenu kosu</h2>
+      <p style={pStyle}>Ako ti kosa puca na vrhovima, osjeća se suho i bez života ili je prošla kroz intenzivno bojanje ili toplinsku obradu, Hydra Repair je tretman koji tebi treba. Intenzivna hidratacija prodire u strukturu vlasi i obnavlja je iznutra.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Rezultat je odmah vidljiv: kosa je mekša, lakše se češlja i sjaji.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Trajanje: 1 sat. Preporučuje se jednom mjesečno za kosu koja prolazi kroz redovno bojanje.</p>
 
-      <h2 style={h2Style}>Rekonstrukcijski tretman Olaplex</h2>
-      <p style={pStyle}>Olaplex protokol koji popravlja unutarnje veze vlasi oštećene kemijskim procesima. Idealno za kosu koja je prošla kroz intenzivno bojanje ili posvijetljivanje. Rezultat: mekana, elastična i otpornija kosa već nakon jednog tretmana.</p>
+      <h2 style={h2Style}>Rekonstrukcijski tretman — za kosu bez sjaja</h2>
+      <p style={pStyle}>Ovaj tretman ne obnavlja strukturu nego zatvara kutikulu i reflektira svjetlo. Efekt je kosa koja izgleda kao da je upravo iz salona — glatka, sjajna i bez nabujalosti. Idealan kao nadopuna bojanju ili kao standalone tretman pred poseban događaj.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Trajanje: 1 sat. Efekt traje četiri do šest tjedana.</p>
 
-      <h2 style={h2Style}>Keratinski tretman</h2>
-      <p style={pStyle}>Profesionalni keratinski tretman koji disciplinira kovrče, eliminira krep-efekt i dodaje intenzivan sjaj. Rezultati traju 3-4 mjeseca uz pravilnu njegu.</p>
+      <h2 style={h2Style}>Detox vlasišta — za osjetljivo vlasište</h2>
+      <p style={pStyle}>Suho, osjetljivo ili masno vlasište direktno utječe na kvalitetu kose. Detox vlasišta je tretman koji regulira masnoću vlasišta, smiruje iritaciju i potiče zdraviji rast kose. Ako ti se kosa brzo masti pri korijenu, a suši na duljini onda je ovo tretman koji rješava tvoj problem.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Trajanje: 1 sat.</p>
 
-      <h2 style={h2Style}>Tretman s hijaluronskom kiselinom</h2>
-      <p style={pStyle}>Novi hidratacijski tretman koji prodire duboko u strukturu vlasi i vraća vlazi isušenoj i tankoj kosi. Vidljiva razlika već nakon prvog tretmana — kosa izgleda punija i zdravije.</p>
-
-      <h2 style={h2Style}>Kako rezervirati?</h2>
-      <p style={pStyle}>Svi novi tretmani dostupni su uz prethodnu konzultaciju. Kontaktirajte nas putem obrasca, telefona ili Instagrama i zajedno ćemo odabrati pravi tretman za vaše potrebe.</p>
+      <h2 style={h2Style}>Kako odabrati pravi tretman?</h2>
+      <p style={pStyle}>Ako nisi sigurna koji je tretman najbolji za tebe, javi se. Zajedno ćemo procijeniti stanje i pronaći idealno rješenje za zdravlje vlasišta i kose.</p>
     </>
   )
 }
@@ -74,56 +73,62 @@ function NoviTretmani() {
 function TrenDoviSezone() {
   return (
     <>
-      <h2 style={h2Style}>Prirodni tonovi dominiraju</h2>
-      <p style={pStyle}>Proljeće/ljeto 2025. donosi povratak prirodnim, toplim tonovima kose. Karamela, med i zlatno smeđa su boje sezone — nijanse koje izgledaju kao da su nastale od sunca, a ne iz boce.</p>
+      <h2 style={h2Style}>&quot;Lived in balayage&quot; — prirodnost kao luksuz</h2>
+      <p style={pStyle}>Nije slučajno što je balayage već godinama najpopularnija tehnika bojanja. Razlog je jednostavan: izgleda kao da je kosa prirodno takva. Nema oštre linije odrastanja i nema rigidnog održavanja svaka četiri tjedna.</p>
+      <p style={{ ...pStyle, marginTop: '16px' }}>Ove sezone dominiraju topli tonovi poput: karamele, meda i tople smeđe. Hladni plavljeni tonovi ustupaju mjesto toplijoj paleti koja odgovara mediteranskom tenu. Rezultat je kosa koja izgleda zdravo i skupo čak i kad nije tek napravljena.</p>
 
-      <h2 style={h2Style}>Lived-in boja</h2>
-      <p style={pStyle}>Trend "lived-in" boje — koja izgleda kao da je kosa prirodno posvjetljela — i dalje dominira. Ova tehnika zahtijeva manje odlazaka u salon jer rast korijenova nije uočljiv, što je praktično i ekonomično.</p>
+      <h2 style={h2Style}>Blowout kao završni touch</h2>
+      <p style={pStyle}>Sama boja nije dovoljna ako kosa nema volumen i oblik. Završni styling s četkom i fenilom koji naglašava prirodni pad kose postaje standard, a ne opcija. Klijentica izlazi iz salona s kompletnim lookom, a ne samo bojom.</p>
 
-      <h2 style={h2Style}>Teksturirani valovi</h2>
-      <p style={pStyle}>Effortless, rahli valovi koji izgledaju kao da su nastali sami od sebe. Ključ je u rezanju — struktura reza koja podržava val bez previše stiliziranja. Perfekcija bez pretjeranog truda.</p>
+      <h2 style={h2Style}>Tretmani kao osnova svega</h2>
+      <p style={pStyle}>Trend koji se pojavio u zadnje dvije godine je fokus na zdravlje kose kao preduvjet za lijepu boju. Kosa koja je hidratizirana i zdrava prima boju bolje, sjaji više i dulje zadržava pigment. Zato sve više klijentica kombinira bojanje s tretmanom u istom terminu.</p>
 
-      <h2 style={h2Style}>Bob — svevremenski trend</h2>
-      <p style={pStyle}>Bob frizura u svim varijantama — od klasičnog do asimetričnog — ostaje jedan od najpopularnijih rezova. Prilagodljiv svim oblicima lica i stilovima, bob je uvijek dobar izbor.</p>
-
-      <h2 style={h2Style}>Zdrava kosa kao stilska izjava</h2>
-      <p style={pStyle}>Iznad svega, trend ove sezone je zdrava, sjajna kosa. Više nije dovoljno samo izgledati dobro odmah nakon salona — klijenti traže tretmane koji dugoročno poboljšavaju strukturu i sjaj kose. To je upravo ono što nudimo u Studio Amage.</p>
+      <h2 style={h2Style}>Što odabrati za sebe?</h2>
+      <p style={pStyle}>Odgovor ovisi o stanju tvoje kose, prirodnoj boji i koliko vremena želiš posvetiti održavanju. Ako nisi sigurna, konzultacija je uvijek najbolji prvi korak za tebe.</p>
     </>
   )
 }
 
 // ── Static posts registry ──────────────────────────────────────────────────────
 const POSTS: Record<string, {
-  title:    string
-  date:     string
-  category: string
-  excerpt:  string
-  ogImage:  string
-  Content:  () => React.JSX.Element
+  title:     string
+  metaTitle: string
+  date:      string
+  category:  string
+  readTime:  string
+  excerpt:   string
+  ogImage:   string
+  Content:   () => React.JSX.Element
 }> = {
   'njega-boje': {
-    title:    'Kako održavati balayage između salona',
-    date:     '15. siječnja 2025.',
-    category: 'NJEGA KOSE',
-    excerpt:  'Balayage je investicija — evo kako ga zaštititi i produžiti sjaj između termina.',
-    ogImage:  '/images/blog/blog-njega-boje.jpg',
-    Content:  NjegaBoje,
+    title:     'Kako održavati sjaj i boju kose između dva termina?',
+    metaTitle: 'Kako održavati sjaj i boju kose između dva termina?',
+    date:      '03.03.2026.',
+    category:  'NJEGA',
+    readTime:  '5 min čitanja',
+    excerpt:   'Uložila si vrijeme i novac u savršenu boju i zaslužuješ da traje što dulje. Problem je što većina žena nesvjesno radi stvari koje ubrzavaju blijeđenje i suše kosu. Evo što stvarno funkcionira.',
+    ogImage:   '/images/blog/blog-njega-boje.jpg',
+    Content:   NjegaBoje,
   },
   'novi-tretmani': {
-    title:    'Novi tretmani u studiju — što je novo u 2025.',
-    date:     '3. veljače 2025.',
-    category: 'NOVOSTI',
-    excerpt:  'Proširili smo ponudu tretmana njege kose. Pogledaj što je novo i zakaži konzultaciju.',
-    ogImage:  '/images/blog/blog-novi-tretmani.jpg',
-    Content:  NoviTretmani,
+    title:     'Novi tretmani u Studiju Amage — što su i kome odgovaraju',
+    metaTitle: 'Novi tretmani u Studiju Amage — što su i kome odgovaraju',
+    date:      '28.02.2026.',
+    category:  'NOVOSTI',
+    readTime:  '4 min čitanja',
+    excerpt:   'Proširili smo ponudu s tri tretmana koja ciljaju konkretne probleme kao što su suha kosa, nedostatak sjaja i osjetljivo vlasište. Evo kratkog pregleda što svaki tretman čini i kako znati koji je pravi za tebe.',
+    ogImage:   '/images/blog/blog-novi-tretmani.jpg',
+    Content:   NoviTretmani,
   },
   'trendovi-sezone': {
-    title:    'Frizurni trendovi proljeće/ljeto 2025.',
-    date:     '20. veljače 2025.',
-    category: 'TRENDOVI',
-    excerpt:  'Prirodni tonovi, teksturirani valovi i lived-in boja — ovo su trendovi koji dominiraju sezoni.',
-    ogImage:  '/images/blog/blog-trendovi-sezone.jpg',
-    Content:  TrenDoviSezone,
+    title:     'Frizure i tehnike bojanja koje dominiraju u 2026.',
+    metaTitle: 'Frizure i tehnike bojanja koje dominiraju u 2026.',
+    date:      '01.03.2026.',
+    category:  'TRENDOVI',
+    readTime:  '4 min čitanja',
+    excerpt:   'Svaka sezona donosi nove trendove, ali neke tehnike ostaju tražene jer jednostavno funkcioniraju na svakom tipu kose. Evo što klijentice u studiju najčešće traže ove sezone i zašto.',
+    ogImage:   '/images/blog/blog-trendovi-sezone.jpg',
+    Content:   TrenDoviSezone,
   },
 }
 
@@ -141,7 +146,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: 'Članak nije pronađen' }
 
   return {
-    title:       post.title,
+    title:       post.metaTitle,
     description: post.excerpt,
     alternates:  { canonical: `https://studioamage.com/blog/${slug}` },
     openGraph: {
@@ -157,7 +162,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
-  const { title, date, category, excerpt, Content } = post
+  const { title, date, category, readTime, excerpt, Content } = post
 
   return (
     <main>
@@ -201,7 +206,7 @@ export default async function BlogPostPage({ params }: Props) {
               marginBottom:  '0.75rem',
             }}
           >
-            {category} · {date}
+            {category} · {date} · {readTime}
           </p>
 
           {/* H1 */}
@@ -247,9 +252,9 @@ export default async function BlogPostPage({ params }: Props) {
       {/* ══ ARTICLE BODY ════════════════════════════════════════════════════ */}
       <section
         aria-label="Sadržaj članka"
-        style={{ backgroundColor: 'var(--bg)', padding: '60px 24px 80px' }}
+        style={{ backgroundColor: 'var(--bg)', padding: '60px 0 80px' }}
       >
-        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '740px', margin: '0 auto', padding: '0 24px' }}>
           <Content />
         </div>
       </section>

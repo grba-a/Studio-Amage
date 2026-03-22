@@ -17,26 +17,29 @@ export const metadata: Metadata = {
 const POSTS = [
   {
     slug:     'njega-boje',
-    title:    'Kako održavati balayage između salona',
-    date:     '15. siječnja 2025.',
-    category: 'NJEGA KOSE',
-    excerpt:  'Balayage je investicija — evo kako ga zaštititi i produžiti sjaj između termina.',
+    title:    'Kako održavati sjaj i boju kose između dva termina?',
+    date:     '03.03.2026.',
+    category: 'NJEGA',
+    readTime: '5 min čitanja',
+    excerpt:  'Uložila si vrijeme i novac u savršenu boju i zaslužuješ da traje što dulje. Problem je što većina žena nesvjesno radi stvari koje ubrzavaju blijeđenje i suše kosu.',
     bg:       '#8B6355',
   },
   {
     slug:     'novi-tretmani',
-    title:    'Novi tretmani u studiju — što je novo u 2025.',
-    date:     '3. veljače 2025.',
+    title:    'Novi tretmani u Studiju Amage — što su i kome odgovaraju',
+    date:     '28.02.2026.',
     category: 'NOVOSTI',
-    excerpt:  'Proširili smo ponudu tretmana njege kose. Pogledaj što je novo i zakaži konzultaciju.',
+    readTime: '4 min čitanja',
+    excerpt:  'Proširili smo ponudu s tri tretmana koja ciljaju konkretne probleme kao što su suha kosa, nedostatak sjaja i osjetljivo vlasište.',
     bg:       '#6B7B5A',
   },
   {
     slug:     'trendovi-sezone',
-    title:    'Frizurni trendovi proljeće/ljeto 2025.',
-    date:     '20. veljače 2025.',
+    title:    'Frizure i tehnike bojanja koje dominiraju u 2026.',
+    date:     '01.03.2026.',
     category: 'TRENDOVI',
-    excerpt:  'Prirodni tonovi, teksturirani valovi i lived-in boja — ovo su trendovi koji dominiraju sezoni.',
+    readTime: '4 min čitanja',
+    excerpt:  'Svaka sezona donosi nove trendove, ali neke tehnike ostaju tražene jer jednostavno funkcioniraju na svakom tipu kose.',
     bg:       '#7B6B8B',
   },
 ] as const
@@ -104,7 +107,7 @@ export default function BlogPage() {
       >
         <div className="mx-auto px-6" style={{ maxWidth: '1200px' }}>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {POSTS.map(({ slug, title, date, category, excerpt, bg }) => (
+            {POSTS.map(({ slug, title, date, category, readTime, excerpt, bg }) => (
               <article key={slug} className="service-card">
 
                 {/* Cover image */}
@@ -163,7 +166,7 @@ export default function BlogPage() {
                       marginBottom: '12px',
                     }}
                   >
-                    {date}
+                    {date} · {readTime}
                   </p>
 
                   <p
@@ -178,7 +181,19 @@ export default function BlogPage() {
                     {excerpt}
                   </p>
 
-                  <Link href={`/blog/${slug}`} className="service-card-cta">
+                  <Link
+                    href={`/blog/${slug}`}
+                    style={{
+                      fontFamily:     'Poppins, sans-serif',
+                      fontSize:       '13px',
+                      fontWeight:      500,
+                      letterSpacing:  '0.05em',
+                      color:          '#935638',
+                      textDecoration: 'none',
+                      display:        'inline-block',
+                    }}
+                    className="hover:underline"
+                  >
                     Čitaj više →
                   </Link>
                 </div>
