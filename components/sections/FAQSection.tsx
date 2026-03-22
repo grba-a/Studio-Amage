@@ -1,12 +1,20 @@
 'use client'
 
 import { useState } from 'react'
+import type { ReactNode } from 'react'
 
 // ── FAQ data ──────────────────────────────────────────────────────────────────
-const FAQS = [
+
+const FAQS: { q: string; a: string; node?: ReactNode }[] = [
   {
     q: 'Koliko unaprijed se trebam naručiti?',
-    a: 'Preporučujemo naručivanje najmanje 7–14 dana unaprijed, posebno za složenije tretmane poput balayagea i transformacija. Za šišanje i feniranje ponekad smo dostupni i kraćim narokom. Kontaktirajte nas putem obrasca ili telefona i provjerit ćemo dostupnost.',
+    a: 'Preporučujemo naručivanje najmanje 7 do 14 dana unaprijed, posebno za složenije tretmane poput balayagea. Za šišanje i feniranje smo dosta fleksibilniji. Kontaktirajte nas putem obrasca ili telefona i provjeriti ćemo dostupnost.',
+    node: <>
+      Preporučujemo naručivanje najmanje 7 do 14 dana unaprijed, posebno za
+      složenije tretmane poput balayagea.<br />
+      Za šišanje i feniranje smo dosta fleksibilniji.<br />
+      Kontaktirajte nas putem obrasca ili telefona i provjeriti ćemo dostupnost.
+    </>,
   },
   {
     q: 'Radite li balayage i složenije tehnike bojanja?',
@@ -15,8 +23,13 @@ const FAQS = [
   {
     q: 'Kako mogu rezervirati termin?',
     a: 'Termin možete rezervirati putem kontakt obrasca na ovoj stranici, pozivom na +385 99 349 6435 ili porukom na Instagram @studio.amage. Potvrdit ćemo vaš termin u najkraćem mogućem roku.',
+    node: <>
+      Termin možete rezervirati putem kontakt obrasca na ovoj stranici,
+      pozivom na +385 99 349 6435 ili porukom na Instagram @studio.amage.<br />
+      Potvrdit ćemo vaš termin u najkraćem mogućem roku.
+    </>,
   },
-] as const
+]
 
 // ── Schema.org FAQPage JSON-LD ────────────────────────────────────────────────
 const jsonLd = {
@@ -78,7 +91,7 @@ export default function FAQSection() {
 
         {/* Accordion items */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {FAQS.map(({ q, a }, i) => {
+          {FAQS.map(({ q, a, node }, i) => {
             const isOpen = openIndex === i
             return (
               <div
@@ -151,7 +164,7 @@ export default function FAQSection() {
                       padding:     '0 28px 24px',
                     }}
                   >
-                    {a}
+                    {node ?? a}
                   </p>
                 </div>
               </div>
