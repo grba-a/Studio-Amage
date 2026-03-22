@@ -1,6 +1,6 @@
 export default function VideoSection() {
   return (
-    <section style={{ backgroundColor: '#f4ece4', padding: '80px 0' }}>
+    <section className="video-section" style={{ backgroundColor: '#f4ece4' }}>
       <div className="video-section-inner">
         <div style={{
           position:     'relative',

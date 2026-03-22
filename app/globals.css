@@ -237,13 +237,25 @@
   }
 }
 
+/* ── Video section ── */
+.video-section {
+  padding: 80px 0;
+}
+@media (max-width: 767px) {
+  .video-section {
+    padding: 0;
+  }
+}
+
 /* ── Video section inner (responsive padding) ── */
 .video-section-inner {
   padding: 0 16px;
 }
 @media (min-width: 768px) {
   .video-section-inner {
-    padding: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
   }
 }
 
