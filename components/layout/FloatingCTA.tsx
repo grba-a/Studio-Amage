@@ -23,7 +23,7 @@ export default function FloatingCTA() {
   return (
     <button
       onClick={handleClick}
-      aria-label="Idi na rezervaciju"
+      aria-label="Idi na kontakt"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -62,7 +62,7 @@ export default function FloatingCTA() {
           boxShadow:       '0 2px 12px rgba(147, 86, 56, 0.3)',
         }}
       >
-        Rezerviraj
+        Kontakt
       </span>
 
       {/* Always-visible label on mobile */}
@@ -81,7 +81,7 @@ export default function FloatingCTA() {
           boxShadow:       '0 2px 12px rgba(147, 86, 56, 0.3)',
         }}
       >
-        Rezerviraj
+        Kontakt
       </span>
 
       {/* Circle button */}
@@ -112,7 +112,11 @@ export default function FloatingCTA() {
           strokeLinejoin="round"
           aria-hidden="true"
         >
-          <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07
+            A19.5 19.5 0 0 1 5.26 13a19.79 19.79 0 0 1-3.07-8.67
+            A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81
+            a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27
+            a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
       </div>
     </button>
