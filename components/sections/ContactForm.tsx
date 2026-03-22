@@ -130,7 +130,7 @@ export default function ContactForm() {
               fontFamily: 'Poppins, sans-serif', fontSize: '16px',
               lineHeight: 1.7, color: '#6b4c3b', marginBottom: '2rem',
             }}>
-              Ispuni obrazac i javit ćemo ti se u roku 24 sata za potvrdu termina.
+              Ispunite obrazac i javit ćemo Vam se u roku 24 sata za potvrdu termina.
             </p>
 
             {/* Contact info */}
