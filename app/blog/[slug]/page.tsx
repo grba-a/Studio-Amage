@@ -98,6 +98,7 @@ const POSTS: Record<string, {
   date:     string
   category: string
   excerpt:  string
+  ogImage:  string
   Content:  () => React.JSX.Element
 }> = {
   'njega-boje': {
@@ -105,6 +106,7 @@ const POSTS: Record<string, {
     date:     '15. siječnja 2025.',
     category: 'NJEGA KOSE',
     excerpt:  'Balayage je investicija — evo kako ga zaštititi i produžiti sjaj između termina.',
+    ogImage:  '/images/blog/blog-njega-boje.jpg',
     Content:  NjegaBoje,
   },
   'novi-tretmani': {
@@ -112,6 +114,7 @@ const POSTS: Record<string, {
     date:     '3. veljače 2025.',
     category: 'NOVOSTI',
     excerpt:  'Proširili smo ponudu tretmana njege kose. Pogledaj što je novo i zakaži konzultaciju.',
+    ogImage:  '/images/blog/blog-novi-tretmani.jpg',
     Content:  NoviTretmani,
   },
   'trendovi-sezone': {
@@ -119,6 +122,7 @@ const POSTS: Record<string, {
     date:     '20. veljače 2025.',
     category: 'TRENDOVI',
     excerpt:  'Prirodni tonovi, teksturirani valovi i lived-in boja — ovo su trendovi koji dominiraju sezoni.',
+    ogImage:  '/images/blog/blog-trendovi-sezone.jpg',
     Content:  TrenDoviSezone,
   },
 }
@@ -140,6 +144,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title:       post.title,
     description: post.excerpt,
     alternates:  { canonical: `https://studioamage.com/blog/${slug}` },
+    openGraph: {
+      images: [{ url: `https://studioamage.com${post.ogImage}`, width: 1200, height: 630, alt: post.title }],
+    },
   }
 }
 

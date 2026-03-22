@@ -1,9 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 // ── Review data ───────────────────────────────────────────────────────────────
-const REVIEWS = [
+type Review = {
+  name:     string
+  initials: string
+  when:     string
+  text:     string
+}
+
+const ORIGINAL_REVIEWS: Review[] = [
   {
     name:     'Snježana Lončar',
     initials: 'SL',
@@ -34,10 +41,11 @@ const REVIEWS = [
     when:     'Prije 5 dana',
     text:     'Konačno frizerka koja sluša! Došla sam s idejom, Marija ju je razumjela i nadogradila. Rezultat je bio još bolji nego što sam očekivala. Definitivno se vraćam!',
   },
-] as const
+]
 
-// Pages: 0 → reviews 0-2, 1 → reviews 3-4
-const PAGES = [REVIEWS.slice(0, 3), REVIEWS.slice(3)] as const
+// Duplicated array for seamless infinite loop
+const DOUBLED_REVIEWS = [...ORIGINAL_REVIEWS, ...ORIGINAL_REVIEWS]
+const N = ORIGINAL_REVIEWS.length
 
 // ── Google G icon ─────────────────────────────────────────────────────────────
 const IconGoogleG = () => (
@@ -50,7 +58,7 @@ const IconGoogleG = () => (
 )
 
 // ── Card ──────────────────────────────────────────────────────────────────────
-function ReviewCard({ name, initials, when, text }: typeof REVIEWS[number]) {
+function ReviewCard({ name, initials, when, text }: Review) {
   return (
     <div
       style={{
@@ -60,6 +68,7 @@ function ReviewCard({ name, initials, when, text }: typeof REVIEWS[number]) {
         boxShadow:        '0 2px 20px rgba(0, 0, 0, 0.06)',
         display:          'flex',
         flexDirection:    'column',
+        height:           '100%',
       }}
     >
       {/* Top row */}
@@ -106,23 +115,97 @@ function ReviewCard({ name, initials, when, text }: typeof REVIEWS[number]) {
       </div>
 
       {/* Text */}
-      <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', lineHeight: 1.7, color: '#6b4c3b', flex: 1, margin: 0 }}>
+      <p className="text-justify" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', lineHeight: 1.7, color: '#6b4c3b', flex: 1, margin: 0 }}>
         {text}
       </p>
     </div>
   )
 }
 
+// ── Arrow button ──────────────────────────────────────────────────────────────
+function ArrowBtn({ direction, onClick }: { direction: 'prev' | 'next'; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={direction === 'prev' ? 'Prethodna recenzija' : 'Sljedeća recenzija'}
+      style={{
+        width:           '40px',
+        height:          '40px',
+        borderRadius:    '50%',
+        border:          '1.5px solid rgba(147,86,56,0.35)',
+        backgroundColor: 'transparent',
+        color:           '#935638',
+        cursor:          'pointer',
+        display:         'flex',
+        alignItems:      'center',
+        justifyContent:  'center',
+        transition:      'all 0.2s ease',
+        flexShrink:       0,
+      }}
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {direction === 'prev'
+          ? <polyline points="15 18 9 12 15 6" />
+          : <polyline points="9 18 15 12 9 6" />
+        }
+      </svg>
+    </button>
+  )
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ReviewsSection() {
-  const [page, setPage] = useState(0)
+  const containerRef  = useRef<HTMLDivElement>(null)
+  const touchX        = useRef(0)
 
-  const [touchStartX, setTouchStartX] = useState(0)
-  const onTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX)
-  const onTouchEnd   = (e: React.TouchEvent) => {
-    const diff = touchStartX - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 50) setPage(diff > 0 ? Math.min(1, page + 1) : Math.max(0, page - 1))
-  }
+  const [cardW,   setCardW]   = useState(0)
+  const [gap,     setGap]     = useState(24)
+  const [index,   setIndex]   = useState(0)
+  const [animate, setAnimate] = useState(true)
+  const [paused,  setPaused]  = useState(false)
+
+  // ── Measure card width ──────────────────────────────────────────────────────
+  const measure = useCallback(() => {
+    if (!containerRef.current) return
+    const w       = containerRef.current.offsetWidth
+    const mobile  = window.innerWidth < 1024
+    const g       = mobile ? 0 : 24
+    const visible = mobile ? 1 : 3
+    setCardW((w - (visible - 1) * g) / visible)
+    setGap(g)
+  }, [])
+
+  useEffect(() => {
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [measure])
+
+  // ── Autoplay ────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (paused || cardW === 0) return
+    const id = setInterval(() => setIndex(i => i + 1), 4000)
+    return () => clearInterval(id)
+  }, [paused, cardW])
+
+  // ── Seamless loop reset ─────────────────────────────────────────────────────
+  useEffect(() => {
+    if (index < N) return
+    // Wait for the slide transition to complete, then snap back silently
+    const t = setTimeout(() => {
+      setAnimate(false)
+      setIndex(0)
+      setTimeout(() => setAnimate(true), 20)
+    }, 500)
+    return () => clearTimeout(t)
+  }, [index])
+
+  // ── Navigation ──────────────────────────────────────────────────────────────
+  const prev = () => setIndex(i => Math.max(0, i - 1))
+  const next = () => setIndex(i => i + 1)
+
+  const step = cardW + gap
 
   return (
     <section
@@ -160,107 +243,44 @@ export default function ReviewsSection() {
           </h2>
         </div>
 
-        {/* Cards */}
+        {/* ── Carousel track ── */}
         <div
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
+          ref={containerRef}
+          style={{ overflow: 'hidden' }}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={e => { touchX.current = e.touches[0].clientX }}
+          onTouchEnd={e => {
+            const diff = touchX.current - e.changedTouches[0].clientX
+            if (Math.abs(diff) > 50) diff > 0 ? next() : prev()
+          }}
         >
-          {/* Desktop: grid 3 cols. Mobile: single card carousel via overflow+translate */}
-
-          {/* Desktop grid — hidden on mobile */}
-          <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
-            {PAGES[page as 0 | 1].map((r, i) => (
-              <ReviewCard key={i} {...r} />
+          <div
+            style={{
+              display:    'flex',
+              gap:        `${gap}px`,
+              transform:  `translateX(-${index * step}px)`,
+              transition: animate ? 'transform 500ms ease' : 'none',
+            }}
+          >
+            {DOUBLED_REVIEWS.map((r, i) => (
+              <div
+                key={i}
+                style={{
+                  flex:     `0 0 ${cardW > 0 ? `${cardW}px` : 'auto'}`,
+                  minWidth: cardW > 0 ? `${cardW}px` : undefined,
+                }}
+              >
+                <ReviewCard {...r} />
+              </div>
             ))}
-          </div>
-
-          {/* Mobile: single card */}
-          <div className="lg:hidden">
-            {(() => {
-              const allReviews = [...REVIEWS]
-              const mobileIndex = page === 0 ? 0 : 3
-              return <ReviewCard {...allReviews[mobileIndex]} />
-            })()}
           </div>
         </div>
 
-        {/* Navigation */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '2.5rem' }}>
-          {/* Prev */}
-          <button
-            onClick={() => setPage(p => Math.max(0, p - 1))}
-            disabled={page === 0}
-            aria-label="Prethodna stranica recenzija"
-            style={{
-              width:           '40px',
-              height:          '40px',
-              borderRadius:    '50%',
-              border:          '1.5px solid rgba(147,86,56,0.35)',
-              backgroundColor: 'transparent',
-              color:           '#935638',
-              cursor:          page === 0 ? 'default' : 'pointer',
-              opacity:         page === 0 ? 0.35 : 1,
-              display:         'flex',
-              alignItems:      'center',
-              justifyContent:  'center',
-              transition:      'all 0.2s ease',
-              flexShrink:       0,
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-
-          {/* 2 dots */}
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            {[0, 1].map(i => (
-              <button
-                key={i}
-                onClick={() => setPage(i)}
-                aria-label={`Stranica recenzija ${i + 1}`}
-                aria-current={i === page ? 'true' : undefined}
-                style={{
-                  width:           i === page ? '20px' : '8px',
-                  height:          '8px',
-                  borderRadius:    '9999px',
-                  border:          'none',
-                  backgroundColor: i === page ? '#935638' : 'rgba(147,86,56,0.3)',
-                  cursor:          'pointer',
-                  padding:          0,
-                  transition:      'all 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Next */}
-          <button
-            onClick={() => setPage(p => Math.min(1, p + 1))}
-            disabled={page === 1}
-            aria-label="Sljedeća stranica recenzija"
-            style={{
-              width:           '40px',
-              height:          '40px',
-              borderRadius:    '50%',
-              border:          '1.5px solid rgba(147,86,56,0.35)',
-              backgroundColor: 'transparent',
-              color:           '#935638',
-              cursor:          page === 1 ? 'default' : 'pointer',
-              opacity:         page === 1 ? 0.35 : 1,
-              display:         'flex',
-              alignItems:      'center',
-              justifyContent:  'center',
-              transition:      'all 0.2s ease',
-              flexShrink:       0,
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
+        {/* ── Arrow navigation ── */}
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '2.5rem' }}>
+          <ArrowBtn direction="prev" onClick={prev} />
+          <ArrowBtn direction="next" onClick={next} />
         </div>
 
       </div>

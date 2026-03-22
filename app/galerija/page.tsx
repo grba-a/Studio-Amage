@@ -4,29 +4,33 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
 // ── Types & data ───────────────────────────────────────────────────────────────
-type Category = 'sve' | 'balayage' | 'bojanje' | 'šišanje' | 'transformacije'
+type Category = 'sve' | 'salon' | 'modeli' | 'usluga'
 
 const FILTER_LABELS: { key: Category; label: string }[] = [
-  { key: 'sve',            label: 'Sve' },
-  { key: 'balayage',       label: 'Balayage' },
-  { key: 'bojanje',        label: 'Bojanje' },
-  { key: 'šišanje',        label: 'Šišanje' },
-  { key: 'transformacije', label: 'Transformacije' },
+  { key: 'sve',    label: 'Sve' },
+  { key: 'salon',  label: 'Salon' },
+  { key: 'modeli', label: 'Modeli' },
+  { key: 'usluga', label: 'Usluga' },
 ]
 
 const ITEMS: { id: number; category: Category }[] = [
-  { id:  1, category: 'balayage' },
-  { id:  2, category: 'bojanje' },
-  { id:  3, category: 'šišanje' },
-  { id:  4, category: 'balayage' },
-  { id:  5, category: 'transformacije' },
-  { id:  6, category: 'bojanje' },
-  { id:  7, category: 'balayage' },
-  { id:  8, category: 'šišanje' },
-  { id:  9, category: 'bojanje' },
-  { id: 10, category: 'transformacije' },
-  { id: 11, category: 'balayage' },
-  { id: 12, category: 'bojanje' },
+  { id:  1, category: 'modeli' },
+  { id:  2, category: 'modeli' },
+  { id:  3, category: 'modeli' },
+  { id:  4, category: 'salon' },
+  { id:  5, category: 'salon' },
+  { id:  6, category: 'salon' },
+  { id:  7, category: 'salon' },
+  { id:  8, category: 'modeli' },
+  { id:  9, category: 'modeli' },
+  { id: 10, category: 'modeli' },
+  { id: 11, category: 'usluga' },
+  { id: 12, category: 'usluga' },
+  { id: 13, category: 'usluga' },
+  { id: 14, category: 'usluga' },
+  { id: 15, category: 'usluga' },
+  { id: 16, category: 'usluga' },
+  { id: 17, category: 'usluga' },
 ]
 
 // ── Page ───────────────────────────────────────────────────────────────────────
@@ -59,13 +63,24 @@ export default function GalerijaPage() {
         {/* ══ 1. PAGE HERO ════════════════════════════════════════════════════ */}
         <section
           style={{
-            backgroundColor: '#2c1810',
-            paddingTop:      'calc(80px + 3.5rem)',
-            paddingBottom:   '3.5rem',
-            textAlign:       'center',
+            background:     'linear-gradient(135deg, #ede3db 0%, #f4ece4 50%, #e8ddd5 100%)',
+            minHeight:      '320px',
+            display:        'flex',
+            alignItems:     'center',
+            justifyContent: 'center',
+            textAlign:      'center',
+            padding:        'calc(80px + 3.5rem) 24px 3.5rem',
+            position:       'relative',
+            overflow:       'hidden',
           }}
         >
-          <div className="mx-auto px-6" style={{ maxWidth: '800px' }}>
+          <div aria-hidden="true" style={{
+            position: 'absolute', top: 0, right: 0, width: 0, height: 0,
+            borderStyle: 'solid', borderWidth: '0 200px 200px 0',
+            borderColor: 'transparent rgba(147,86,56,0.08) transparent transparent',
+          }} />
+
+          <div style={{ maxWidth: '800px', position: 'relative' }}>
             <p
               style={{
                 fontFamily:    'Poppins, sans-serif',
@@ -73,7 +88,7 @@ export default function GalerijaPage() {
                 fontWeight:     500,
                 letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color:         'rgba(255,255,255,0.55)',
+                color:         '#935638',
                 marginBottom:  '1rem',
               }}
             >
@@ -85,7 +100,7 @@ export default function GalerijaPage() {
                 fontFamily:   'Playfair Display, serif',
                 fontSize:     'clamp(36px, 5vw, 56px)',
                 fontWeight:    700,
-                color:        '#ffffff',
+                color:        '#935638',
                 lineHeight:    1.15,
                 marginBottom: '1.25rem',
               }}
@@ -93,19 +108,6 @@ export default function GalerijaPage() {
               Galerija radova
             </h1>
 
-            <p
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontSize:   'clamp(15px, 1.5vw, 17px)',
-                lineHeight:  1.75,
-                color:      'rgba(255,255,255,0.7)',
-                maxWidth:   '580px',
-                margin:     '0 auto',
-              }}
-            >
-              Svaki rad je priča za sebe — pogledaj transformacije koje smo
-              stvorili zajedno.
-            </p>
           </div>
         </section>
 

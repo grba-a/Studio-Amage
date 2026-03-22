@@ -69,19 +69,24 @@ const inputStyle: React.CSSProperties = {
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading,   setLoading]   = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const form = e.currentTarget
-    const data = new FormData(form)
+    setLoading(true)
 
-    await fetch('https://formspree.io/f/xeelypor', {
+    const formData = new FormData(e.currentTarget)
+
+    const res = await fetch('https://formspree.io/f/xeelypor', {
       method:  'POST',
-      body:    data,
+      body:    formData,
       headers: { Accept: 'application/json' },
     })
 
-    setSubmitted(true)
+    if (res.ok) {
+      setSubmitted(true)
+    }
+    setLoading(false)
   }
 
   const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -170,9 +175,9 @@ export default function ContactForm() {
               </p>
               <div style={{ display: 'flex', gap: '16px' }}>
                 {[
-                  { name: 'Instagram', href: 'https://www.instagram.com/studio.amage', Icon: IconInstagram },
-                  { name: 'Facebook',  href: 'https://www.facebook.com/studioamage',   Icon: IconFacebook },
-                  { name: 'TikTok',    href: 'https://www.tiktok.com/@studioamage',    Icon: IconTikTok },
+                  { name: 'Instagram', href: 'https://www.instagram.com/studio.amage/',                              Icon: IconInstagram },
+                  { name: 'Facebook',  href: 'https://web.facebook.com/profile.php?id=61579663233614&locale=hr_HR', Icon: IconFacebook },
+                  { name: 'TikTok',    href: 'https://www.tiktok.com/@studio.amage',                               Icon: IconTikTok },
                 ].map(({ name, href, Icon }) => (
                   <a
                     key={name}
@@ -282,6 +287,7 @@ export default function ContactForm() {
                 {/* Submit */}
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     width:         '100%',
                     backgroundColor: '#935638',
@@ -294,13 +300,14 @@ export default function ContactForm() {
                     fontWeight:      500,
                     letterSpacing:  '0.1em',
                     textTransform:  'uppercase',
-                    cursor:         'pointer',
+                    cursor:         loading ? 'default' : 'pointer',
+                    opacity:        loading ? 0.7 : 1,
                     transition:     'background-color 0.2s ease',
                   }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#7a4529' }}
+                  onMouseEnter={e => { if (!loading) (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#7a4529' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#935638' }}
                 >
-                  Rezerviraj termin
+                  {loading ? 'Slanje...' : 'Rezerviraj termin'}
                 </button>
 
               </form>

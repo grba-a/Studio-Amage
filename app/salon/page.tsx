@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     'Studio Amage — frizerski studio u Splitu. Upoznaj naš intiman prostor u Trenkovoj ulici 74 i vlasnicu Mariju Jurčević.',
   alternates: { canonical: 'https://studioamage.com/salon' },
+  openGraph: {
+    images: [{ url: 'https://studioamage.com/images/salon/salon-1.jpg', width: 1200, height: 630, alt: 'Studio Amage salon — Trenkova 74 Split' }],
+  },
 }
 
 // ── Detail items ───────────────────────────────────────────────────────────────
@@ -44,7 +47,7 @@ const DETAILS = [
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    text: 'Pon–Pet 9:00–19:00, Sub 9:00–15:00',
+    text: 'Po dogovoru',
   },
 ] as const
 
@@ -53,17 +56,17 @@ const VALUES = [
   {
     num:   '01',
     title: 'Personalizacija',
-    text:  'Svaki klijent je jedinstven. Slušamo, analiziramo i kreiramo plan koji je savršen upravo za tebe — ne za trendove.',
+    text:  'Svaki klijent je jedinstven. Slušamo, analiziramo i kreiramo plan koji je savršen upravo za tebe.',
   },
   {
     num:   '02',
     title: 'Kvaliteta',
-    text:  'Radimo isključivo s premium proizvodima i tehnikama koji su sigurni za kosu i daju dugotrajan, vidljiv rezultat.',
+    text:  'Radimo isključivo s premium proizvodima i tehnikama koji su sigurni za kosu i daju dugotrajan i vidljiv rezultat.',
   },
   {
     num:   '03',
     title: 'Edukacija',
-    text:  'Stalno se usavršavamo i pratimo svjetske trendove kako bismo ti uvijek ponudili best-in-class uslugu.',
+    text:  'Stalno se usavršavamo i pratimo svjetske trendove kako bismo ti uvijek ponudili "best-in-class" uslugu.',
   },
 ] as const
 
@@ -75,13 +78,24 @@ export default function SalonPage() {
       {/* ══ 1. PAGE HERO ════════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: '#2c1810',
-          paddingTop:      'calc(80px + 3.5rem)',
-          paddingBottom:   '3.5rem',
-          textAlign:       'center',
+          background:     'linear-gradient(135deg, #ede3db 0%, #f4ece4 50%, #e8ddd5 100%)',
+          minHeight:      '320px',
+          display:        'flex',
+          alignItems:     'center',
+          justifyContent: 'center',
+          textAlign:      'center',
+          padding:        'calc(80px + 3.5rem) 24px 3.5rem',
+          position:       'relative',
+          overflow:       'hidden',
         }}
       >
-        <div className="mx-auto px-6" style={{ maxWidth: '800px' }}>
+        <div aria-hidden="true" style={{
+          position: 'absolute', top: 0, right: 0, width: 0, height: 0,
+          borderStyle: 'solid', borderWidth: '0 200px 200px 0',
+          borderColor: 'transparent rgba(147,86,56,0.08) transparent transparent',
+        }} />
+
+        <div style={{ maxWidth: '800px', position: 'relative' }}>
           <p
             style={{
               fontFamily:    'Poppins, sans-serif',
@@ -89,7 +103,7 @@ export default function SalonPage() {
               fontWeight:     500,
               letterSpacing: '0.25em',
               textTransform: 'uppercase',
-              color:         'rgba(255,255,255,0.55)',
+              color:         '#935638',
               marginBottom:  '1rem',
             }}
           >
@@ -101,7 +115,7 @@ export default function SalonPage() {
               fontFamily:   'Playfair Display, serif',
               fontSize:     'clamp(36px, 5vw, 56px)',
               fontWeight:    700,
-              color:        '#ffffff',
+              color:        '#935638',
               lineHeight:    1.15,
               marginBottom: '1.25rem',
             }}
@@ -109,18 +123,6 @@ export default function SalonPage() {
             Salon i prostor
           </h1>
 
-          <p
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontSize:   'clamp(15px, 1.5vw, 17px)',
-              lineHeight:  1.75,
-              color:      'rgba(255,255,255,0.7)',
-              maxWidth:   '560px',
-              margin:     '0 auto',
-            }}
-          >
-            Intiman prostor posvećen jednom klijentu — tebi.
-          </p>
         </div>
       </section>
 
@@ -184,6 +186,7 @@ export default function SalonPage() {
               </h2>
 
               <p
+                className="text-justify"
                 style={{
                   fontFamily:   'Poppins, sans-serif',
                   fontSize:     '16px',
@@ -326,26 +329,26 @@ export default function SalonPage() {
                   color:         '#6b4c3b',
                 }}
               >
-                <p>
+                <p className="text-justify">
                   Marija Jurčević je osnivačica i vlasnica Studio Amage — frizerskog
                   studija koji je redefinirao ono što znači osobna pažnja. S više od
                   deset godina iskustva u frizerskoj industriji, Marija je izgradila
                   reputaciju stručnjakinje za tehnike bojanja, balayage i transformacije
                   kose.
                 </p>
-                <p>
+                <p className="text-justify">
                   Njezin pristup uvijek počinje konzultacijom — razgovorom u kojemu
                   sluša, analizira i razumije što klijent želi, ali i što je dugoročno
                   zdravo za kosu. Rezultat nije samo estetski — to je investicija u
                   samopouzdanje i dobrobit.
                 </p>
-                <p>
+                <p className="text-justify">
                   Kao certificirana edukatorica, Marija redovito pohađa međunarodne
                   seminare i educira mlade frizere u tehnikama koje spajaju kreativnost
                   i stručnost. Njen rad prati filozofija: svaki klijent zaslužuje
                   tretman koji je napravljen isključivo za njega.
                 </p>
-                <p>
+                <p className="text-justify">
                   Studio Amage je nastao iz jedne jednostavne ideje — da frizerstvo
                   može i mora biti intimno, pažljivo i personalizirano. I upravo to
                   Marija svaki dan donosi u svoje radno mjesto.

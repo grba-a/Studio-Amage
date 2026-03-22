@@ -22,6 +22,14 @@ export const metadata: Metadata = {
     locale: 'hr_HR',
     type: 'website',
     url: BASE_URL,
+    images: [
+      {
+        url:    'https://studioamage.com/images/hero/hero-1.jpg',
+        width:  1200,
+        height: 630,
+        alt:    'Studio Amage — frizerski salon Split',
+      },
+    ],
   },
   alternates: {
     canonical: BASE_URL,

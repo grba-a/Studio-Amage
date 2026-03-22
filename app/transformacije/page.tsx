@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 
 // ── SEO ────────────────────────────────────────────────────────────────────────
@@ -7,14 +8,18 @@ export const metadata: Metadata = {
   description:
     'Amage Transformacije — potpune promjene izgleda kose u frizerskom studiju Split. Balayage, pramenovi, rekonstrukcija.',
   alternates: { canonical: 'https://studioamage.com/transformacije' },
+  openGraph: {
+    images: [{ url: 'https://studioamage.com/images/hero/hero-2.jpg', width: 1200, height: 630, alt: 'Transformacije kose — Studio Amage Split' }],
+  },
 }
 
 // ── Steps data ─────────────────────────────────────────────────────────────────
-const STEPS = [
+const STEPS: { num: string; title: string; text: string; node?: ReactNode }[] = [
   {
     num:   '01',
     title: 'Konzultacija',
     text:  'Počinjemo razgovorom. Analiziramo stanje kose, tvoje navike i dugoročni cilj.',
+    node:  <>Počinjemo razgovorom te analiziramo stanje kose, tvoje navike i dugoročni cilj.</>,
   },
   {
     num:   '02',
@@ -24,9 +29,9 @@ const STEPS = [
   {
     num:   '03',
     title: 'Transformacija & njega',
-    text:  'Izvodimo tretman s punom pažnjom i educiramo te kako održavati rezultat kod kuće.',
+    text:  'Izvodimo tretman s punom pažnjom i educiramo te kako održavati kosu kod kuće.',
   },
-] as const
+]
 
 // ── Before/After pairs ─────────────────────────────────────────────────────────
 const PAIRS = [
@@ -61,13 +66,24 @@ export default function TransformacijePage() {
       {/* ══ 1. PAGE HERO ══════════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: '#2c1810',
-          paddingTop:      'calc(80px + 3.5rem)',
-          paddingBottom:   '3.5rem',
-          textAlign:       'center',
+          background:     'linear-gradient(135deg, #ede3db 0%, #f4ece4 50%, #e8ddd5 100%)',
+          minHeight:      '320px',
+          display:        'flex',
+          alignItems:     'center',
+          justifyContent: 'center',
+          textAlign:      'center',
+          padding:        'calc(80px + 3.5rem) 24px 3.5rem',
+          position:       'relative',
+          overflow:       'hidden',
         }}
       >
-        <div className="mx-auto px-6" style={{ maxWidth: '800px' }}>
+        <div aria-hidden="true" style={{
+          position: 'absolute', top: 0, right: 0, width: 0, height: 0,
+          borderStyle: 'solid', borderWidth: '0 200px 200px 0',
+          borderColor: 'transparent rgba(147,86,56,0.08) transparent transparent',
+        }} />
+
+        <div style={{ maxWidth: '800px', position: 'relative' }}>
           <p
             style={{
               fontFamily:    'Poppins, sans-serif',
@@ -75,7 +91,7 @@ export default function TransformacijePage() {
               fontWeight:     500,
               letterSpacing: '0.25em',
               textTransform: 'uppercase',
-              color:         'rgba(255,255,255,0.55)',
+              color:         '#935638',
               marginBottom:  '1rem',
             }}
           >
@@ -87,7 +103,7 @@ export default function TransformacijePage() {
               fontFamily:   'Playfair Display, serif',
               fontSize:     'clamp(36px, 5vw, 56px)',
               fontWeight:    700,
-              color:        '#ffffff',
+              color:        '#935638',
               lineHeight:    1.15,
               marginBottom: '1.25rem',
             }}
@@ -95,19 +111,6 @@ export default function TransformacijePage() {
             Amage Transformacije
           </h1>
 
-          <p
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontSize:   'clamp(15px, 1.5vw, 17px)',
-              lineHeight:  1.75,
-              color:      'rgba(255,255,255,0.7)',
-              maxWidth:   '620px',
-              margin:     '0 auto',
-            }}
-          >
-            Potpune promjene izgleda koje spajaju personaliziran plan, stručnu
-            tehniku i njegu kose za rezultat koji traje.
-          </p>
         </div>
       </section>
 
@@ -178,7 +181,7 @@ export default function TransformacijePage() {
 
           {/* Steps grid */}
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-            {STEPS.map(({ num, title, text }) => (
+            {STEPS.map(({ num, title, text, node }) => (
               <div key={num} style={{ textAlign: 'center' }}>
                 {/* Number */}
                 <p
@@ -220,7 +223,7 @@ export default function TransformacijePage() {
                     margin:     '0 auto',
                   }}
                 >
-                  {text}
+                  {node ?? text}
                 </p>
               </div>
             ))}
@@ -432,8 +435,7 @@ export default function TransformacijePage() {
               marginBottom: '2.5rem',
             }}
           >
-            Rezerviraj konzultaciju i zajedno kreiramo plan koji je
-            savršen za tebe i tvoju kosu.
+            Rezerviraj konzultaciju i zajedno kreiramo plan koji je savršen za tebe.
           </p>
 
           <Link href="/#rezervacija" className="hero-cta">

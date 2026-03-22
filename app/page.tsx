@@ -17,6 +17,7 @@ export default function HomePage() {
   return (
     <main>
       <HeroSlider />
+      <h1 className="sr-only">Studio Amage — frizerski salon u Splitu</h1>
       <VideoSection />
       <SalonPreview />
       <BioSection />

@@ -54,6 +54,7 @@ export default function BioSection() {
             ].map((text, i) => (
               <p
                 key={i}
+                className="text-justify"
                 style={{
                   fontFamily:   'Poppins, sans-serif',
                   fontSize:     '15px',

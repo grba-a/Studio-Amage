@@ -156,6 +156,7 @@ export default function FAQSection() {
                   }}
                 >
                   <p
+                    className="text-justify"
                     style={{
                       fontFamily:  'Poppins, sans-serif',
                       fontSize:    '15px',

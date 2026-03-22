@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     'Frizerske usluge u Splitu — balayage, bojanje, šišanje, feniranje, rekonstrukcija kose. Studio Amage, Trenkova 74, Split.',
   alternates: { canonical: 'https://studioamage.com/tretmani-usluge' },
+  openGraph: {
+    images: [{ url: 'https://studioamage.com/images/hero/hero-1.jpg', width: 1200, height: 630, alt: 'Tretmani i usluge — Studio Amage Split' }],
+  },
 }
 
 // ── Service data ──────────────────────────────────────────────────────────────
@@ -16,21 +19,21 @@ const SERVICES = [
     name:    'Bojanje i pramenovi',
     short:   'Bojanje koje izgleda skupo, čak i tjednima nakon termina',
     detail:  'Precizna tehnika nanošenja boje koja ostavlja prirodan prelaz i sjaj koji traje. Idealno za one koji žele promjenu bez drastičnog reza.',
-    imgSrc:  '/images/galerija/galerija-1.jpg',
+    imgSrc:  '/images/galerija/galerija-13.jpg',
     imgAlt:  'Bojanje i pramenovi — Studio Amage Split',
   },
   {
     name:    'Šišanje i feniranje',
     short:   'Precizno šišanje i završni styling prilagođen obliku lica, teksturi i životnom stilu',
     detail:  'Svaki rez počinje detaljnom konzultacijom. Cilj je frizura koja izgleda dobro i kad ju sami stiliziraš kod kuće.',
-    imgSrc:  '/images/galerija/galerija-3.jpg',
+    imgSrc:  '/images/galerija/galerija-12.jpg',
     imgAlt:  'Šišanje i feniranje — Studio Amage Split',
   },
   {
     name:    'Balayage',
     short:   'Ručno oslikani pramenovi koji izgledaju prirodno i rastu lijepo — bez oštrih linija',
     detail:  'Tehnika bojanja rukom koja daje najprirodniji rezultat. Savršena za one koji žele low-maintenance kosu s WOW efektom.',
-    imgSrc:  '/images/galerija/galerija-2.jpg',
+    imgSrc:  '/images/galerija/galerija-16.jpg',
     imgAlt:  'Balayage — Studio Amage Split',
   },
 ] as const
@@ -94,19 +97,6 @@ export default function TretmaniUslugePage() {
             Tretmani i usluge
           </h1>
 
-          <p
-            style={{
-              fontFamily:  'Poppins, sans-serif',
-              fontSize:    'clamp(15px, 1.5vw, 17px)',
-              lineHeight:   1.75,
-              color:       '#6b4c3b',
-              maxWidth:    '620px',
-              margin:      '0 auto',
-            }}
-          >
-            Odaberi uslugu ili tretman prema cilju koji želiš postići.
-            Svaki termin je personaliziran i prilagođen stanju tvoje kose.
-          </p>
         </div>
       </section>
 
@@ -170,6 +160,7 @@ export default function TretmaniUslugePage() {
                   </p>
 
                   <p
+                    className="text-justify"
                     style={{
                       fontFamily: 'Poppins, sans-serif',
                       fontSize:   '13px',
@@ -229,6 +220,7 @@ export default function TretmaniUslugePage() {
               </h2>
 
               <p
+                className="text-justify"
                 style={{
                   fontFamily:   'Poppins, sans-serif',
                   fontSize:     '16px',
@@ -237,9 +229,10 @@ export default function TretmaniUslugePage() {
                   marginBottom: '2rem',
                 }}
               >
-                Potpuna promjena izgleda koja spaja personaliziran plan, stručnu
-                tehniku i njegu kose za rezultat koji traje. Ovo nije samo šišanje
-                — ovo je reinvencija.
+                Potpuna promjena izgleda koja spaja personaliziran plan, stručnu tehniku
+                i njegu kose za rezultat koji traje.
+                <br />
+                Ovo nije samo šišanje, ovo je potpuna transformacija.
               </p>
 
               <Link href="/transformacije" className="btn-outline-brand">
@@ -289,10 +282,12 @@ export default function TretmaniUslugePage() {
               color:        '#6b4c3b',
               lineHeight:    1.7,
               marginBottom: '2rem',
+              textAlign:    'center',
             }}
           >
-            Rezerviraj termin i javi nam koje usluge te zanimaju.
-            Javit ćemo se u roku 24 sata.
+            Rezervirajte termin i javite nam koje usluge Vas zanimaju.
+            <br />
+            Javljamo se u roku 24 sata.
           </p>
           <Link href="/#rezervacija" className="hero-cta">
             Rezerviraj termin

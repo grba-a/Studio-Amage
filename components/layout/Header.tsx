@@ -18,7 +18,7 @@ const NAV_LINKS = [
 const SOCIAL_LINKS = [
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/studioamage',
+    href: 'https://www.instagram.com/studio.amage/',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"
@@ -31,7 +31,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: 'Facebook',
-    href: 'https://www.facebook.com/studioamage',
+    href: 'https://web.facebook.com/profile.php?id=61579663233614&locale=hr_HR',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -40,7 +40,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: 'TikTok',
-    href: 'https://www.tiktok.com/@studioamage',
+    href: 'https://www.tiktok.com/@studio.amage',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5
@@ -53,7 +53,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: 'WhatsApp',
-    href: 'https://wa.me/385000000000',
+    href: 'https://wa.me/385993496435',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15

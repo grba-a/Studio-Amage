@@ -111,7 +111,11 @@ const jsonLd = {
   telephone: '+385993496435',
   email: 'studio.amage@gmail.com',
   url: 'https://studioamage.com',
-  sameAs: ['https://www.instagram.com/studio.amage'],
+  sameAs: [
+    'https://www.instagram.com/studio.amage/',
+    'https://web.facebook.com/profile.php?id=61579663233614&locale=hr_HR',
+    'https://www.tiktok.com/@studio.amage',
+  ],
 }
 
 // ── Component (Server Component — no 'use client') ────────────────────────────
@@ -167,10 +171,10 @@ export default function Footer() {
               {/* Social icons row */}
               <div className="flex items-center gap-4">
                 {[
-                  { name: 'Instagram', href: 'https://www.instagram.com/studio.amage', Icon: IconInstagram },
-                  { name: 'Facebook',  href: 'https://www.facebook.com/studioamage',   Icon: IconFacebook },
-                  { name: 'TikTok',    href: 'https://www.tiktok.com/@studioamage',    Icon: IconTikTok },
-                  { name: 'WhatsApp',  href: 'https://wa.me/385993496435',             Icon: IconWhatsApp },
+                  { name: 'Instagram', href: 'https://www.instagram.com/studio.amage/',                              Icon: IconInstagram },
+                  { name: 'Facebook',  href: 'https://web.facebook.com/profile.php?id=61579663233614&locale=hr_HR', Icon: IconFacebook },
+                  { name: 'TikTok',    href: 'https://www.tiktok.com/@studio.amage',                               Icon: IconTikTok },
+                  { name: 'WhatsApp',  href: 'https://wa.me/385993496435',                                         Icon: IconWhatsApp },
                 ].map(({ name, href, Icon }) => (
                   <a
                     key={name}

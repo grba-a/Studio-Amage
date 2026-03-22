@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     'Savjeti za njegu kose, trendovi i stručni tekstovi iz Studio Amage frizerskog studija u Splitu.',
   alternates: { canonical: 'https://studioamage.com/blog' },
+  openGraph: {
+    images: [{ url: 'https://studioamage.com/images/blog/blog-njega-boje.jpg', width: 1200, height: 630, alt: 'Blog — Studio Amage' }],
+  },
 }
 
 // ── Posts ──────────────────────────────────────────────────────────────────────
@@ -46,13 +49,24 @@ export default function BlogPage() {
       {/* ══ 1. PAGE HERO ════════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: '#2c1810',
-          paddingTop:      'calc(80px + 3.5rem)',
-          paddingBottom:   '3.5rem',
-          textAlign:       'center',
+          background:     'linear-gradient(135deg, #ede3db 0%, #f4ece4 50%, #e8ddd5 100%)',
+          minHeight:      '320px',
+          display:        'flex',
+          alignItems:     'center',
+          justifyContent: 'center',
+          textAlign:      'center',
+          padding:        'calc(80px + 3.5rem) 24px 3.5rem',
+          position:       'relative',
+          overflow:       'hidden',
         }}
       >
-        <div className="mx-auto px-6" style={{ maxWidth: '800px' }}>
+        <div aria-hidden="true" style={{
+          position: 'absolute', top: 0, right: 0, width: 0, height: 0,
+          borderStyle: 'solid', borderWidth: '0 200px 200px 0',
+          borderColor: 'transparent rgba(147,86,56,0.08) transparent transparent',
+        }} />
+
+        <div style={{ maxWidth: '800px', position: 'relative' }}>
           <p
             style={{
               fontFamily:    'Poppins, sans-serif',
@@ -60,7 +74,7 @@ export default function BlogPage() {
               fontWeight:     500,
               letterSpacing: '0.25em',
               textTransform: 'uppercase',
-              color:         'rgba(255,255,255,0.55)',
+              color:         '#935638',
               marginBottom:  '1rem',
             }}
           >
@@ -72,7 +86,7 @@ export default function BlogPage() {
               fontFamily:   'Playfair Display, serif',
               fontSize:     'clamp(36px, 5vw, 56px)',
               fontWeight:    700,
-              color:        '#ffffff',
+              color:        '#935638',
               lineHeight:    1.15,
               marginBottom: '1.25rem',
             }}
@@ -80,18 +94,6 @@ export default function BlogPage() {
             Blog
           </h1>
 
-          <p
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontSize:   'clamp(15px, 1.5vw, 17px)',
-              lineHeight:  1.75,
-              color:      'rgba(255,255,255,0.7)',
-              maxWidth:   '560px',
-              margin:     '0 auto',
-            }}
-          >
-            Savjeti, trendovi i stručni tekstovi o njezi i ljepoti kose.
-          </p>
         </div>
       </section>
 
