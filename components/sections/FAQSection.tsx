@@ -11,8 +11,8 @@ const FAQS: { q: string; a: string; node?: ReactNode }[] = [
     a: 'Preporučujemo naručivanje najmanje 7 do 14 dana unaprijed, posebno za složenije tretmane poput balayagea. Za šišanje i feniranje smo dosta fleksibilniji. Kontaktirajte nas putem obrasca ili telefona i provjeriti ćemo dostupnost.',
     node: <>
       Preporučujemo naručivanje najmanje 7 do 14 dana unaprijed, posebno za
-      složenije tretmane poput balayagea.<br />
-      Za šišanje i feniranje smo dosta fleksibilniji.<br />
+      složenije tretmane poput balayagea. Za šišanje i feniranje smo dosta fleksibilniji.
+      <br />
       Kontaktirajte nas putem obrasca ili telefona i provjeriti ćemo dostupnost.
     </>,
   },
