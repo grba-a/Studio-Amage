@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 // ── Navigation links ─────────────────────────────────────────────────────────
 const NAV_LINKS = [
@@ -127,30 +128,17 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-10 md:py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
 
-          {/* ── Col 1: Logo + tagline ── */}
+          {/* ── Col 1: Logo ── */}
           <div className="flex flex-col gap-3">
             <Link href="/" className="no-underline inline-block">
-              <div className="leading-none select-none">
-                <div
-                  className="font-serif font-bold leading-none"
-                  style={{ fontSize: '32px', color: '#935638', letterSpacing: '0.08em' }}
-                >
-                  AMAGE
-                </div>
-                <div
-                  className="font-sans font-normal uppercase mt-1"
-                  style={{ fontSize: '9px', color: 'rgba(147, 86, 56, 0.7)', letterSpacing: '0.2em' }}
-                >
-                  HAIR STUDIO
-                </div>
-              </div>
+              <Image
+                src="/images/logo/logo_amage.png"
+                alt="Studio Amage"
+                width={180}
+                height={72}
+                style={{ objectFit: 'contain', objectPosition: 'left center' }}
+              />
             </Link>
-            <p
-              className="font-sans mt-1"
-              style={{ fontSize: '13px', color: 'var(--text-muted)' }}
-            >
-              Frizerski studio u Splitu
-            </p>
           </div>
 
           {/* ── Col 2: Navigacija ── */}
