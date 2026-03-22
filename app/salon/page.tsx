@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import AboutIntro from '@/components/sections/AboutIntro'
 
 // ── SEO ────────────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -122,6 +123,8 @@ export default function SalonPage() {
           </p>
         </div>
       </section>
+
+      <AboutIntro />
 
       {/* ══ 2. INTERIJER SEKCIJA ════════════════════════════════════════════ */}
       <section

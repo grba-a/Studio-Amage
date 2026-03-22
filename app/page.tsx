@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import HeroSlider      from '@/components/sections/HeroSlider'
 import VideoSection    from '@/components/sections/VideoSection'
-import AboutIntro      from '@/components/sections/AboutIntro'
 import SalonPreview    from '@/components/sections/SalonPreview'
 import BioSection      from '@/components/sections/BioSection'
 import LocationSection from '@/components/sections/LocationSection'
@@ -19,7 +18,6 @@ export default function HomePage() {
     <main>
       <HeroSlider />
       <VideoSection />
-      <AboutIntro />
       <SalonPreview />
       <BioSection />
       <LocationSection />
