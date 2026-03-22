@@ -120,8 +120,7 @@ export default function LocationSection() {
                     <IconClock />
                   </span>
                   <div className="font-sans" style={{ fontSize: '15px', color: '#6b4c3b', lineHeight: 1.7 }}>
-                    <div>Pon–Pet &nbsp;9:00–19:00</div>
-                    <div>Sub &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9:00–15:00</div>
+                    Termini po dogovoru
                   </div>
                 </div>
 
