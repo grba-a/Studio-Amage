@@ -40,7 +40,7 @@ export default function HeroSlider() {
       aria-label="Hero galerija"
       style={{
         position: 'relative',
-        height:   '100vh',
+        height:   '100svh',
         width:    '100%',
         overflow: 'hidden',
         margin:    0,

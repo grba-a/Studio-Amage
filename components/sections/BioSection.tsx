@@ -7,16 +7,13 @@ export default function BioSection() {
       aria-labelledby="bio-heading"
       style={{ backgroundColor: '#ede3db', paddingTop: '6rem', paddingBottom: '6rem' }}
     >
-      <div style={{
-        display:             'grid',
-        gridTemplateColumns: '55% 45%',
-        gap:                 '80px',
-        alignItems:          'center',
-        maxWidth:            '1200px',
-        margin:              '0 auto',
-        padding:             '0 24px',
-      }}
+      <div
         className="bio-grid"
+        style={{
+          maxWidth: '1200px',
+          margin:   '0 auto',
+          padding:  '0 24px',
+        }}
       >
 
           {/* ── Left: text ── */}
