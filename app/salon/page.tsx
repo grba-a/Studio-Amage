@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import SalonCarousel from '@/components/sections/SalonCarousel'
 import Link from 'next/link'
 import AboutIntro from '@/components/sections/AboutIntro'
 
@@ -47,7 +48,7 @@ const DETAILS = [
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    text: 'Po dogovoru',
+    text: 'Termini po dogovoru',
   },
 ] as const
 
@@ -136,24 +137,8 @@ export default function SalonPage() {
         <div className="mx-auto px-6" style={{ maxWidth: '1200px' }}>
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[55fr_45fr] lg:gap-16">
 
-            {/* Image */}
-            <div
-              style={{
-                position:     'relative',
-                aspectRatio:  '4 / 3',
-                borderRadius: '16px',
-                overflow:     'hidden',
-                boxShadow:    '0 16px 48px rgba(44, 24, 16, 0.12)',
-              }}
-            >
-              <Image
-                src="/images/salon/salon-3.jpg"
-                alt="Interijer Studio Amage — Split"
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 1024px) 100vw, 55vw"
-              />
-            </div>
+            {/* Image carousel */}
+            <SalonCarousel />
 
             {/* Text */}
             <div>

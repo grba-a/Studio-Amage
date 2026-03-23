@@ -257,3 +257,10 @@
     padding-left: 0 !important;
   }
 }
+
+/* ── Salon carousel arrows — hidden on mobile ── */
+@media (max-width: 767px) {
+  .salon-carousel-arrow {
+    display: none !important;
+  }
+}

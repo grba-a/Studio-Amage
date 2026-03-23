@@ -1,14 +1,35 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 
 const HIDDEN_ON = ['/privacy', '/terms', '/cookies']
 
 export default function FloatingCTA() {
   const [hovered, setHovered] = useState(false)
+  const [hidden,  setHidden]  = useState(false)
   const pathname = usePathname()
   const router   = useRouter()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const rezervacija = document.querySelector('#rezervacija')
+      const footer      = document.querySelector('footer')
+
+      const rezervacijaTop = rezervacija?.getBoundingClientRect().top ?? Infinity
+      const footerTop      = footer?.getBoundingClientRect().top      ?? Infinity
+
+      if (rezervacijaTop < window.innerHeight * 0.9 || footerTop < window.innerHeight) {
+        setHidden(true)
+      } else {
+        setHidden(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [pathname])
 
   if (HIDDEN_ON.includes(pathname)) return null
 
@@ -21,16 +42,24 @@ export default function FloatingCTA() {
   }
 
   return (
+    <div
+      style={{
+        position:      'fixed',
+        bottom:        '24px',
+        right:         '24px',
+        zIndex:         50,
+        opacity:        hidden ? 0 : 1,
+        pointerEvents:  hidden ? 'none' : 'auto',
+        transform:      hidden ? 'translateY(20px)' : 'translateY(0)',
+        transition:    'opacity 0.3s ease, transform 0.3s ease',
+      }}
+    >
     <button
       onClick={handleClick}
       aria-label="Idi na kontakt"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position:   'fixed',
-        bottom:     '24px',
-        right:      '24px',
-        zIndex:      50,
         display:    'flex',
         alignItems: 'center',
         gap:        '10px',
@@ -120,5 +149,6 @@ export default function FloatingCTA() {
         </svg>
       </div>
     </button>
+    </div>
   )
 }
