@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation'
 
 // ── Navigation links ────────────────────────────────────────────────────────
 const NAV_LINKS = [
-  { label: 'PONUDA',     href: '/tretmani-usluge' },
+  { label: 'PONUDA',     href: '/ponuda' },
   { label: 'TRANSFORMACIJE',  href: '/transformacije' },
-  { label: 'O NAMA',     href: '/salon' },
+  { label: 'SALON',     href: '/salon' },
   { label: 'GALERIJA',   href: '/galerija' },
   { label: 'BLOG',       href: '/blog' },
 ] as const

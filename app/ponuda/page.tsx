@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Usluge i tretmani — Balayage, Bojanje',
   description:
     'Frizerske usluge u Splitu — balayage, bojanje, šišanje, feniranje, rekonstrukcija kose. Studio Amage, Trenkova 74, Split.',
-  alternates: { canonical: 'https://studioamage.com/tretmani-usluge' },
+  alternates: { canonical: 'https://studioamage.com/ponuda' },
   openGraph: {
     images: [{ url: 'https://studioamage.com/images/hero/hero-1.jpg', width: 1200, height: 630, alt: 'Tretmani i usluge — Studio Amage Split' }],
   },

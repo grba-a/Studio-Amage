@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: 'https://studioamage.com',                           lastModified: new Date(), changeFrequency: 'weekly',  priority: 1   },
-    { url: 'https://studioamage.com/tretmani-usluge',           lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://studioamage.com/ponuda',           lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://studioamage.com/transformacije',            lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://studioamage.com/galerija',                  lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
     { url: 'https://studioamage.com/salon',                     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
