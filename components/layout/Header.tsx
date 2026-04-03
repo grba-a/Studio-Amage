@@ -227,6 +227,7 @@ export default function Header() {
               width={130}
               height={65}
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
+              priority
             />
           </Link>
 
