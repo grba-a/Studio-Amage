@@ -115,7 +115,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 gtag('js', new Date());
                 gtag('config', '${GA_ID}', {
                   anonymize_ip: true,
-                  cookie_flags: 'SameSite=None;Secure'
+                  cookie_flags: 'SameSite=None;Secure',
+                  client_storage: 'none'
                 });
               `}
             </Script>

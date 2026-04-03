@@ -99,7 +99,7 @@ function ReviewCard({ name, initials, when, text }: Review) {
             <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15px', fontWeight: 600, color: '#2c1810', lineHeight: 1.2 }}>
               {name}
             </div>
-            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', color: '#9b8b7e', marginTop: '2px' }}>
+            <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', color: '#6b4c3b', marginTop: '2px' }}>
               {when}
             </div>
           </div>
@@ -108,7 +108,7 @@ function ReviewCard({ name, initials, when, text }: Review) {
       </div>
 
       {/* Stars */}
-      <div style={{ display: 'flex', gap: '2px', marginBottom: '12px' }} aria-label="5 zvjezdica">
+      <div role="img" aria-label="5 od 5 zvjezdica" style={{ display: 'flex', gap: '2px', marginBottom: '12px' }}>
         {Array.from({ length: 5 }).map((_, i) => (
           <span key={i} style={{ color: '#f59e0b', fontSize: '16px' }} aria-hidden="true">★</span>
         ))}

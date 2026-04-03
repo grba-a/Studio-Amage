@@ -1,15 +1,14 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
-import Image from 'next/image'
 
 // ── Slide data ────────────────────────────────────────────────────────────────
 const SLIDES = [
-  { src: '/images/hero/hero-1.jpg', alt: 'Studio Amage — frizerski salon Split', objectPosition: 'center 20%' },
-  { src: '/images/hero/hero-2.jpg', alt: 'Studio Amage — frizerski salon Split', objectPosition: 'center 20%' },
-  { src: '/images/hero/hero-3.jpg', alt: 'Studio Amage — frizerski salon Split', objectPosition: 'center 20%' },
-  { src: '/images/hero/hero-4.jpg', alt: 'Studio Amage — frizerski salon Split', objectPosition: 'center center' },
-] as const
+  { src: '/images/hero/hero-1.jpg', pos: 'center 20%' },
+  { src: '/images/hero/hero-2.jpg', pos: 'center 20%' },
+  { src: '/images/hero/hero-3.jpg', pos: 'center 20%' },
+  { src: '/images/hero/hero-4.jpg', pos: 'center center' },
+]
 
 const INTERVAL_MS   = 5000
 const FADE_DURATION = 1200
@@ -57,24 +56,16 @@ export default function HeroSlider() {
           key={slide.src}
           aria-hidden={i !== current}
           style={{
-            position:   'absolute',
-            inset:       0,
-            overflow:   'hidden',
-            opacity:    i === current ? 1 : 0,
-            zIndex:     i === current ? 1 : 0,
-            transition: `opacity ${FADE_DURATION}ms ease`,
-            willChange: 'opacity',
+            position:         'absolute',
+            inset:             0,
+            backgroundImage:  `url(${slide.src})`,
+            backgroundSize:   'cover',
+            backgroundPosition: slide.pos,
+            opacity:          i === current ? 1 : 0,
+            transition:       `opacity ${FADE_DURATION}ms ease`,
+            zIndex:           i === current ? 1 : 0,
           }}
-        >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            style={{ objectFit: 'cover', objectPosition: slide.objectPosition }}
-            priority={i === 0}
-            sizes="100vw"
-          />
-        </div>
+        />
       ))}
 
       {/* ── Dark overlay ─────────────────────────────────────────────────── */}
