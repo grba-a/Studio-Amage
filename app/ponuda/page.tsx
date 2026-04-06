@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Pogledajte ponudu Studio Amage — balayage, bojanje, šišanje i personalizirani frizerski tretmani u Splitu. Trenkova ulica 74.',
   alternates: { canonical: 'https://studioamage.com/ponuda' },
   openGraph: {
-    images: [{ url: 'https://studioamage.com/images/hero/hero-1.jpg', width: 1200, height: 630, alt: 'Tretmani i usluge — Studio Amage Split' }],
+    images: [{ url: 'https://studioamage.com/images/hero/hero-1.webp', width: 1200, height: 630, alt: 'Tretmani i usluge — Studio Amage Split' }],
   },
 }
 
@@ -19,21 +19,21 @@ const SERVICES = [
     name:    'Bojanje i pramenovi',
     short:   'Bojanje koje izgleda skupo, čak i tjednima nakon termina',
     detail:  'Precizna tehnika nanošenja boje koja ostavlja prirodan prelaz i sjaj koji traje. Idealno za one koji žele promjenu bez drastičnog reza.',
-    imgSrc:  '/images/galerija/galerija-13.jpg',
+    imgSrc:  '/images/galerija/galerija-13.webp',
     imgAlt:  'Bojanje i pramenovi — Studio Amage Split',
   },
   {
     name:    'Šišanje i feniranje',
     short:   'Precizno šišanje i završni styling prilagođen obliku lica, teksturi i životnom stilu',
     detail:  'Svaki rez počinje detaljnom konzultacijom. Cilj je frizura koja izgleda dobro i kad ju sami stiliziraš kod kuće.',
-    imgSrc:  '/images/galerija/galerija-12.jpg',
+    imgSrc:  '/images/galerija/galerija-12.webp',
     imgAlt:  'Šišanje i feniranje — Studio Amage Split',
   },
   {
     name:    'Balayage',
     short:   'Ručno oslikani pramenovi koji izgledaju prirodno i rastu lijepo — bez oštrih linija',
     detail:  'Tehnika bojanja rukom koja daje najprirodniji rezultat. Savršena za one koji žele low-maintenance kosu s WOW efektom.',
-    imgSrc:  '/images/galerija/galerija-16.jpg',
+    imgSrc:  '/images/galerija/galerija-16.webp',
     imgAlt:  'Balayage — Studio Amage Split',
   },
 ] as const
@@ -243,7 +243,7 @@ export default function TretmaniUslugePage() {
             {/* Image */}
             <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '3/4' }}>
               <Image
-                src="/images/galerija/galerija-4.jpg"
+                src="/images/galerija/galerija-4.webp"
                 alt="Amage Transformacija — frizerski salon Split"
                 fill
                 style={{ objectFit: 'cover' }}

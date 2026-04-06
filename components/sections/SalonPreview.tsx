@@ -22,7 +22,7 @@ export default function SalonPreview() {
           {/* ── Left: image ── */}
           <div style={{ position: 'relative', aspectRatio: '4/3', borderRadius: '12px', overflow: 'hidden', width: '100%' }}>
             <Image
-              src="/images/salon/salon-2.jpg"
+              src="/images/salon/salon-2.webp"
               alt="Studio Amage salon Split"
               fill
               style={{ objectFit: 'cover' }}

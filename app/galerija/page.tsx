@@ -194,7 +194,7 @@ export default function GalerijaPage() {
                     }}
                   >
                     <Image
-                      src={`/images/galerija/galerija-${item.id}.jpg`}
+                      src={`/images/galerija/galerija-${item.id}.webp`}
                       alt={`Studio Amage rad ${item.id} — frizerski salon Split`}
                       width={800}
                       height={1000}
@@ -293,7 +293,7 @@ export default function GalerijaPage() {
             }}
           >
             <Image
-              src={`/images/galerija/galerija-${lightboxId! + 1}.jpg`}
+              src={`/images/galerija/galerija-${lightboxId! + 1}.webp`}
               alt={`Studio Amage rad ${lightboxId! + 1} — frizerski salon Split`}
               width={800}
               height={1000}

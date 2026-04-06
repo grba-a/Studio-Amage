@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'Studio Amage — frizerski studio u Splitu. Upoznaj naš intiman prostor u Trenkovoj ulici 74 i vlasnicu Mariju Jurčević.',
   alternates: { canonical: 'https://studioamage.com/salon' },
   openGraph: {
-    images: [{ url: 'https://studioamage.com/images/salon/salon-1.jpg', width: 1200, height: 630, alt: 'Studio Amage salon — Trenkova 74 Split' }],
+    images: [{ url: 'https://studioamage.com/images/salon/salon-1.webp', width: 1200, height: 630, alt: 'Studio Amage salon — Trenkova 74 Split' }],
   },
 }
 
@@ -245,7 +245,7 @@ export default function SalonPage() {
               }}
             >
               <Image
-                src="/images/marija/marija-portret.jpg"
+                src="/images/marija/marija-portret.webp"
                 alt="Marija Jurčević — Studio Amage Split"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}

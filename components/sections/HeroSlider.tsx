@@ -4,10 +4,10 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 
 // ── Slide data ────────────────────────────────────────────────────────────────
 const SLIDES = [
-  { src: '/images/hero/hero-1.jpg', pos: 'center 20%' },
-  { src: '/images/hero/hero-2.jpg', pos: 'center 20%' },
-  { src: '/images/hero/hero-3.jpg', pos: 'center 20%' },
-  { src: '/images/hero/hero-4.jpg', pos: 'center center' },
+  { src: '/images/hero/hero-1.webp', pos: 'center 20%' },
+  { src: '/images/hero/hero-2.webp', pos: 'center 20%' },
+  { src: '/images/hero/hero-3.webp', pos: 'center 20%' },
+  { src: '/images/hero/hero-4.webp', pos: 'center center' },
 ]
 
 const INTERVAL_MS   = 5000

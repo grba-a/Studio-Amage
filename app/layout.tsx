@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     images: [
       {
-        url:    'https://studioamage.com/images/hero/hero-1.jpg',
+        url:    'https://studioamage.com/images/hero/hero-1.webp',
         width:  1200,
         height: 630,
         alt:    'Studio Amage — frizerski salon Split',

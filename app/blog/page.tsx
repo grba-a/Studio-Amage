@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Savjeti za njegu kose, trendovi i stručni tekstovi iz Studio Amage frizerskog studija u Splitu.',
   alternates: { canonical: 'https://studioamage.com/blog' },
   openGraph: {
-    images: [{ url: 'https://studioamage.com/images/blog/blog-njega-boje.jpg', width: 1200, height: 630, alt: 'Blog — Studio Amage' }],
+    images: [{ url: 'https://studioamage.com/images/blog/blog-njega-boje.webp', width: 1200, height: 630, alt: 'Blog — Studio Amage' }],
   },
 }
 
@@ -114,7 +114,7 @@ export default function BlogPage() {
                 <Link href={`/blog/${slug}`} tabIndex={-1} aria-hidden="true">
                   <div style={{ position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden' }}>
                     <Image
-                      src={`/images/blog/blog-${slug}.jpg`}
+                      src={`/images/blog/blog-${slug}.webp`}
                       alt={title}
                       fill
                       style={{ objectFit: 'cover' }}

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Amage Transformacije — potpune promjene izgleda kose u frizerskom studiju Split. Balayage, pramenovi, rekonstrukcija.',
   alternates: { canonical: 'https://studioamage.com/transformacije' },
   openGraph: {
-    images: [{ url: 'https://studioamage.com/images/hero/hero-2.jpg', width: 1200, height: 630, alt: 'Transformacije kose — Studio Amage Split' }],
+    images: [{ url: 'https://studioamage.com/images/hero/hero-2.webp', width: 1200, height: 630, alt: 'Transformacije kose — Studio Amage Split' }],
   },
 }
 

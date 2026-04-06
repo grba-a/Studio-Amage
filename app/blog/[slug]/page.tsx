@@ -107,7 +107,7 @@ const POSTS: Record<string, {
     category:  'NJEGA',
     readTime:  '5 min čitanja',
     excerpt:   'Uložila si vrijeme i novac u savršenu boju i zaslužuješ da traje što dulje. Problem je što većina žena nesvjesno radi stvari koje ubrzavaju blijeđenje i suše kosu. Evo što stvarno funkcionira.',
-    ogImage:   '/images/blog/blog-njega-boje.jpg',
+    ogImage:   '/images/blog/blog-njega-boje.webp',
     Content:   NjegaBoje,
   },
   'novi-tretmani': {
@@ -117,7 +117,7 @@ const POSTS: Record<string, {
     category:  'NOVOSTI',
     readTime:  '4 min čitanja',
     excerpt:   'Proširili smo ponudu s tri tretmana koja ciljaju konkretne probleme kao što su suha kosa, nedostatak sjaja i osjetljivo vlasište. Evo kratkog pregleda što svaki tretman čini i kako znati koji je pravi za tebe.',
-    ogImage:   '/images/blog/blog-novi-tretmani.jpg',
+    ogImage:   '/images/blog/blog-novi-tretmani.webp',
     Content:   NoviTretmani,
   },
   'trendovi-sezone': {
@@ -127,7 +127,7 @@ const POSTS: Record<string, {
     category:  'TRENDOVI',
     readTime:  '4 min čitanja',
     excerpt:   'Svaka sezona donosi nove trendove, ali neke tehnike ostaju tražene jer jednostavno funkcioniraju na svakom tipu kose. Evo što klijentice u studiju najčešće traže ove sezone i zašto.',
-    ogImage:   '/images/blog/blog-trendovi-sezone.jpg',
+    ogImage:   '/images/blog/blog-trendovi-sezone.webp',
     Content:   TrenDoviSezone,
   },
 }
@@ -241,7 +241,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* ══ THUMBNAIL IMAGE ═════════════════════════════════════════════════ */}
       <div style={{ position: 'relative', width: '100%', maxHeight: '500px', overflow: 'hidden', aspectRatio: '16/9' }}>
         <Image
-          src={`/images/blog/blog-${slug}.jpg`}
+          src={`/images/blog/blog-${slug}.webp`}
           alt={title}
           fill
           style={{ objectFit: 'cover' }}

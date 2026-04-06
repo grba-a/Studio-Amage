@@ -128,7 +128,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 no-underline">
             <Image
-              src="/images/logo/logo_amage.png"
+              src="/images/logo/logo_amage.webp"
               alt="Studio Amage logo"
               width={160}
               height={80}
@@ -222,7 +222,7 @@ export default function Header() {
         <div className="flex items-center justify-between px-6 h-20 flex-shrink-0">
           <Link href="/" onClick={closeDrawer} className="no-underline">
             <Image
-              src="/images/logo/logo_amage.png"
+              src="/images/logo/logo_amage.webp"
               alt="Studio Amage logo"
               width={130}
               height={65}

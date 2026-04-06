@@ -78,7 +78,7 @@ export default function BioSection() {
             width:        '100%',
           }}>
             <Image
-              src="/images/marija/marija-portret.jpg"
+              src="/images/marija/marija-portret.webp"
               alt="Marija Jurčević frizerka Studio Amage Split"
               fill
               style={{ objectFit: 'cover', objectPosition: 'center top' }}

@@ -136,7 +136,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <Link href="/" className="no-underline inline-block">
               <Image
-                src="/images/logo/logo_amage.png"
+                src="/images/logo/logo_amage.webp"
                 alt="Studio Amage"
                 width={180}
                 height={72}

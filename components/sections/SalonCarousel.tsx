@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 const IMAGES = [
-  { src: '/images/galerija/galerija-4.jpg', alt: 'Studio Amage interijer' },
-  { src: '/images/galerija/galerija-5.jpg', alt: 'Studio Amage interijer' },
-  { src: '/images/galerija/galerija-6.jpg', alt: 'Studio Amage interijer' },
-  { src: '/images/galerija/galerija-7.jpg', alt: 'Studio Amage interijer' },
+  { src: '/images/galerija/galerija-4.webp', alt: 'Studio Amage interijer' },
+  { src: '/images/galerija/galerija-5.webp', alt: 'Studio Amage interijer' },
+  { src: '/images/galerija/galerija-6.webp', alt: 'Studio Amage interijer' },
+  { src: '/images/galerija/galerija-7.webp', alt: 'Studio Amage interijer' },
 ]
 
 export default function SalonCarousel() {
