@@ -1,4 +1,5 @@
 import FadeInOnScroll from '@/components/ui/FadeInOnScroll'
+import LazyMap from '@/components/ui/LazyMap'
 
 // Server component — no 'use client'
 
@@ -128,16 +129,9 @@ export default function LocationSection() {
             </div>
           </FadeInOnScroll>
 
-          {/* ── Right: Google Maps iframe ── */}
+          {/* ── Right: Google Maps iframe (lazy) ── */}
           <FadeInOnScroll direction="right" delay={150}>
-            <iframe
-              src="https://maps.google.com/maps?q=Trenkova+ulica+74,+Split,+Croatia&output=embed&z=16"
-              width="100%"
-              height="400"
-              style={{ border: 0, borderRadius: '12px', display: 'block' }}
-              loading="lazy"
-              title="Studio Amage lokacija na Google mapi"
-            />
+            <LazyMap />
           </FadeInOnScroll>
 
         </div>
