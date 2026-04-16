@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 // ── Navigation links ─────────────────────────────────────────────────────────
 const NAV_LINKS = [
@@ -135,7 +134,7 @@ export default function Footer() {
           {/* ── Col 1: Logo ── */}
           <div className="flex flex-col gap-3">
             <Link href="/" className="no-underline inline-block">
-              <Image
+              <img
                 src="/images/logo/logo_amage.webp"
                 alt="Studio Amage"
                 width={180}
