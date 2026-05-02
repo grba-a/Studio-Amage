@@ -80,7 +80,11 @@ const SOCIAL_LINKS = [
 export default function Header() {
   const [scrolled,    setScrolled]    = useState(false)
   const [drawerOpen,  setDrawerOpen]  = useState(false)
+  const [mounted,     setMounted]     = useState(false)
   const pathname = usePathname()
+
+  // Mark mounted so transitions only apply after first paint
+  useEffect(() => { setMounted(true) }, [])
 
   // Scroll detection
   useEffect(() => {
@@ -120,7 +124,7 @@ export default function Header() {
           backgroundColor: scrolled ? 'rgba(244, 236, 228, 0.95)' : 'transparent',
           backdropFilter:  scrolled ? 'blur(8px)' : 'none',
           boxShadow:       scrolled ? '0 1px 20px rgba(0,0,0,0.06)' : 'none',
-          transition:      'background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease',
+          transition:      mounted ? 'background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease' : 'none',
         }}
       >
         <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-6">
@@ -134,6 +138,7 @@ export default function Header() {
               height={80}
               sizes="160px"
               priority
+              fetchPriority="high"
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
             />
           </Link>
@@ -228,6 +233,7 @@ export default function Header() {
               width={130}
               height={65}
               sizes="130px"
+              loading="lazy"
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
             />
           </Link>

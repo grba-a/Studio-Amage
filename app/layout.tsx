@@ -95,6 +95,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         <link rel="preload" as="image" href="/images/logo/logo_amage.webp" fetchPriority="high" />
         <link rel="preload" as="image" href="/images/hero/hero-1.webp" fetchPriority="high" />
+        <style dangerouslySetInnerHTML={{__html: `
+          *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+          html,body{background-color:#f4ece4;color:#2c1810;overflow-x:hidden}
+          header{position:fixed;top:0;left:0;right:0;z-index:50}
+        `}} />
       </head>
       <body>
         {isProduction && (

@@ -141,6 +141,7 @@ export default function Footer() {
                 width={180}
                 height={72}
                 sizes="180px"
+                loading="lazy"
                 style={{ objectFit: 'contain', objectPosition: 'left center' }}
               />
             </Link>
