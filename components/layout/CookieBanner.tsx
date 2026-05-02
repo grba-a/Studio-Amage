@@ -55,7 +55,7 @@ export default function CookieBanner() {
           Koristimo kolačiće za poboljšanje iskustva. Više info u našoj{' '}
           <Link
             href="/cookies"
-            style={{ color: '#724129', textDecoration: 'underline' }}
+            style={{ color: '#e8c090', textDecoration: 'underline' }}
           >
             Politici kolačića
           </Link>

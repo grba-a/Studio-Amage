@@ -12,7 +12,7 @@ const playfair = Playfair_Display({
   subsets:  ['latin'],
   display:  'swap',
   variable: '--font-playfair',
-  weight:   ['400', '700', '900'],
+  weight:   ['400', '700'],
   style:    ['normal', 'italic'],
 })
 
@@ -20,7 +20,7 @@ const poppins = Poppins({
   subsets:  ['latin'],
   display:  'swap',
   variable: '--font-poppins',
-  weight:   ['300', '400', '500', '600'],
+  weight:   ['400', '500', '600'],
 })
 
 const GA_ID = 'G-PXM6MZFMMJ'
@@ -85,7 +85,7 @@ export default function RootLayout({
     <html lang="hr" className={`${playfair.variable} ${poppins.variable}`}>
       <head>
         {isProduction && (
-          <Script id="gtm-script" strategy="afterInteractive">
+          <Script id="gtm-script" strategy="lazyOnload">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -93,6 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TWXMZB8L');`}
           </Script>
         )}
+        <link rel="preload" as="image" href="/images/logo/logo_amage.webp" fetchPriority="high" />
         <link rel="preload" as="image" href="/images/hero/hero-1.webp" fetchPriority="high" />
       </head>
       <body>
