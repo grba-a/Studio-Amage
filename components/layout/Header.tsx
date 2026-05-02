@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -126,12 +127,13 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 no-underline">
-            <img
+            <Image
               src="/images/logo/logo_amage.webp"
               alt="Studio Amage logo"
               width={160}
               height={80}
-              fetchPriority="high"
+              sizes="160px"
+              priority
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
             />
           </Link>
@@ -220,11 +222,12 @@ export default function Header() {
         {/* Drawer header row */}
         <div className="flex items-center justify-between px-6 h-20 flex-shrink-0">
           <Link href="/" onClick={closeDrawer} className="no-underline">
-            <img
+            <Image
               src="/images/logo/logo_amage.webp"
               alt="Studio Amage logo"
               width={130}
               height={65}
+              sizes="130px"
               style={{ objectFit: 'contain', objectPosition: 'left center' }}
             />
           </Link>
