@@ -97,8 +97,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="preload" as="image" href="/images/hero/hero-1.webp" fetchPriority="high" />
         <style dangerouslySetInnerHTML={{__html: `
           *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-          html,body{background-color:#f4ece4;color:#2c1810;overflow-x:hidden}
+          :root{--brand:#935638;--bg:#f4ece4;--bg-dark:#ede3db;--text-primary:#2c1810;--text-muted:#6b4c3b}
+          html{scroll-behavior:smooth;font-family:sans-serif;background-color:#f4ece4;color:#2c1810;overflow-x:hidden}
+          body{background-color:#f4ece4;color:#2c1810;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
           header{position:fixed;top:0;left:0;right:0;z-index:50}
+          img{max-width:100%;height:auto}
         `}} />
       </head>
       <body>
