@@ -19,6 +19,7 @@ export default function HeroSlider() {
   const [paused,      setPaused]      = useState(false)
   const [loadedSlides, setLoadedSlides] = useState<Set<number>>(new Set([0]))
   const touchStartX                   = useRef<number>(0)
+  const touchStartY                   = useRef<number>(0)
 
   // Preload remaining slides 1s after mount so they don't block initial page load
   useEffect(() => {
@@ -37,10 +38,17 @@ export default function HeroSlider() {
   const goPrev = useCallback(() => setCurrent(p => (p - 1 + SLIDES.length) % SLIDES.length), [])
   const goNext = useCallback(() => setCurrent(p => (p + 1) % SLIDES.length), [])
 
-  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX }
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }
   const onTouchEnd   = (e: React.TouchEvent) => {
-    const diff = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 50) diff > 0 ? goNext() : goPrev()
+    const diffX = touchStartX.current - e.changedTouches[0].clientX
+    const diffY = touchStartY.current - e.changedTouches[0].clientY
+    // Only handle horizontal swipes — ignore if vertical movement dominates
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      diffX > 0 ? goNext() : goPrev()
+    }
   }
 
   return (

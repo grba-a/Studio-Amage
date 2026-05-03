@@ -237,13 +237,13 @@
 
 /* ── Video section inner (responsive padding) ── */
 .video-section-inner {
-  padding: 0 16px;
+  padding: 0 24px;
 }
 @media (min-width: 768px) {
   .video-section-inner {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 24px;
   }
 }
 

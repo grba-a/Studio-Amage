@@ -127,7 +127,10 @@ export default function Header() {
           transition:      mounted ? 'background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease' : 'none',
         }}
       >
-        <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-6">
+        <div
+            className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-6"
+            style={{ maxWidth: '1280px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '24px', paddingRight: '24px', width: '100%' }}
+          >
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 no-underline">

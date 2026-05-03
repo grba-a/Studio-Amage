@@ -129,11 +129,14 @@ export default function Footer() {
       />
 
       {/* ── Main grid ── */}
-      <div className="mx-auto max-w-7xl px-6 py-10 md:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div
+        className="mx-auto max-w-7xl"
+        style={{ padding: '40px 80px' }}
+      >
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
 
-          {/* ── Col 1: Logo ── */}
-          <div className="flex flex-col gap-3">
+          {/* ── Col 1: Logo — lijevo na desktopu, centrirano na mobileu ── */}
+          <div className="flex flex-col gap-3 items-center sm:items-start">
             <Link href="/" className="no-underline inline-block">
               <Image
                 src="/images/logo/logo_amage.webp"
@@ -147,28 +150,30 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* ── Col 2: Navigacija ── */}
-          <div>
-            <ColHeading>Navigacija</ColHeading>
-            <ul className="flex flex-col gap-3 list-none p-0 m-0">
-              {NAV_LINKS.map(({ label, href }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="font-sans uppercase hover:underline transition-colors duration-200"
-                    style={{ fontSize: '12px', letterSpacing: '0.08em', color: '#935638' }}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* ── Col 2: Navigacija — centrirano u stupcu, tekst lijevo ── */}
+          <div className="flex flex-col items-center">
+            <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <ColHeading>Navigacija</ColHeading>
+              <ul className="flex flex-col gap-3 list-none p-0 m-0">
+                {NAV_LINKS.map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="font-sans uppercase hover:underline transition-colors duration-200"
+                      style={{ fontSize: '12px', letterSpacing: '0.08em', color: '#935638' }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* ── Col 3: Kontakt ── */}
-          <div>
+          {/* ── Col 3: Kontakt — desno na desktopu, centrirano na mobileu ── */}
+          <div className="flex flex-col items-center sm:items-end">
             <ColHeading>Kontakt</ColHeading>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 items-center sm:items-end">
 
               {/* Social icons row */}
               <div className="flex items-center gap-4">
@@ -195,47 +200,29 @@ export default function Footer() {
               {/* Email */}
               <a
                 href="mailto:studio.amage@gmail.com"
-                className="flex items-center gap-2 hover:underline transition-colors duration-200"
-                style={{ fontSize: '13px', color: 'var(--text-muted)' }}
+                className="hover:underline transition-colors duration-200"
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--text-muted)' }}
               >
+                studio.amage@gmail.com
                 <span style={{ color: '#935638', flexShrink: 0 }}>
                   <IconMail />
                 </span>
-                studio.amage@gmail.com
               </a>
 
               {/* Phone */}
               <a
                 href="tel:+385993496435"
-                className="flex items-center gap-2 hover:underline transition-colors duration-200"
-                style={{ fontSize: '13px', color: 'var(--text-muted)' }}
+                className="hover:underline transition-colors duration-200"
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--text-muted)' }}
               >
+                +385 99 349 6435
                 <span style={{ color: '#935638', flexShrink: 0 }}>
                   <IconPhone />
                 </span>
-                +385 99 349 6435
               </a>
             </div>
           </div>
 
-          {/* ── Col 4: Rezervacije ── */}
-          <div>
-            <ColHeading>Rezervacije</ColHeading>
-            <div className="flex flex-col gap-3">
-              <p className="font-sans" style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                Termini po dogovoru
-              </p>
-              <p className="font-sans" style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                Kontaktiraj nas za dostupnost
-              </p>
-              <Link
-                href="/#rezervacija"
-                className="nav-cta mt-2 inline-block text-center"
-              >
-                Rezerviraj termin
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
 

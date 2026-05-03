@@ -269,12 +269,12 @@ export default function ContactForm() {
                   display: 'block', fontFamily: 'Poppins, sans-serif',
                   fontSize: '14px', fontWeight: 600, color: '#935638', marginBottom: '6px',
                 }}>
-                  Što planirate?
+                  Napomena
                 </label>
                 <textarea
                   name="poruka"
                   rows={4}
-                  placeholder="Npr. balayage i lagane valove..."
+                  placeholder="Opišite željenu frizuru ili tretman pa ćemo vam se javiti oko dogovora terminima."
                   style={{
                     ...inputStyle,
                     resize:    'vertical',
@@ -307,7 +307,7 @@ export default function ContactForm() {
                   onMouseEnter={e => { if (!loading) (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#7a4529' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#935638' }}
                 >
-                  {loading ? 'Slanje...' : 'Rezerviraj termin'}
+                  {loading ? 'Slanje...' : 'Pošalji upit'}
                 </button>
 
               </form>
